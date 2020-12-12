@@ -7,7 +7,7 @@
     padding: 5px;
 }
 
-.global-cases {
+.cases-container {
     background: tomato;
     grid-column-start: 1;
     grid-column-end: 21;
@@ -15,7 +15,7 @@
     grid-row-end: 19;
 }
 
-.detailed-cases {
+.details-container {
     background: tomato;
     grid-column-start: 1;
     grid-column-end: 21;
@@ -23,7 +23,7 @@
     grid-row-end: 90;
 }
 
-.footer {
+.footer-container {
     background: tomato;
     grid-column-start: 1;
     grid-column-end: 100;
@@ -31,7 +31,7 @@
     grid-row-end: 100;
 }
 
-.map {
+.map-container {
     background: tomato;
     grid-column-start: 21;
     grid-column-end: 74;
@@ -39,7 +39,7 @@
     grid-row-end: 90;
 }
 
-.stats {
+.statistic-container {
     background: tomato;
     grid-column-start: 74;
     grid-column-end: 100;
@@ -47,7 +47,7 @@
     grid-row-end: 37;
 }
 
-.chart {
+.chart-container {
     background: tomato;
     grid-column-start: 74;
     grid-column-end: 100;
