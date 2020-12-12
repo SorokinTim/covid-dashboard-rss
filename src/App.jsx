@@ -1,4 +1,6 @@
 import React from 'react';
+import Switcher from './components/Switcher/Switcher';
+import switchers from './components/switchers';
 import s from './App.module.css';
 
 export default function App() {
@@ -8,8 +10,12 @@ export default function App() {
       <div className={s['details-container']} />
       <div className={s['map-container']} />
       <div className={s['statistic-container']} />
-      <div className={s['chart-container']} />
-      <div className={s['footer-container']} />
+      <div className={s['chart-container']}>
+        <Switcher switchData={switchers.timeSwitcher} />
+      </div>
+      <div className={s['footer-container']}>
+        <Switcher switchData={switchers.casesSwitcher} />
+      </div>
     </div>
   );
 }
