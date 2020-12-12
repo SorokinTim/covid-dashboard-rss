@@ -1,0 +1,25 @@
+.table {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.table__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
+}
+
+.table__head-cell,
+.table__cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.5rem;
+}
+
+/* TODO: проверить колонки на маленькой ширине */
