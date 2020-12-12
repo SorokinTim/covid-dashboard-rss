@@ -1,0 +1,16 @@
+.date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.date__text {
+  /* * должен вмещаться в строку*/
+}
+
+.date__value {
+  /* * должен вмещаться в строку*/
+}
