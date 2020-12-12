@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from './Switcher.module.css';
 
 export default function Switcher({ switchData }) {
@@ -24,18 +25,13 @@ export default function Switcher({ switchData }) {
   );
 }
 
-Switcher.defaultProps = {
-  switchData: [],
-};
-
 Switcher.propTypes = {
-  switchData: (props, propName, componentName) => {
-    const value = props[propName];
-
-    if (Array.isArray(value)) {
-      return null;
-    }
-
-    return new TypeError(`${componentName}: ${propName} must be an array`);
-  },
+  switchData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      name: PropTypes.string,
+      default: PropTypes.bool,
+    }),
+  ).isRequired,
 };
