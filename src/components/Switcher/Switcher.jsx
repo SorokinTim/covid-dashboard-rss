@@ -12,6 +12,7 @@ export default function Switcher({ switchData }) {
           name={item.name}
           value={item.id}
           defaultChecked={item.default}
+          className={s.switcher__radio}
         />
         {item.label}
       </label>

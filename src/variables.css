@@ -1,11 +1,21 @@
 :root {
-  --color-white: #f1f1f1;
-  --color-gray: #c1c1c1;
-  --color-dark: #1c1c1c;
+  --color-white: #f5f5f8;
+  --color-gray: #d5cec5;
+  --color-dark-gray: #45404c;
+  --color-light-gray: #45404c;
+  --color-dark: #2e313c;
 
-  --font-xs: 0.9rem;
-  --font-s: 1rem;
-  --font-m: 1.2rem;
-  --font-l: 1.4rem;
-  --font-xl: 1.6rem;
+  --font-xs: 0.8rem;
+  --font-s: 0.9rem;
+  --font-m: 1rem;
+  --font-l: 1.2rem;
+  --font-xl: 1.4rem;
+
+  --font-family: 'Montserrat', sans-serif;
+
+  --shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+  --gap: 5px;
+
+  --border-radius: 5px;
 }

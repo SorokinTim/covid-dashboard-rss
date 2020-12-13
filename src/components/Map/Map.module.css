@@ -4,4 +4,7 @@
   right: 0;
   bottom: 0;
   top: 0;
+  outline: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 }
