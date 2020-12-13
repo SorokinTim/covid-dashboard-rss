@@ -1,58 +1,69 @@
 .container {
-    display: grid;
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-    grid-gap: 5px;
-    padding: 5px;
+  display: grid;
+  background-color: var(--color-dark);
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  grid-gap: var(--gap);
+  padding: var(--gap);
 }
 
 .cases-container {
-    background: tomato;
-    grid-column-start: 1;
-    grid-column-end: 21;
-    grid-row-start: 1;
-    grid-row-end: 19;
+  grid-column-start: 1;
+  grid-column-end: 21;
+  grid-row-start: 1;
+  grid-row-end: 19;
 }
 
 .details-container {
-    background: tomato;
-    grid-column-start: 1;
-    grid-column-end: 21;
-    grid-row-start: 19;
-    grid-row-end: 90;
+  grid-column-start: 1;
+  grid-column-end: 21;
+  grid-row-start: 19;
+  grid-row-end: 90;
 }
 
 .footer-container {
-    background: tomato;
-    grid-column-start: 1;
-    grid-column-end: 100;
-    grid-row-start: 90;
-    grid-row-end: 100;
+  grid-column-start: 1;
+  grid-column-end: 100;
+  grid-row-start: 90;
+  grid-row-end: 100;
 }
 
 .map-container {
-    background: tomato;
-    grid-column-start: 21;
-    grid-column-end: 74;
-    grid-row-start: 1;
-    grid-row-end: 90;
-
+  grid-column-start: 21;
+  grid-column-end: 74;
+  grid-row-start: 1;
+  grid-row-end: 90;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .statistic-container {
-    background: tomato;
-    grid-column-start: 74;
-    grid-column-end: 100;
-    grid-row-start: 1;
-    grid-row-end: 37;
+  grid-column-start: 74;
+  grid-column-end: 100;
+  grid-row-start: 1;
+  grid-row-end: 37;
 }
 
 .chart-container {
-    background: tomato;
-    grid-column-start: 74;
-    grid-column-end: 100;
-    grid-row-start: 37;
-    grid-row-end: 90;
+  grid-column-start: 74;
+  grid-column-end: 100;
+  grid-row-start: 37;
+  grid-row-end: 90;
+}
+
+.map-container__switchers {
+  display: grid;
+  width: 100%;
+  height: 15%;
+  margin-bottom: 5px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--gap);
+}
+
+.map-container__map{
+  width: 100%;
+  height: 85%;
+  position: relative;
 }

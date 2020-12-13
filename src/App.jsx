@@ -10,15 +10,17 @@ export default function App() {
       <div className={s['cases-container']} />
       <div className={s['details-container']} />
       <div className={s['map-container']}>
-        <Map />
+        <div className={s['map-container__switchers']}>
+          <Switcher switchData={switchers.casesSwitcher} />
+          <Switcher switchData={switchers.timeSwitcher} />
+        </div>
+        <div className={s['map-container__map']}>
+          <Map />
+        </div>
       </div>
       <div className={s['statistic-container']} />
-      <div className={s['chart-container']}>
-        <Switcher switchData={switchers.timeSwitcher} />
-      </div>
-      <div className={s['footer-container']}>
-        <Switcher switchData={switchers.casesSwitcher} />
-      </div>
+      <div className={s['chart-container']} />
+      <div className={s['footer-container']} />
     </div>
   );
 }
