@@ -37,6 +37,8 @@
     grid-column-end: 74;
     grid-row-start: 1;
     grid-row-end: 90;
+
+  position: relative;
 }
 
 .statistic-container {
