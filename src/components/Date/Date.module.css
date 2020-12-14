@@ -5,6 +5,12 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-family: var(--font-family);
+  color: var(--color-dark-gray);
+  background-color: var(--color-white);
+  font-size: var(--font-m);
 }
 
 .date__text {
@@ -12,5 +18,6 @@
 }
 
 .date__value {
+  font-size: var(--font-xl);
   /* * должен вмещаться в строку*/
 }

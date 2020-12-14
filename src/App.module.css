@@ -8,7 +8,7 @@
   padding: var(--gap);
 }
 
-.cases-container {
+.date-container {
   grid-column-start: 1;
   grid-column-end: 21;
   grid-row-start: 1;
