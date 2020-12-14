@@ -2,6 +2,7 @@ import React from 'react';
 import Date from './components/Date/Date';
 import Switcher from './components/Switcher/Switcher';
 import switchers from './components/switchers';
+import Search from './components/Search/Search';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import s from './App.module.css';
@@ -17,7 +18,9 @@ export default function App() {
           <Switcher switchData={switchers.casesSwitcher} />
           <Switcher switchData={switchers.timeSwitcher} />
         </div>
-        <div className={s['details-container__input']} />
+        <div className={s['details-container__search']}>
+          <Search />
+        </div>
         <div className={s['details-container__countries-list']} />
       </div>
       <div className={s['map-container']}>
