@@ -35,6 +35,10 @@ div ul.list {
   align-items: center;
 }
 
+.list__item:nth-child(odd) {
+  background-color: #d8d8d8;
+}
+
 .list__img {
   display: inline-block;
   width: 40px;
