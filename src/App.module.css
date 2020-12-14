@@ -16,10 +16,19 @@
 }
 
 .details-container {
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 21;
   grid-row-start: 19;
   grid-row-end: 90;
+  grid-template-rows: 30fr 5fr 55fr;
+  grid-gap: var(--gap);
+}
+
+.details-container__switchers {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: var(--gap);
 }
 
 .footer-container {

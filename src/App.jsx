@@ -12,7 +12,14 @@ export default function App() {
       <div className={s['date-container']}>
         <Date />
       </div>
-      <div className={s['details-container']} />
+      <div className={s['details-container']}>
+        <div className={s['details-container__switchers']}>
+          <Switcher switchData={switchers.casesSwitcher} />
+          <Switcher switchData={switchers.timeSwitcher} />
+        </div>
+        <div className={s['details-container__input']} />
+        <div className={s['details-container__countries-list']} />
+      </div>
       <div className={s['map-container']}>
         <div className={s['map-container__switchers']}>
           <Switcher switchData={switchers.casesSwitcher} />
