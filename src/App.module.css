@@ -8,7 +8,7 @@
   padding: var(--gap);
 }
 
-.cases-container {
+.date-container {
   grid-column-start: 1;
   grid-column-end: 21;
   grid-row-start: 1;
@@ -16,10 +16,20 @@
 }
 
 .details-container {
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 21;
   grid-row-start: 19;
   grid-row-end: 90;
+  grid-template-rows: 15% 5% 80%;
+  grid-gap: var(--gap);
+  overflow: hidden;
+}
+
+.details-container__switchers {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: var(--gap);
 }
 
 .footer-container {
@@ -40,10 +50,19 @@
 }
 
 .statistic-container {
+  display: grid;
   grid-column-start: 74;
   grid-column-end: 100;
   grid-row-start: 1;
   grid-row-end: 37;
+  grid-template-rows: 2fr 8fr;
+  grid-gap: var(--gap);
+}
+
+.statistic-container__switchers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--gap);
 }
 
 .chart-container {
@@ -62,7 +81,7 @@
   grid-gap: var(--gap);
 }
 
-.map-container__map{
+.map-container__map {
   width: 100%;
   height: 85%;
   position: relative;
