@@ -21,8 +21,9 @@
   grid-column-end: 21;
   grid-row-start: 19;
   grid-row-end: 90;
-  grid-template-rows: 30fr 5fr 55fr;
+  grid-template-rows: 15% 5% 80%;
   grid-gap: var(--gap);
+  overflow: hidden;
 }
 
 .details-container__switchers {
