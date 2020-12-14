@@ -2,8 +2,12 @@
   display: grid;
   height: 100%;
   width: 100%;
-  border-width: 1px;
-  border-style: solid;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-family: var(--font-family);
+  color: var(--color-dark-gray);
+  background-color: var(--color-white);
+  font-size: var(--font-s);
 }
 
 .table__row {
@@ -19,7 +23,9 @@
   align-items: center;
   border-width: 1px;
   border-style: solid;
+  border-color: var(--color-dark-gray);
   padding: 0.5rem;
+  font-size: var(--font-l);
 }
 
 /* TODO: проверить колонки на маленькой ширине */
