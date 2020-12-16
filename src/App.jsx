@@ -10,6 +10,7 @@ export default class App extends Component {
     super();
     this.state = {
       data: null,
+      info: null,
       countryCode: null,
       isLoading: true,
       isError: false,
@@ -20,18 +21,28 @@ export default class App extends Component {
     this.getData();
   }
 
+  onDataLoaded = (data) => {
+    this.setState({
+      data,
+    });
+    this.covidService
+      .getFlagAndPopulationInfo()
+      .then(this.onFlagAndPopulationInfo)
+      .catch(this.onError);
+  }
+
+  onFlagAndPopulationInfo = (info) => {
+    this.setState({
+      info,
+      isLoading: false,
+    });
+  }
+
   getData() {
     this.covidService
       .getStartData()
       .then(this.onDataLoaded)
       .catch(this.onError);
-  }
-
-  onDataLoaded = (data) => {
-    this.setState({
-      data,
-      isLoading: false,
-    });
   }
 
   onError = () => {
@@ -44,16 +55,18 @@ export default class App extends Component {
   render() {
     const {
       data,
+      info,
       countryCode,
       isError,
       isLoading,
     } = this.state;
 
     console.log('render data: ', data);
+    console.log('render info: ', info);
     const error = isError ? 'error' : null;
     const loading = isLoading ? 'loading...' : null;
     const table = !(isError || isLoading)
-      ? <AppView data={data} countryCode={countryCode} /> : null;
+      ? <AppView data={data} info={info} countryCode={countryCode} /> : null;
 
     return (
       <div className={s.container}>

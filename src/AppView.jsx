@@ -9,7 +9,7 @@ import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import s from './App.module.css';
 
-export default function AppView({ data, countryCode }) {
+export default function AppView({ data, info, countryCode }) {
   console.log('AppView data,countryCode :', data, countryCode);
   const dateData = data.Date;
 
@@ -27,7 +27,7 @@ export default function AppView({ data, countryCode }) {
           <Search />
         </div>
         <div className={s['details-container__countries-list']}>
-          <List data={data} />
+          <List data={data} info={info} />
         </div>
       </div>
       <div className={s['map-container']}>
@@ -65,6 +65,12 @@ AppView.propTypes = {
     recovered: PropTypes.number,
     message: PropTypes.string,
     Date: PropTypes.string,
+  }).isRequired,
+  info: PropTypes.shape({
+    confirmed: PropTypes.number,
+    deaths: PropTypes.number,
+    recovered: PropTypes.number,
+    message: PropTypes.string,
   }).isRequired,
   countryCode: PropTypes.string,
 };
