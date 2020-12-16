@@ -9,7 +9,12 @@ import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import s from './App.module.css';
 
-export default function AppView({ data, info, countryCode }) {
+export default function AppView({
+  data,
+  info,
+  countryCode,
+  onItemSelected,
+}) {
   console.log('AppView data,countryCode :', data, countryCode);
   const dateData = data.Date;
 
@@ -27,7 +32,7 @@ export default function AppView({ data, info, countryCode }) {
           <Search />
         </div>
         <div className={s['details-container__countries-list']}>
-          <List data={data} info={info} />
+          <List data={data} info={info} onItemSelected={onItemSelected} />
         </div>
       </div>
       <div className={s['map-container']}>
@@ -73,4 +78,5 @@ AppView.propTypes = {
     message: PropTypes.string,
   }).isRequired,
   countryCode: PropTypes.string,
+  onItemSelected: PropTypes.func.isRequired,
 };

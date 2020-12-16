@@ -11,10 +11,13 @@ function getTableData(data, countryCode) {
     };
   }
 
+  const countries = data.Countries;
+  const countryData = countries.find((country) => country.CountryCode === countryCode);
+
   return {
-    confirmed: null,
-    deaths: null,
-    recovered: null,
+    confirmed: countryData.TotalConfirmed,
+    deaths: countryData.TotalDeaths,
+    recovered: countryData.TotalRecovered,
   }; // TODO: дописать для отдельной страны
 }
 export default function Table({ data, countryCode }) {

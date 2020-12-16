@@ -38,18 +38,26 @@ export default class App extends Component {
     });
   }
 
-  getData() {
-    this.covidService
-      .getStartData()
-      .then(this.onDataLoaded)
-      .catch(this.onError);
-  }
-
   onError = () => {
     this.setState({
       isError: true,
       isLoading: false,
     });
+  }
+
+  onItemSelected = (code) => {
+    console.log('code this.state:', this.state);
+    console.log('code:', code);
+    this.setState({
+      countryCode: code,
+    });
+  }
+
+  getData() {
+    this.covidService
+      .getStartData()
+      .then(this.onDataLoaded)
+      .catch(this.onError);
   }
 
   render() {
@@ -66,7 +74,14 @@ export default class App extends Component {
     const error = isError ? 'error' : null;
     const loading = isLoading ? 'loading...' : null;
     const table = !(isError || isLoading)
-      ? <AppView data={data} info={info} countryCode={countryCode} /> : null;
+      ? (
+        <AppView
+          data={data}
+          info={info}
+          countryCode={countryCode}
+          onItemSelected={this.onItemSelected}
+        />
+      ) : null;
 
     return (
       <div className={s.container}>
