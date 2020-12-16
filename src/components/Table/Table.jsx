@@ -18,11 +18,9 @@ function getTableData(data, countryCode) {
     confirmed: countryData.TotalConfirmed,
     deaths: countryData.TotalDeaths,
     recovered: countryData.TotalRecovered,
-  }; // TODO: дописать для отдельной страны
+  };
 }
 export default function Table({ data, countryCode }) {
-  console.log('Table data, countryCode:', data.Global, countryCode);
-
   const tableData = getTableData(data, countryCode);
   const { confirmed, deaths, recovered } = tableData;
 

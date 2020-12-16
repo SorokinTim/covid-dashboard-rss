@@ -15,13 +15,11 @@ export default class CovidService {
 
   async getStartData() {
     const summary = await CovidService.getResource(`${this.covid19apiUrl}/summary`);
-    console.log('getStartData summary:', summary);
     return summary;
   }
 
   async getFlagAndPopulationInfo() {
     const info = await CovidService.getResource(this.flagsAndPopulationUrl);
-    console.log(info);
     return info;
   }
 }
