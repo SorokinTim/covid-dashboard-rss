@@ -11,11 +11,12 @@ import s from './App.module.css';
 
 export default function AppView({ data, countryCode }) {
   console.log('AppView data,countryCode :', data, countryCode);
+  const dateData = data.Date;
 
   return (
     <div className={s.container}>
       <div className={s['date-container']}>
-        <Date />
+        <Date dateData={dateData} />
       </div>
       <div className={s['details-container']}>
         <div className={s['details-container__switchers']}>
@@ -63,6 +64,7 @@ AppView.propTypes = {
     deaths: PropTypes.number,
     recovered: PropTypes.number,
     message: PropTypes.string,
+    Date: PropTypes.string,
   }).isRequired,
   countryCode: PropTypes.string,
 };
