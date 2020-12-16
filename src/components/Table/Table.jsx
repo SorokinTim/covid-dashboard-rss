@@ -1,67 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Table.module.css';
 
-export default class Table extends Component {
-  constructor() {
-    super();
-    this.state = {
-      confirmed: null,
-      deaths: null,
-      recovered: null,
+function getTableData(data, countryCode) {
+  if (!countryCode) {
+    return {
+      confirmed: data.Global.TotalConfirmed,
+      deaths: data.Global.TotalDeaths,
+      recovered: data.Global.TotalRecovered,
     };
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { tableData } = this.props;
+  return {
+    confirmed: null,
+    deaths: null,
+    recovered: null,
+  }; // TODO: дописать для отдельной страны
+}
+export default function Table({ data, countryCode }) {
+  console.log('Table data, countryCode:', data.Global, countryCode);
 
-    if (tableData.confirmed !== prevState.confirmed) {
-      this.onComponentUpdate();
-    }
-  }
+  const tableData = getTableData(data, countryCode);
+  const { confirmed, deaths, recovered } = tableData;
 
-  onComponentUpdate() {
-    const { tableData } = this.props;
+  return (
+    <table className={s.table}>
+      <thead className={s.table__head}>
+        <tr className={s.table__row}>
+          <th className={s['table__head-cell']}>Confirmed</th>
+          <th className={s['table__head-cell']}>Deaths</th>
+          <th className={s['table__head-cell']}>Recovered</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className={s.table__row}>
+          <td className={s.table__cell}>{confirmed}</td>
+          <td className={s.table__cell}>{deaths}</td>
+          <td className={s.table__cell}>{recovered}</td>
+        </tr>
+      </tbody>
+    </table>
 
-    this.setState({
-      confirmed: tableData.confirmed,
-      deaths: tableData.deaths,
-      recovered: tableData.recovered,
-    });
-  }
-
-  render() {
-    const { confirmed, deaths, recovered } = this.state;
-
-    return (
-      <table className={s.table}>
-        <thead className={s.table__head}>
-          <tr className={s.table__row}>
-            <th className={s['table__head-cell']}>Confirmed</th>
-            <th className={s['table__head-cell']}>Deaths</th>
-            <th className={s['table__head-cell']}>Recovered</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className={s.table__row}>
-            <td className={s.table__cell}>{confirmed}</td>
-            <td className={s.table__cell}>{deaths}</td>
-            <td className={s.table__cell}>{recovered}</td>
-          </tr>
-        </tbody>
-      </table>
-    );
-  }
+  );
 }
 
 Table.defaultProps = {
-  tableData: null,
+  countryCode: null,
 };
 
 Table.propTypes = {
-  tableData: PropTypes.shape({
+  data: PropTypes.shape({
     confirmed: PropTypes.number,
     deaths: PropTypes.number,
     recovered: PropTypes.number,
-  }),
+    message: PropTypes.string,
+    Global: PropTypes.string,
+  }).isRequired,
+  countryCode: PropTypes.string,
 };
