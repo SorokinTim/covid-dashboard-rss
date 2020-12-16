@@ -2,9 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './List.module.css';
 
-export default function List({ data, info, onItemSelected }) {
+function filterCountries(countries, filter) {
+  if (filter === '') {
+    return countries;
+  }
+
+  return countries.filter((country) => {
+    const countryNameInLowerCase = country.Country.toLowerCase();
+    const filterInLowerCase = filter.toLowerCase();
+
+    return countryNameInLowerCase.includes(filterInLowerCase);
+  });
+}
+export default function List({
+  data,
+  info,
+  filter,
+  onItemSelected,
+}) {
   const countries = [...data.Countries];
-  const sortedCountries = countries.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed);
+  const filteredCountries = filterCountries(countries, filter);
+  const sortedCountries = filteredCountries.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed);
   const items = [];
 
   sortedCountries.forEach((country) => {
@@ -12,11 +30,7 @@ export default function List({ data, info, onItemSelected }) {
     const countryInfo = info.find((item) => item.alpha2Code === country.CountryCode);
 
     const li = (
-      <li
-        key={country.CountryCode}
-        className={s.list__item}
-        data-code={country.CountryCode}
-      >
+      <li key={country.CountryCode} className={s.list__item}>
         <button
           type="button"
           onClick={() => onItemSelected(country.CountryCode)}
@@ -53,4 +67,5 @@ List.propTypes = {
     message: PropTypes.string,
   }).isRequired,
   onItemSelected: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };

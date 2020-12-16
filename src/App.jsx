@@ -14,6 +14,7 @@ export default class App extends Component {
       countryCode: null,
       isLoading: true,
       isError: false,
+      filter: '',
     };
   }
 
@@ -46,10 +47,15 @@ export default class App extends Component {
   }
 
   onItemSelected = (code) => {
-    console.log('code this.state:', this.state);
-    console.log('code:', code);
     this.setState({
       countryCode: code,
+      filter: '',
+    });
+  }
+
+  onSearchChange = (filter) => {
+    this.setState({
+      filter,
     });
   }
 
@@ -65,12 +71,11 @@ export default class App extends Component {
       data,
       info,
       countryCode,
+      filter,
       isError,
       isLoading,
     } = this.state;
 
-    console.log('render data: ', data);
-    console.log('render info: ', info);
     const error = isError ? 'error' : null;
     const loading = isLoading ? 'loading...' : null;
     const table = !(isError || isLoading)
@@ -78,8 +83,10 @@ export default class App extends Component {
         <AppView
           data={data}
           info={info}
+          filter={filter}
           countryCode={countryCode}
           onItemSelected={this.onItemSelected}
+          onSearchChange={this.onSearchChange}
         />
       ) : null;
 

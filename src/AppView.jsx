@@ -13,9 +13,10 @@ export default function AppView({
   data,
   info,
   countryCode,
+  filter,
+  onSearchChange,
   onItemSelected,
 }) {
-  console.log('AppView data,countryCode :', data, countryCode);
   const dateData = data.Date;
 
   return (
@@ -29,10 +30,10 @@ export default function AppView({
           <Switcher switchData={switchers.timeSwitcher} />
         </div>
         <div className={s['details-container__search']}>
-          <Search />
+          <Search onSearchChange={onSearchChange} filter={filter} />
         </div>
         <div className={s['details-container__countries-list']}>
-          <List data={data} info={info} onItemSelected={onItemSelected} />
+          <List data={data} info={info} filter={filter} onItemSelected={onItemSelected} />
         </div>
       </div>
       <div className={s['map-container']}>
@@ -79,4 +80,6 @@ AppView.propTypes = {
   }).isRequired,
   countryCode: PropTypes.string,
   onItemSelected: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
