@@ -11,8 +11,9 @@ export default class CovidService {
     return response.json();
   }
 
-  async getSummary() {
+  async getStartData() {
     const summary = await CovidService.getResource(`${this.covid19apiUrl}/summary`);
+    console.log('getStartData summary:', summary);
     return summary;
   }
 }
