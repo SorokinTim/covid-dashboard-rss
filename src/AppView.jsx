@@ -27,7 +27,7 @@ export default function AppView({ data, countryCode }) {
           <Search />
         </div>
         <div className={s['details-container__countries-list']}>
-          <List />
+          <List data={data} />
         </div>
       </div>
       <div className={s['map-container']}>
