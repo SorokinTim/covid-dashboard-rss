@@ -1,7 +1,5 @@
 export default class CovidService {
-  covid19apiUrl = 'https://api.covid19api.com';
-
-  flagsAndPopulationUrl = 'https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;population;flag';
+  covidApiUrl = 'https://disease.sh/v3/covid-19';
 
   static async getResource(url) {
     const response = await fetch(url);
@@ -13,13 +11,7 @@ export default class CovidService {
     return response.json();
   }
 
-  async getStartData() {
-    const summary = await CovidService.getResource(`${this.covid19apiUrl}/summary`);
-    return summary;
-  }
-
-  async getFlagAndPopulationInfo() {
-    const info = await CovidService.getResource(this.flagsAndPopulationUrl);
-    return info;
+  getTotalsForAllCountries() {
+    return CovidService.getResource(`${this.covidApiUrl}/countries`);
   }
 }

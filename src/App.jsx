@@ -9,9 +9,8 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: null,
-      info: null,
-      countryCode: null,
+      startData: null,
+      country: null,
       isLoading: true,
       isError: false,
       filter: '',
@@ -19,22 +18,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getStartData();
   }
 
-  onDataLoaded = (data) => {
+  onStartDataLoaded = (startData) => {
     this.setState({
-      data,
-    });
-    this.covidService
-      .getFlagAndPopulationInfo()
-      .then(this.onFlagAndPopulationInfo)
-      .catch(this.onError);
-  }
-
-  onFlagAndPopulationInfo = (info) => {
-    this.setState({
-      info,
+      startData,
       isLoading: false,
     });
   }
@@ -46,9 +35,9 @@ export default class App extends Component {
     });
   }
 
-  onItemSelected = (code) => {
+  onCountryItemSelected = (country) => {
     this.setState({
-      countryCode: code,
+      country,
       filter: '',
     });
   }
@@ -59,18 +48,17 @@ export default class App extends Component {
     });
   }
 
-  getData() {
+  getStartData() {
     this.covidService
-      .getStartData()
-      .then(this.onDataLoaded)
+      .getTotalsForAllCountries()
+      .then(this.onStartDataLoaded)
       .catch(this.onError);
   }
 
   render() {
     const {
-      data,
-      info,
-      countryCode,
+      startData,
+      country,
       filter,
       isError,
       isLoading,
@@ -78,14 +66,13 @@ export default class App extends Component {
 
     const error = isError ? 'error' : null;
     const loading = isLoading ? 'loading...' : null;
-    const table = !(isError || isLoading)
+    const app = !(isError || isLoading)
       ? (
         <AppView
-          data={data}
-          info={info}
+          startData={startData}
           filter={filter}
-          countryCode={countryCode}
-          onItemSelected={this.onItemSelected}
+          country={country}
+          onCountryItemSelected={this.onCountryItemSelected}
           onSearchChange={this.onSearchChange}
         />
       ) : null;
@@ -94,7 +81,7 @@ export default class App extends Component {
       <div className={s.container}>
         {error}
         {loading}
-        {table}
+        {app}
       </div>
     );
   }

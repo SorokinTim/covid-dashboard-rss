@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Date from './components/Date/Date';
+import Time from './components/Date/Date';
 import Switcher from './components/Switcher/Switcher';
 import switchers from './components/switchers';
 import Search from './components/Search/Search';
@@ -10,19 +10,16 @@ import Table from './components/Table/Table';
 import s from './App.module.css';
 
 export default function AppView({
-  data,
-  info,
-  countryCode,
+  startData,
+  country,
   filter,
   onSearchChange,
-  onItemSelected,
+  onCountryItemSelected,
 }) {
-  const dateData = data.Date;
-
   return (
     <div className={s.container}>
       <div className={s['date-container']}>
-        <Date dateData={dateData} />
+        <Time startData={startData} />
       </div>
       <div className={s['details-container']}>
         <div className={s['details-container__switchers']}>
@@ -33,7 +30,11 @@ export default function AppView({
           <Search onSearchChange={onSearchChange} filter={filter} />
         </div>
         <div className={s['details-container__countries-list']}>
-          <List data={data} info={info} filter={filter} onItemSelected={onItemSelected} />
+          <List
+            startData={startData}
+            filter={filter}
+            onCountryItemSelected={onCountryItemSelected}
+          />
         </div>
       </div>
       <div className={s['map-container']}>
@@ -51,7 +52,7 @@ export default function AppView({
           <Switcher switchData={switchers.timeSwitcher} />
         </div>
         <div className={s['statistic-container__table']}>
-          <Table data={data} countryCode={countryCode} />
+          <Table startData={startData} country={country} />
         </div>
       </div>
       <div className={s['chart-container']} />
@@ -61,11 +62,11 @@ export default function AppView({
 }
 
 AppView.defaultProps = {
-  countryCode: null,
+  country: null,
 };
 
 AppView.propTypes = {
-  data: PropTypes.shape({
+  startData: PropTypes.shape({
     confirmed: PropTypes.number,
     deaths: PropTypes.number,
     recovered: PropTypes.number,
@@ -78,8 +79,8 @@ AppView.propTypes = {
     recovered: PropTypes.number,
     message: PropTypes.string,
   }).isRequired,
-  countryCode: PropTypes.string,
-  onItemSelected: PropTypes.func.isRequired,
+  country: PropTypes.string,
+  onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
 };
