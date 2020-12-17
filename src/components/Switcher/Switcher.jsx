@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Switcher.module.css';
 
-export default function Switcher({ switchData }) {
+export default function Switcher({ switchData, name }) {
   const items = switchData.map((item) => (
     <li key={item.id} className={s.switcher__item}>
       <label htmlFor={item.id}>
         <input
           type="radio"
           id={item.id}
-          name={item.name}
+          name={name}
           value={item.id}
           defaultChecked={item.default}
           className={s.switcher__radio}
@@ -35,4 +35,5 @@ Switcher.propTypes = {
       default: PropTypes.bool,
     }),
   ).isRequired,
+  name: PropTypes.string.isRequired,
 };

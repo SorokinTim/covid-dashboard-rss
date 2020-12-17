@@ -23,8 +23,8 @@ export default function AppView({
       </div>
       <div className={s['details-container']}>
         <div className={s['details-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
+          <Switcher switchData={switchers.casesSwitcher} name="detailsCases" />
+          <Switcher switchData={switchers.timeSwitcher} name="detailsTime" />
         </div>
         <div className={s['details-container__search']}>
           <Search onSearchChange={onSearchChange} filter={filter} />
@@ -39,8 +39,8 @@ export default function AppView({
       </div>
       <div className={s['map-container']}>
         <div className={s['map-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
+          <Switcher switchData={switchers.casesSwitcher} name="mapCases" />
+          <Switcher switchData={switchers.timeSwitcher} name="mapTime" />
         </div>
         <div className={s['map-container__map']}>
           <Map />
@@ -48,8 +48,8 @@ export default function AppView({
       </div>
       <div className={s['statistic-container']}>
         <div className={s['statistic-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
+          <Switcher switchData={switchers.casesSwitcher} name="statisticCases" />
+          <Switcher switchData={switchers.timeSwitcher} name="statisticTime" />
         </div>
         <div className={s['statistic-container__table']}>
           <Table startData={startData} country={country} />
