@@ -1,51 +1,88 @@
-import React from 'react';
-import Date from './components/Date/Date';
-import Switcher from './components/Switcher/Switcher';
-import switchers from './components/switchers';
-import Search from './components/Search/Search';
-import List from './components/List/List';
-import Map from './components/Map/Map';
-import Table from './components/Table/Table';
+import React, { Component } from 'react';
+import CovidService from './api/Covid-service';
+import AppView from './AppView';
 import s from './App.module.css';
 
-export default function App() {
-  return (
-    <div className={s.container}>
-      <div className={s['date-container']}>
-        <Date />
+export default class App extends Component {
+  covidService = new CovidService();
+
+  constructor() {
+    super();
+    this.state = {
+      startData: null,
+      country: null,
+      isLoading: true,
+      isError: false,
+      filter: '',
+    };
+  }
+
+  componentDidMount() {
+    this.getStartData();
+  }
+
+  onStartDataLoaded = (startData) => {
+    this.setState({
+      startData,
+      isLoading: false,
+    });
+  }
+
+  onError = () => {
+    this.setState({
+      isError: true,
+      isLoading: false,
+    });
+  }
+
+  onCountryItemSelected = (country) => {
+    this.setState({
+      country,
+      filter: '',
+    });
+  }
+
+  onSearchChange = (filter) => {
+    this.setState({
+      filter,
+    });
+  }
+
+  getStartData() {
+    this.covidService
+      .getTotalsForAllCountries()
+      .then(this.onStartDataLoaded)
+      .catch(this.onError);
+  }
+
+  render() {
+    const {
+      startData,
+      country,
+      filter,
+      isError,
+      isLoading,
+    } = this.state;
+
+    const error = isError ? 'error' : null;
+    const loading = isLoading ? 'loading...' : null;
+    const app = !(isError || isLoading)
+      ? (
+        <AppView
+          startData={startData}
+          filter={filter}
+          country={country}
+          onCountryItemSelected={this.onCountryItemSelected}
+          onSearchChange={this.onSearchChange}
+        />
+      ) : null;
+
+    return (
+      <div className={s.container}>
+        {error}
+        {loading}
+        {app}
       </div>
-      <div className={s['details-container']}>
-        <div className={s['details-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
-        </div>
-        <div className={s['details-container__search']}>
-          <Search />
-        </div>
-        <div className={s['details-container__countries-list']}>
-          <List />
-        </div>
-      </div>
-      <div className={s['map-container']}>
-        <div className={s['map-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
-        </div>
-        <div className={s['map-container__map']}>
-          <Map />
-        </div>
-      </div>
-      <div className={s['statistic-container']}>
-        <div className={s['statistic-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
-        </div>
-        <div className={s['statistic-container__table']}>
-          <Table />
-        </div>
-      </div>
-      <div className={s['chart-container']} />
-      <div className={s['footer-container']} />
-    </div>
-  );
+    );
+  }
 }

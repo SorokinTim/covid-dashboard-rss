@@ -1,24 +1,63 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import s from './List.module.css';
 
-export default function List() {
-  const items = [];
+function filterCountriesData(countriesData, filter) {
+  if (filter === '') {
+    return countriesData;
+  }
 
-  for (let i = 0; i < 130; i += 1) {
-    const li = (
-      <li key={i} className={s.list__item}>
-        <img className={s.list__img} src="https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2017/06/brazili-flaf.png" alt="flag" />
-        <span className={s.list__country}>Brasil</span>
-        <span className={s.list__value}>15,277,114</span>
+  return countriesData.filter((countryData) => {
+    const countryNameInLowerCase = countryData.country.toLowerCase();
+    const filterInLowerCase = filter.toLowerCase();
+
+    return countryNameInLowerCase.includes(filterInLowerCase);
+  });
+}
+export default function List({
+  startData,
+  filter,
+  onCountryItemSelected,
+}) {
+  const filteredCountriesData = filterCountriesData(startData, filter);
+  const sortedCountriesData = filteredCountriesData
+    .sort((countryXData, countryYData) => countryYData.cases - countryXData.cases);
+  const countriesListItems = [];
+
+  sortedCountriesData.forEach((countryData) => {
+    const countryListItem = (
+      <li key={countryData.country} className={s.list__item}>
+        <button
+          type="button"
+          onClick={() => onCountryItemSelected(countryData.country)}
+        >
+          <img className={s.list__img} src={countryData.countryInfo.flag} alt="flag" />
+          <span className={s.list__country}>{countryData.country}</span>
+          <span className={s.list__value}>{countryData.cases}</span>
+        </button>
       </li>
     );
 
-    items.push(li);
-  }
+    countriesListItems.push(countryListItem);
+  });
 
   return (
     <ul className={s.list}>
-      {items}
+      {countriesListItems}
     </ul>
   );
 }
+
+List.propTypes = {
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      country: PropTypes.string,
+      cases: PropTypes.number,
+      countryInfo: PropTypes.shape({
+        flag: PropTypes.string,
+      }),
+    }),
+  ).isRequired,
+  filter: PropTypes.string.isRequired,
+  onCountryItemSelected: PropTypes.func.isRequired,
+};
