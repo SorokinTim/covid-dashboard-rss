@@ -50,12 +50,13 @@ Table.defaultProps = {
 };
 
 Table.propTypes = {
-  startData: PropTypes.shape({
-    confirmed: PropTypes.number,
-    deaths: PropTypes.number,
-    recovered: PropTypes.number,
-    message: PropTypes.string,
-    Global: PropTypes.string,
-  }).isRequired,
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      country: PropTypes.string,
+      cases: PropTypes.number,
+      deaths: PropTypes.number,
+      recovered: PropTypes.number,
+    }),
+  ).isRequired,
   country: PropTypes.string,
 };

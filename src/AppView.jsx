@@ -66,19 +66,18 @@ AppView.defaultProps = {
 };
 
 AppView.propTypes = {
-  startData: PropTypes.shape({
-    confirmed: PropTypes.number,
-    deaths: PropTypes.number,
-    recovered: PropTypes.number,
-    message: PropTypes.string,
-    Date: PropTypes.string,
-  }).isRequired,
-  info: PropTypes.shape({
-    confirmed: PropTypes.number,
-    deaths: PropTypes.number,
-    recovered: PropTypes.number,
-    message: PropTypes.string,
-  }).isRequired,
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      updated: PropTypes.number,
+      country: PropTypes.string,
+      cases: PropTypes.number,
+      deaths: PropTypes.number,
+      recovered: PropTypes.number,
+      countryInfo: PropTypes.shape({
+        flag: PropTypes.string,
+      }),
+    }),
+  ).isRequired,
   country: PropTypes.string,
   onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,

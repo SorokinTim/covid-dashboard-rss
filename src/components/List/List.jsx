@@ -49,19 +49,15 @@ export default function List({
 }
 
 List.propTypes = {
-  startData: PropTypes.shape({
-    confirmed: PropTypes.number,
-    deaths: PropTypes.number,
-    recovered: PropTypes.number,
-    message: PropTypes.string,
-    Countries: PropTypes.string,
-  }).isRequired,
-  info: PropTypes.shape({
-    confirmed: PropTypes.number,
-    deaths: PropTypes.number,
-    recovered: PropTypes.number,
-    message: PropTypes.string,
-  }).isRequired,
-  onCountryItemSelected: PropTypes.func.isRequired,
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      country: PropTypes.string,
+      cases: PropTypes.number,
+      countryInfo: PropTypes.shape({
+        flag: PropTypes.string,
+      }),
+    }),
+  ).isRequired,
   filter: PropTypes.string.isRequired,
+  onCountryItemSelected: PropTypes.func.isRequired,
 };

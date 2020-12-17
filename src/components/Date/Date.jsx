@@ -43,5 +43,9 @@ export default function Time({ startData }) {
 }
 
 Time.propTypes = {
-  startData: PropTypes.string.isRequired,
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      updated: PropTypes.number,
+    }),
+  ).isRequired,
 };
