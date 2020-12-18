@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Time from './components/Date/Date';
-import Switcher from './components/Switcher/Switcher';
-import switchers from './components/switchers';
+import TimeSwitcher from './components/Switcher/TimeSwitcher';
+import CasesSwitcher from './components/Switcher/CasesSwitcher';
 import Search from './components/Search/Search';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -13,8 +13,11 @@ export default function AppView({
   startData,
   country,
   filter,
+  isAbsoluteCases,
+  isAllTime,
   onSearchChange,
   onCountryItemSelected,
+  onSwitcherChange,
 }) {
   return (
     <div className={s.container}>
@@ -23,8 +26,16 @@ export default function AppView({
       </div>
       <div className={s['details-container']}>
         <div className={s['details-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} name="detailsCases" />
-          <Switcher switchData={switchers.timeSwitcher} name="detailsTime" />
+          <CasesSwitcher
+            name="detailsCases"
+            isAbsoluteCases={isAbsoluteCases}
+            onSwitcherChange={onSwitcherChange}
+          />
+          <TimeSwitcher
+            name="detailsTime"
+            isAllTime={isAllTime}
+            onSwitcherChange={onSwitcherChange}
+          />
         </div>
         <div className={s['details-container__search']}>
           <Search onSearchChange={onSearchChange} filter={filter} />
@@ -39,8 +50,16 @@ export default function AppView({
       </div>
       <div className={s['map-container']}>
         <div className={s['map-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} name="mapCases" />
-          <Switcher switchData={switchers.timeSwitcher} name="mapTime" />
+          <CasesSwitcher
+            name="mapCases"
+            isAbsoluteCases={isAbsoluteCases}
+            onSwitcherChange={onSwitcherChange}
+          />
+          <TimeSwitcher
+            name="mapTime"
+            isAllTime={isAllTime}
+            onSwitcherChange={onSwitcherChange}
+          />
         </div>
         <div className={s['map-container__map']}>
           <Map />
@@ -48,8 +67,16 @@ export default function AppView({
       </div>
       <div className={s['statistic-container']}>
         <div className={s['statistic-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} name="statisticCases" />
-          <Switcher switchData={switchers.timeSwitcher} name="statisticTime" />
+          <CasesSwitcher
+            name="statisticCases"
+            isAbsoluteCases={isAbsoluteCases}
+            onSwitcherChange={onSwitcherChange}
+          />
+          <TimeSwitcher
+            name="statisticTime"
+            isAllTime={isAllTime}
+            onSwitcherChange={onSwitcherChange}
+          />
         </div>
         <div className={s['statistic-container__table']}>
           <Table startData={startData} country={country} />
@@ -79,7 +106,10 @@ AppView.propTypes = {
     }),
   ).isRequired,
   country: PropTypes.string,
+  isAbsoluteCases: PropTypes.bool.isRequired,
+  isAllTime: PropTypes.bool.isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
+  onSwitcherChange: PropTypes.func.isRequired,
 };

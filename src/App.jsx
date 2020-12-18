@@ -11,9 +11,11 @@ export default class App extends Component {
     this.state = {
       startData: null,
       country: null,
+      filter: '',
+      isAbsoluteCases: true,
+      isAllTime: true,
       isLoading: true,
       isError: false,
-      filter: '',
     };
   }
 
@@ -48,6 +50,33 @@ export default class App extends Component {
     });
   }
 
+  onSwitcherChange = (id) => {
+    switch (id) {
+      case 'absoluteCases':
+        this.setState({
+          isAbsoluteCases: true,
+        });
+        break;
+      case 'casesPerHundred':
+        this.setState({
+          isAbsoluteCases: false,
+        });
+        break;
+      case 'allTime':
+        this.setState({
+          isAllTime: true,
+        });
+        break;
+      case 'lastDay':
+        this.setState({
+          isAllTime: false,
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
   getStartData() {
     this.covidService
       .getTotalsForAllCountries()
@@ -60,6 +89,8 @@ export default class App extends Component {
       startData,
       country,
       filter,
+      isAbsoluteCases,
+      isAllTime,
       isError,
       isLoading,
     } = this.state;
@@ -70,10 +101,13 @@ export default class App extends Component {
       ? (
         <AppView
           startData={startData}
-          filter={filter}
           country={country}
+          filter={filter}
+          isAbsoluteCases={isAbsoluteCases}
+          isAllTime={isAllTime}
           onCountryItemSelected={this.onCountryItemSelected}
           onSearchChange={this.onSearchChange}
+          onSwitcherChange={this.onSwitcherChange}
         />
       ) : null;
 
