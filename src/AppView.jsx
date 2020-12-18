@@ -27,12 +27,12 @@ export default function AppView({
       <div className={s['details-container']}>
         <div className={s['details-container__switchers']}>
           <CasesSwitcher
-            name="detailsCases"
+            groupName="detailsCases"
             isAbsoluteCases={isAbsoluteCases}
             onSwitcherChange={onSwitcherChange}
           />
           <TimeSwitcher
-            name="detailsTime"
+            groupName="detailsTime"
             isAllTime={isAllTime}
             onSwitcherChange={onSwitcherChange}
           />
@@ -51,12 +51,12 @@ export default function AppView({
       <div className={s['map-container']}>
         <div className={s['map-container__switchers']}>
           <CasesSwitcher
-            name="mapCases"
+            groupName="mapCases"
             isAbsoluteCases={isAbsoluteCases}
             onSwitcherChange={onSwitcherChange}
           />
           <TimeSwitcher
-            name="mapTime"
+            groupName="mapTime"
             isAllTime={isAllTime}
             onSwitcherChange={onSwitcherChange}
           />
@@ -68,12 +68,12 @@ export default function AppView({
       <div className={s['statistic-container']}>
         <div className={s['statistic-container__switchers']}>
           <CasesSwitcher
-            name="statisticCases"
+            groupName="statisticCases"
             isAbsoluteCases={isAbsoluteCases}
             onSwitcherChange={onSwitcherChange}
           />
           <TimeSwitcher
-            name="statisticTime"
+            groupName="statisticTime"
             isAllTime={isAllTime}
             onSwitcherChange={onSwitcherChange}
           />

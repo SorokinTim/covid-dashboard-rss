@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Switcher.module.css';
 
-export default function CasesSwitcher({ name, isAbsoluteCases, onSwitcherChange }) {
+export default function CasesSwitcher({ groupName, isAbsoluteCases, onSwitcherChange }) {
   return (
     <ul className={s.switcher}>
       <label htmlFor="absoluteCases">
         <input
           type="radio"
           id="absoluteCases"
-          name={name}
+          name={groupName}
           value="absoluteCases"
           checked={isAbsoluteCases}
           className={s.switcher__radio}
@@ -21,7 +21,7 @@ export default function CasesSwitcher({ name, isAbsoluteCases, onSwitcherChange 
         <input
           type="radio"
           id="casesPerHundred"
-          name={name}
+          name={groupName}
           value="casesPerHundred"
           checked={!isAbsoluteCases}
           className={s.switcher__radio}
@@ -34,7 +34,7 @@ export default function CasesSwitcher({ name, isAbsoluteCases, onSwitcherChange 
 }
 
 CasesSwitcher.propTypes = {
-  name: PropTypes.string.isRequired,
+  groupName: PropTypes.string.isRequired,
   isAbsoluteCases: PropTypes.bool.isRequired,
   onSwitcherChange: PropTypes.func.isRequired,
 };

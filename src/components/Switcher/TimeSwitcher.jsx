@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Switcher.module.css';
 
-export default function TimeSwitcher({ name, isAllTime, onSwitcherChange }) {
+export default function TimeSwitcher({ groupName, isAllTime, onSwitcherChange }) {
   return (
     <ul className={s.switcher}>
       <label htmlFor="allTime">
         <input
           type="radio"
           id="allTime"
-          name={name}
+          name={groupName}
           value="allTime"
           checked={isAllTime}
           className={s.switcher__radio}
@@ -21,7 +21,7 @@ export default function TimeSwitcher({ name, isAllTime, onSwitcherChange }) {
         <input
           type="radio"
           id="lastDay"
-          name={name}
+          name={groupName}
           value="lastDay"
           checked={!isAllTime}
           className={s.switcher__radio}
@@ -34,7 +34,7 @@ export default function TimeSwitcher({ name, isAllTime, onSwitcherChange }) {
 }
 
 TimeSwitcher.propTypes = {
-  name: PropTypes.string.isRequired,
+  groupName: PropTypes.string.isRequired,
   isAllTime: PropTypes.bool.isRequired,
   onSwitcherChange: PropTypes.func.isRequired,
 };
