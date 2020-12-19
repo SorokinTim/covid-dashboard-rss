@@ -14,6 +14,7 @@ export default class App extends Component {
       filter: '',
       isAbsoluteCases: true,
       isAllTime: true,
+      stageOfDisease: 'confirmed',
       isLoading: true,
       isError: false,
     };
@@ -25,7 +26,7 @@ export default class App extends Component {
 
   onStartDataLoaded = (startData) => {
     this.setState({
-      startData,
+      startData: startData.filter((countryData) => countryData.population > 0),
       isLoading: false,
     });
   }
@@ -91,6 +92,7 @@ export default class App extends Component {
       filter,
       isAbsoluteCases,
       isAllTime,
+      stageOfDisease,
       isError,
       isLoading,
     } = this.state;
@@ -105,6 +107,7 @@ export default class App extends Component {
           filter={filter}
           isAbsoluteCases={isAbsoluteCases}
           isAllTime={isAllTime}
+          stageOfDisease={stageOfDisease}
           onCountryItemSelected={this.onCountryItemSelected}
           onSearchChange={this.onSearchChange}
           onSwitcherChange={this.onSwitcherChange}

@@ -15,6 +15,7 @@ export default function AppView({
   filter,
   isAbsoluteCases,
   isAllTime,
+  stageOfDisease,
   onSearchChange,
   onCountryItemSelected,
   onSwitcherChange,
@@ -43,6 +44,9 @@ export default function AppView({
         <div className={s['details-container__countries-list']}>
           <List
             startData={startData}
+            isAbsoluteCases={isAbsoluteCases}
+            isAllTime={isAllTime}
+            stageOfDisease={stageOfDisease}
             filter={filter}
             onCountryItemSelected={onCountryItemSelected}
           />
@@ -113,6 +117,7 @@ AppView.propTypes = {
   country: PropTypes.string,
   isAbsoluteCases: PropTypes.bool.isRequired,
   isAllTime: PropTypes.bool.isRequired,
+  stageOfDisease: PropTypes.string.isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,

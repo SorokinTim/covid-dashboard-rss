@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getRequiredParam } from '../../utils';
 import s from './List.module.css';
 
 function filterCountriesData(countriesData, filter) {
@@ -14,14 +15,27 @@ function filterCountriesData(countriesData, filter) {
     return countryNameInLowerCase.includes(filterInLowerCase);
   });
 }
+
 export default function List({
   startData,
+  isAbsoluteCases,
+  isAllTime,
+  stageOfDisease,
   filter,
   onCountryItemSelected,
 }) {
   const filteredCountriesData = filterCountriesData(startData, filter);
+
   const sortedCountriesData = filteredCountriesData
-    .sort((countryXData, countryYData) => countryYData.cases - countryXData.cases);
+    .sort((countryXData, countryYData) => {
+      const countryXDataParam = getRequiredParam(countryXData,
+        isAbsoluteCases, isAllTime, stageOfDisease);
+      const countryYDataParam = getRequiredParam(countryYData,
+        isAbsoluteCases, isAllTime, stageOfDisease);
+
+      return countryYDataParam - countryXDataParam;
+    });
+
   const countriesListItems = [];
 
   sortedCountriesData.forEach((countryData) => {
@@ -33,7 +47,9 @@ export default function List({
         >
           <img className={s.list__img} src={countryData.countryInfo.flag} alt="flag" />
           <span className={s.list__country}>{countryData.country}</span>
-          <span className={s.list__value}>{countryData.cases}</span>
+          <span className={s.list__value}>
+            {getRequiredParam(countryData, isAbsoluteCases, isAllTime, stageOfDisease)}
+          </span>
         </button>
       </li>
     );
@@ -58,6 +74,9 @@ List.propTypes = {
       }),
     }),
   ).isRequired,
+  isAbsoluteCases: PropTypes.bool.isRequired,
+  isAllTime: PropTypes.bool.isRequired,
+  stageOfDisease: PropTypes.string.isRequired,
   filter: PropTypes.string.isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
 };
