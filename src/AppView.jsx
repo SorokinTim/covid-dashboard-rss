@@ -61,11 +61,6 @@ export default function AppView({
             switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
-          <StageSwitcher
-            groupName="detailsStage"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
         </div>
         <div className={s['map-container__map']}>
           <Map />
