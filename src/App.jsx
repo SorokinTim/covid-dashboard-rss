@@ -59,6 +59,9 @@ export default class App extends Component {
     const { CASES_PER_HUNDRED } = SWITCHERS_PARAMS.PART_OF_POPULATION;
     const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
     const { LAST_DAY } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+    const { CONFIRMED } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
+    const { DEATHS } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
+    const { RECOVERED } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
 
     switch (id) {
       case ABSOLUTE_CASES:
@@ -66,9 +69,7 @@ export default class App extends Component {
           const partOfPopulation = ABSOLUTE_CASES;
 
           return {
-            switchersState: {
-              ...state.switchersState, partOfPopulation,
-            },
+            switchersState: { ...state.switchersState, partOfPopulation },
           };
         });
         break;
@@ -77,9 +78,7 @@ export default class App extends Component {
           const partOfPopulation = CASES_PER_HUNDRED;
 
           return {
-            switchersState: {
-              ...state.switchersState, partOfPopulation,
-            },
+            switchersState: { ...state.switchersState, partOfPopulation },
           };
         });
         break;
@@ -88,9 +87,7 @@ export default class App extends Component {
           const typeOfTime = ALL_TIME;
 
           return {
-            switchersState: {
-              ...state.switchersState, typeOfTime,
-            },
+            switchersState: { ...state.switchersState, typeOfTime },
           };
         });
         break;
@@ -99,9 +96,34 @@ export default class App extends Component {
           const typeOfTime = LAST_DAY;
 
           return {
-            switchersState: {
-              ...state.switchersState, typeOfTime,
-            },
+            switchersState: { ...state.switchersState, typeOfTime },
+          };
+        });
+        break;
+      case CONFIRMED:
+        this.setState((state) => {
+          const stageOfDisease = LAST_DAY;
+
+          return {
+            switchersState: { ...state.switchersState, stageOfDisease },
+          };
+        });
+        break;
+      case DEATHS:
+        this.setState((state) => {
+          const stageOfDisease = DEATHS;
+
+          return {
+            switchersState: { ...state.switchersState, stageOfDisease },
+          };
+        });
+        break;
+      case RECOVERED:
+        this.setState((state) => {
+          const stageOfDisease = RECOVERED;
+
+          return {
+            switchersState: { ...state.switchersState, stageOfDisease },
           };
         });
         break;
