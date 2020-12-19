@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Time from './components/Date/Date';
 import TimeSwitcher from './components/Switcher/TimeSwitcher';
 import CasesSwitcher from './components/Switcher/CasesSwitcher';
-import StageSwitcher from './components/Switcher/StageSwitcher';
+// import StageSwitcher from './components/Switcher/StageSwitcher';
 import Search from './components/Search/Search';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -111,7 +111,11 @@ AppView.propTypes = {
     }),
   ).isRequired,
   country: PropTypes.string,
-  switchersState: PropTypes.string.isRequired,
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,

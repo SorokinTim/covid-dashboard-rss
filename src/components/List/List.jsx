@@ -70,7 +70,11 @@ List.propTypes = {
       }),
     }),
   ).isRequired,
-  switchersState: PropTypes.string.isRequired,
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
   filter: PropTypes.string.isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
 };

@@ -40,6 +40,10 @@ export default function CasesSwitcher({ groupName, switchersState, onSwitcherCha
 
 CasesSwitcher.propTypes = {
   groupName: PropTypes.string.isRequired,
-  switchersState: PropTypes.bool.isRequired,
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
   onSwitcherChange: PropTypes.func.isRequired,
 };
