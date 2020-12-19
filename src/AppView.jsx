@@ -79,7 +79,12 @@ export default function AppView({
           />
         </div>
         <div className={s['statistic-container__table']}>
-          <Table startData={startData} country={country} />
+          <Table
+            startData={startData}
+            country={country}
+            isAbsoluteCases={isAbsoluteCases}
+            isAllTime={isAllTime}
+          />
         </div>
       </div>
       <div className={s['chart-container']} />

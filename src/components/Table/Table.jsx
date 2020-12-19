@@ -2,27 +2,124 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Table.module.css';
 
-function getTableData(countriesData, country) {
-  if (!country) {
-    return countriesData.reduce((totalCountryData, currentCountryData) => ({
-      cases: totalCountryData.cases + currentCountryData.cases,
-      deaths: totalCountryData.deaths + currentCountryData.deaths,
-      recovered: totalCountryData.recovered + currentCountryData.recovered,
-    }));
+const CONFIRMED_INDEX = 0;
+const DEATHS_INDEX = 1;
+const RECOVERED_INDEX = 2;
+const DECIMAL_RADIX = 10;
+const DECIMAL_PLACES = 1;
+const CONFIRMED_STAT_TITLE = 'cases';
+const DEATH_STAT_TITLE = 'deaths';
+const RECOVERED_STAT_TITLE = 'recovered';
+const TODAY_CONFIRMED_STAT_TITLE = 'todayCases';
+const TODAY_DEATH_STAT_TITLE = 'todayDeaths';
+const TODAY_RECOVERED_STAT_TITLE = 'todayRecovered';
+
+function roundFigure(figure, decimalPlaces) {
+  return Math.round(figure * decimalPlaces * DECIMAL_RADIX) / (decimalPlaces * DECIMAL_RADIX);
+}
+
+function getFigurePerHundredThousandPopulation(totalFigure, population) {
+  const figure = (totalFigure * 100000) / population;
+
+  return roundFigure(figure, DECIMAL_PLACES);
+}
+
+function getTotalPopulation(countriesData) {
+  return countriesData
+    .reduce((population, currentCountryData) => population + currentCountryData.population, 0);
+}
+
+function getGlobalTableFigures(countriesData, [confirmedStat, deathsStat, recoveredStat]) {
+  return countriesData.reduce((totalCountryData, currentCountryData) => ([
+    totalCountryData[CONFIRMED_INDEX] + currentCountryData[confirmedStat],
+    totalCountryData[DEATHS_INDEX] + currentCountryData[deathsStat],
+    totalCountryData[RECOVERED_INDEX] + currentCountryData[recoveredStat],
+  ]), [0, 0, 0]);
+}
+
+function getTableData(countriesData, selectedCountry, isAbsoluteCases, isAllTime) {
+  if (!selectedCountry) {
+    if (isAbsoluteCases && isAllTime) {
+      return getGlobalTableFigures(countriesData,
+        [CONFIRMED_STAT_TITLE, DEATH_STAT_TITLE, RECOVERED_STAT_TITLE]);
+    }
+
+    if (isAbsoluteCases && !isAllTime) {
+      return getGlobalTableFigures(countriesData,
+        [TODAY_CONFIRMED_STAT_TITLE, TODAY_DEATH_STAT_TITLE, TODAY_RECOVERED_STAT_TITLE]);
+    }
+
+    const totalPopulation = getTotalPopulation(countriesData);
+
+    if (!isAbsoluteCases && isAllTime) {
+      return getGlobalTableFigures(countriesData,
+        [CONFIRMED_STAT_TITLE, DEATH_STAT_TITLE, RECOVERED_STAT_TITLE])
+        .map((figure) => getFigurePerHundredThousandPopulation(figure, totalPopulation));
+    }
+
+    if (!isAbsoluteCases && !isAllTime) {
+      return getGlobalTableFigures(countriesData,
+        [TODAY_CONFIRMED_STAT_TITLE, TODAY_DEATH_STAT_TITLE, TODAY_RECOVERED_STAT_TITLE])
+        .map((figure) => getFigurePerHundredThousandPopulation(figure, totalPopulation));
+    }
   }
 
   const dataOfSelectedCountry = countriesData
-    .find((countryData) => countryData.country === country);
+    .find((countryData) => countryData.country === selectedCountry);
 
-  return {
-    cases: dataOfSelectedCountry.cases,
-    deaths: dataOfSelectedCountry.deaths,
-    recovered: dataOfSelectedCountry.recovered,
-  };
+  const {
+    cases,
+    deaths,
+    recovered,
+    todayCases,
+    todayDeaths,
+    todayRecovered,
+    population,
+  } = dataOfSelectedCountry;
+
+  if (isAbsoluteCases && isAllTime) {
+    return [
+      cases,
+      deaths,
+      recovered,
+    ];
+  }
+
+  if (isAbsoluteCases && !isAllTime) {
+    return [
+      todayCases,
+      todayDeaths,
+      todayRecovered,
+    ];
+  }
+
+  if (!isAbsoluteCases && isAllTime) {
+    return [
+      getFigurePerHundredThousandPopulation(cases, population),
+      getFigurePerHundredThousandPopulation(deaths, population),
+      getFigurePerHundredThousandPopulation(recovered, population),
+    ];
+  }
+
+  if (!isAbsoluteCases && !isAllTime) {
+    return [
+      getFigurePerHundredThousandPopulation(todayCases, population),
+      getFigurePerHundredThousandPopulation(todayDeaths, population),
+      getFigurePerHundredThousandPopulation(todayRecovered, population),
+    ];
+  }
+
+  return undefined;
 }
-export default function Table({ startData, country }) {
-  const tableData = getTableData(startData, country);
-  const { cases, deaths, recovered } = tableData;
+
+export default function Table({
+  startData,
+  country,
+  isAbsoluteCases,
+  isAllTime,
+}) {
+  const tableData = getTableData(startData, country, isAbsoluteCases, isAllTime);
+  const [confirmed, deaths, recovered] = tableData;
 
   return (
     <table className={s.table}>
@@ -35,7 +132,7 @@ export default function Table({ startData, country }) {
       </thead>
       <tbody>
         <tr className={s.table__row}>
-          <td className={s.table__cell}>{cases}</td>
+          <td className={s.table__cell}>{confirmed}</td>
           <td className={s.table__cell}>{deaths}</td>
           <td className={s.table__cell}>{recovered}</td>
         </tr>
@@ -59,4 +156,6 @@ Table.propTypes = {
     }),
   ).isRequired,
   country: PropTypes.string,
+  isAbsoluteCases: PropTypes.bool.isRequired,
+  isAllTime: PropTypes.bool.isRequired,
 };
