@@ -1,6 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './List.module.css';
+import style from './List.module.css';
+import Search from '../Search/Search';
+
+function splitNumberIntoSpaces(num) {
+  return String(num).split('').reverse().join('')
+    .match(/.{1,3}/g)
+    .map((el) => String(el).split('').reverse().join(''))
+    .reverse()
+    .join(' ');
+}
 
 function filterCountriesData(countriesData, filter) {
   if (filter === '') {
@@ -18,6 +27,7 @@ export default function List({
   startData,
   filter,
   onCountryItemSelected,
+  onSearchChange,
 }) {
   const filteredCountriesData = filterCountriesData(startData, filter);
   const sortedCountriesData = filteredCountriesData
@@ -26,15 +36,16 @@ export default function List({
 
   sortedCountriesData.forEach((countryData) => {
     const countryListItem = (
-      <li key={countryData.country} className={s.list__item}>
-        <button
-          type="button"
-          onClick={() => onCountryItemSelected(countryData.country)}
-        >
-          <img className={s.list__img} src={countryData.countryInfo.flag} alt="flag" />
-          <span className={s.list__country}>{countryData.country}</span>
-          <span className={s.list__value}>{countryData.cases}</span>
-        </button>
+      <li className={style.list__item} onClick={() => onCountryItemSelected(countryData.country)}>
+        <div className={style['list__flag-container']}>
+          <img
+            src={countryData.countryInfo.flag}
+            alt="flag"
+            className={style.list__flag}
+          />
+        </div>
+        <div className={style.list__country}>{countryData.country}</div>
+        <div className={style.list__confirmed}>{splitNumberIntoSpaces(countryData.cases)}</div>
       </li>
     );
 
@@ -42,9 +53,12 @@ export default function List({
   });
 
   return (
-    <ul className={s.list}>
-      {countriesListItems}
-    </ul>
+    <div className={style.list}>
+      <Search filter={filter} onSearchChange={onSearchChange} />
+      <div className={style['list__items-list']}>
+        {countriesListItems}
+      </div>
+    </div>
   );
 }
 

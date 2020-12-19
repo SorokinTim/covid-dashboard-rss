@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Time from './components/Date/Date';
-import Switcher from './components/Switcher/Switcher';
-import switchers from './components/switchers';
-import Search from './components/Search/Search';
+// import Time from './components/Date/Date';
+// import Switcher from './components/Switcher/Switcher';
+// import switchers from './components/switchers';
+// import Search from './components/Search/Search';
+// import List from './components/List/List';
+import Cases from './components/Cases/Cases';
 import List from './components/List/List';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Time from './components/Time/Time';
 import Map from './components/Map/Map';
-import Table from './components/Table/Table';
-import s from './App.module.css';
+import Broad from './components/Broad/Broad';
+import style from './App.module.css';
 
 export default function AppView({
   startData,
@@ -17,46 +22,41 @@ export default function AppView({
   onCountryItemSelected,
 }) {
   return (
-    <div className={s.container}>
-      <div className={s['date-container']}>
+    <div className={style['grid-container']}>
+      <div className={style.header}>
+        <Header />
+      </div>
+      <div className={style.date}>
         <Time startData={startData} />
       </div>
-      <div className={s['details-container']}>
-        <div className={s['details-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
+      <div className={style.map}>
+        <Map />
+      </div>
+      <div className={style.details}>
+        <div className={style.cases}>
+          <Cases startData={startData} />
         </div>
-        <div className={s['details-container__search']}>
-          <Search onSearchChange={onSearchChange} filter={filter} />
-        </div>
-        <div className={s['details-container__countries-list']}>
+        <div className={style.list}>
+          {/* <div className={style.item} /> */}
           <List
             startData={startData}
             filter={filter}
             onCountryItemSelected={onCountryItemSelected}
+            onSearchChange={onSearchChange}
           />
         </div>
       </div>
-      <div className={s['map-container']}>
-        <div className={s['map-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
+      <div className={style.data}>
+        <div className={style.broad}>
+          <Broad startData={startData} country={country} />
         </div>
-        <div className={s['map-container__map']}>
-          <Map />
-        </div>
-      </div>
-      <div className={s['statistic-container']}>
-        <div className={s['statistic-container__switchers']}>
-          <Switcher switchData={switchers.casesSwitcher} />
-          <Switcher switchData={switchers.timeSwitcher} />
-        </div>
-        <div className={s['statistic-container__table']}>
-          <Table startData={startData} country={country} />
+        <div className={style.chart}>
+          <div className={style.item} />
         </div>
       </div>
-      <div className={s['chart-container']} />
-      <div className={s['footer-container']} />
+      <div className={style.footer}>
+        <Footer />
+      </div>
     </div>
   );
 }
