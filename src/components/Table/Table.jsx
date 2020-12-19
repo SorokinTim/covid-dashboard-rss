@@ -1,28 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getFigurePerHundredThousandPopulation } from '../../utils';
 import s from './Table.module.css';
-
-const CONFIRMED_INDEX = 0;
-const DEATHS_INDEX = 1;
-const RECOVERED_INDEX = 2;
-const DECIMAL_RADIX = 10;
-const DECIMAL_PLACES = 1;
-const CONFIRMED_STAT_TITLE = 'cases';
-const DEATH_STAT_TITLE = 'deaths';
-const RECOVERED_STAT_TITLE = 'recovered';
-const TODAY_CONFIRMED_STAT_TITLE = 'todayCases';
-const TODAY_DEATH_STAT_TITLE = 'todayDeaths';
-const TODAY_RECOVERED_STAT_TITLE = 'todayRecovered';
-
-function roundFigure(figure, decimalPlaces) {
-  return Math.round(figure * decimalPlaces * DECIMAL_RADIX) / (decimalPlaces * DECIMAL_RADIX);
-}
-
-function getFigurePerHundredThousandPopulation(totalFigure, population) {
-  const figure = (totalFigure * 100000) / population;
-
-  return roundFigure(figure, DECIMAL_PLACES);
-}
+import {
+  CONFIRMED_INDEX,
+  DEATHS_INDEX,
+  RECOVERED_INDEX,
+  CONFIRMED_STAT_TITLE,
+  DEATH_STAT_TITLE,
+  RECOVERED_STAT_TITLE,
+  TODAY_CONFIRMED_STAT_TITLE,
+  TODAY_DEATH_STAT_TITLE,
+  TODAY_RECOVERED_STAT_TITLE,
+} from '../../constants';
 
 function getTotalPopulation(countriesData) {
   return countriesData
