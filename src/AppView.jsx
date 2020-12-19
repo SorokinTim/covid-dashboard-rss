@@ -13,9 +13,7 @@ export default function AppView({
   startData,
   country,
   filter,
-  isAbsoluteCases,
-  isAllTime,
-  stageOfDisease,
+  switchersState,
   onSearchChange,
   onCountryItemSelected,
   onSwitcherChange,
@@ -29,12 +27,12 @@ export default function AppView({
         <div className={s['details-container__switchers']}>
           <CasesSwitcher
             groupName="detailsCases"
-            isAbsoluteCases={isAbsoluteCases}
+            switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
           <TimeSwitcher
             groupName="detailsTime"
-            isAllTime={isAllTime}
+            switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
         </div>
@@ -44,9 +42,7 @@ export default function AppView({
         <div className={s['details-container__countries-list']}>
           <List
             startData={startData}
-            isAbsoluteCases={isAbsoluteCases}
-            isAllTime={isAllTime}
-            stageOfDisease={stageOfDisease}
+            switchersState={switchersState}
             filter={filter}
             onCountryItemSelected={onCountryItemSelected}
           />
@@ -56,12 +52,12 @@ export default function AppView({
         <div className={s['map-container__switchers']}>
           <CasesSwitcher
             groupName="mapCases"
-            isAbsoluteCases={isAbsoluteCases}
+            switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
           <TimeSwitcher
             groupName="mapTime"
-            isAllTime={isAllTime}
+            switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
         </div>
@@ -73,12 +69,12 @@ export default function AppView({
         <div className={s['statistic-container__switchers']}>
           <CasesSwitcher
             groupName="statisticCases"
-            isAbsoluteCases={isAbsoluteCases}
+            switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
           <TimeSwitcher
             groupName="statisticTime"
-            isAllTime={isAllTime}
+            switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />
         </div>
@@ -86,8 +82,7 @@ export default function AppView({
           <Table
             startData={startData}
             country={country}
-            isAbsoluteCases={isAbsoluteCases}
-            isAllTime={isAllTime}
+            switchersState={switchersState}
           />
         </div>
       </div>
@@ -115,9 +110,7 @@ AppView.propTypes = {
     }),
   ).isRequired,
   country: PropTypes.string,
-  isAbsoluteCases: PropTypes.bool.isRequired,
-  isAllTime: PropTypes.bool.isRequired,
-  stageOfDisease: PropTypes.string.isRequired,
+  switchersState: PropTypes.string.isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,

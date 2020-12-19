@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CovidService from './api/Covid-service';
 import AppView from './AppView';
+import { SWITCHERS_PARAMS } from './constants';
 import s from './App.module.css';
 
 export default class App extends Component {
@@ -12,9 +13,11 @@ export default class App extends Component {
       startData: null,
       country: null,
       filter: '',
-      isAbsoluteCases: true,
-      isAllTime: true,
-      stageOfDisease: 'confirmed',
+      switchersState: {
+        partOfPopulation: SWITCHERS_PARAMS.PART_OF_POPULATION.ABSOLUTE_CASES,
+        typeOfTime: SWITCHERS_PARAMS.TYPE_OF_TIME.ALL_TIME,
+        stageOfDisease: SWITCHERS_PARAMS.STAGE_OF_DISEASE.CONFIRMED,
+      },
       isLoading: true,
       isError: false,
     };
@@ -52,25 +55,54 @@ export default class App extends Component {
   }
 
   onSwitcherChange = (id) => {
+    const { ABSOLUTE_CASES } = SWITCHERS_PARAMS.PART_OF_POPULATION;
+    const { CASES_PER_HUNDRED } = SWITCHERS_PARAMS.PART_OF_POPULATION;
+    const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+    const { LAST_DAY } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+
     switch (id) {
-      case 'absoluteCases':
-        this.setState({
-          isAbsoluteCases: true,
+      case ABSOLUTE_CASES:
+        this.setState((state) => {
+          const partOfPopulation = ABSOLUTE_CASES;
+
+          return {
+            switchersState: {
+              ...state.switchersState, partOfPopulation,
+            },
+          };
         });
         break;
-      case 'casesPerHundred':
-        this.setState({
-          isAbsoluteCases: false,
+      case CASES_PER_HUNDRED:
+        this.setState((state) => {
+          const partOfPopulation = CASES_PER_HUNDRED;
+
+          return {
+            switchersState: {
+              ...state.switchersState, partOfPopulation,
+            },
+          };
         });
         break;
-      case 'allTime':
-        this.setState({
-          isAllTime: true,
+      case ALL_TIME:
+        this.setState((state) => {
+          const typeOfTime = ALL_TIME;
+
+          return {
+            switchersState: {
+              ...state.switchersState, typeOfTime,
+            },
+          };
         });
         break;
-      case 'lastDay':
-        this.setState({
-          isAllTime: false,
+      case LAST_DAY:
+        this.setState((state) => {
+          const typeOfTime = LAST_DAY;
+
+          return {
+            switchersState: {
+              ...state.switchersState, typeOfTime,
+            },
+          };
         });
         break;
       default:
@@ -90,9 +122,7 @@ export default class App extends Component {
       startData,
       country,
       filter,
-      isAbsoluteCases,
-      isAllTime,
-      stageOfDisease,
+      switchersState,
       isError,
       isLoading,
     } = this.state;
@@ -105,9 +135,7 @@ export default class App extends Component {
           startData={startData}
           country={country}
           filter={filter}
-          isAbsoluteCases={isAbsoluteCases}
-          isAllTime={isAllTime}
-          stageOfDisease={stageOfDisease}
+          switchersState={switchersState}
           onCountryItemSelected={this.onCountryItemSelected}
           onSearchChange={this.onSearchChange}
           onSwitcherChange={this.onSwitcherChange}

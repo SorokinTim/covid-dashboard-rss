@@ -1,29 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SWITCHERS_PARAMS } from '../../constants';
 import s from './Switcher.module.css';
 
-export default function TimeSwitcher({ groupName, isAllTime, onSwitcherChange }) {
+export default function TimeSwitcher({ groupName, switchersState, onSwitcherChange }) {
+  const { typeOfTime } = switchersState;
+  const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+  const { LAST_DAY } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+
   return (
     <ul className={s.switcher}>
-      <label htmlFor="allTime">
+      <label htmlFor={ALL_TIME}>
         <input
           type="radio"
-          id="allTime"
+          id={ALL_TIME}
           name={groupName}
-          value="allTime"
-          checked={isAllTime}
+          value={ALL_TIME}
+          checked={typeOfTime === ALL_TIME}
           className={s.switcher__radio}
           onChange={(e) => onSwitcherChange(e.target.value)}
         />
         All time
       </label>
-      <label htmlFor="lastDay">
+      <label htmlFor={LAST_DAY}>
         <input
           type="radio"
-          id="lastDay"
+          id={LAST_DAY}
           name={groupName}
-          value="lastDay"
-          checked={!isAllTime}
+          value={LAST_DAY}
+          checked={typeOfTime === LAST_DAY}
           className={s.switcher__radio}
           onChange={(e) => onSwitcherChange(e.target.value)}
         />
@@ -35,6 +40,6 @@ export default function TimeSwitcher({ groupName, isAllTime, onSwitcherChange })
 
 TimeSwitcher.propTypes = {
   groupName: PropTypes.string.isRequired,
-  isAllTime: PropTypes.bool.isRequired,
+  switchersState: PropTypes.bool.isRequired,
   onSwitcherChange: PropTypes.func.isRequired,
 };

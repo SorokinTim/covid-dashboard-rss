@@ -12,6 +12,7 @@ import {
   TODAY_CONFIRMED_STAT_TITLE,
   TODAY_DEATH_STAT_TITLE,
   TODAY_RECOVERED_STAT_TITLE,
+  SWITCHERS_PARAMS,
 } from '../../constants';
 
 function getTotalPopulation(countriesData) {
@@ -27,27 +28,39 @@ function getGlobalTableFigures(countriesData, [confirmedStat, deathsStat, recove
   ]), [0, 0, 0]);
 }
 
-function getTableData(countriesData, selectedCountry, isAbsoluteCases, isAllTime) {
+function getTableData(countriesData, selectedCountry, switchersState) {
+  const { partOfPopulation, typeOfTime } = switchersState;
+
+  const { ABSOLUTE_CASES } = SWITCHERS_PARAMS.PART_OF_POPULATION;
+  const { CASES_PER_HUNDRED } = SWITCHERS_PARAMS.PART_OF_POPULATION;
+  const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+  const { LAST_DAY } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+
+  const isAbsoluteCases = partOfPopulation === ABSOLUTE_CASES;
+  const isCasesPerHundred = partOfPopulation === CASES_PER_HUNDRED;
+  const isAllTime = typeOfTime === ALL_TIME;
+  const isLastDay = typeOfTime === LAST_DAY;
+
   if (!selectedCountry) {
     if (isAbsoluteCases && isAllTime) {
       return getGlobalTableFigures(countriesData,
         [CONFIRMED_STAT_TITLE, DEATH_STAT_TITLE, RECOVERED_STAT_TITLE]);
     }
 
-    if (isAbsoluteCases && !isAllTime) {
+    if (isAbsoluteCases && isLastDay) {
       return getGlobalTableFigures(countriesData,
         [TODAY_CONFIRMED_STAT_TITLE, TODAY_DEATH_STAT_TITLE, TODAY_RECOVERED_STAT_TITLE]);
     }
 
     const totalPopulation = getTotalPopulation(countriesData);
 
-    if (!isAbsoluteCases && isAllTime) {
+    if (isCasesPerHundred && isAllTime) {
       return getGlobalTableFigures(countriesData,
         [CONFIRMED_STAT_TITLE, DEATH_STAT_TITLE, RECOVERED_STAT_TITLE])
         .map((figure) => getFigurePerHundredThousandPopulation(figure, totalPopulation));
     }
 
-    if (!isAbsoluteCases && !isAllTime) {
+    if (isCasesPerHundred && isLastDay) {
       return getGlobalTableFigures(countriesData,
         [TODAY_CONFIRMED_STAT_TITLE, TODAY_DEATH_STAT_TITLE, TODAY_RECOVERED_STAT_TITLE])
         .map((figure) => getFigurePerHundredThousandPopulation(figure, totalPopulation));
@@ -75,7 +88,7 @@ function getTableData(countriesData, selectedCountry, isAbsoluteCases, isAllTime
     ];
   }
 
-  if (isAbsoluteCases && !isAllTime) {
+  if (isAbsoluteCases && isLastDay) {
     return [
       todayCases,
       todayDeaths,
@@ -83,7 +96,7 @@ function getTableData(countriesData, selectedCountry, isAbsoluteCases, isAllTime
     ];
   }
 
-  if (!isAbsoluteCases && isAllTime) {
+  if (isCasesPerHundred && isAllTime) {
     return [
       getFigurePerHundredThousandPopulation(cases, population),
       getFigurePerHundredThousandPopulation(deaths, population),
@@ -91,7 +104,7 @@ function getTableData(countriesData, selectedCountry, isAbsoluteCases, isAllTime
     ];
   }
 
-  if (!isAbsoluteCases && !isAllTime) {
+  if (isCasesPerHundred && isLastDay) {
     return [
       getFigurePerHundredThousandPopulation(todayCases, population),
       getFigurePerHundredThousandPopulation(todayDeaths, population),
@@ -105,10 +118,9 @@ function getTableData(countriesData, selectedCountry, isAbsoluteCases, isAllTime
 export default function Table({
   startData,
   country,
-  isAbsoluteCases,
-  isAllTime,
+  switchersState,
 }) {
-  const tableData = getTableData(startData, country, isAbsoluteCases, isAllTime);
+  const tableData = getTableData(startData, country, switchersState);
   const [confirmed, deaths, recovered] = tableData;
 
   return (
@@ -146,6 +158,5 @@ Table.propTypes = {
     }),
   ).isRequired,
   country: PropTypes.string,
-  isAbsoluteCases: PropTypes.bool.isRequired,
-  isAllTime: PropTypes.bool.isRequired,
+  switchersState: PropTypes.bool.isRequired,
 };

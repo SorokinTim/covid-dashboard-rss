@@ -9,6 +9,21 @@ const RECOVERED_STAT_TITLE = 'recovered';
 const TODAY_CONFIRMED_STAT_TITLE = 'todayCases';
 const TODAY_DEATH_STAT_TITLE = 'todayDeaths';
 const TODAY_RECOVERED_STAT_TITLE = 'todayRecovered';
+const SWITCHERS_PARAMS = {
+  PART_OF_POPULATION: {
+    ABSOLUTE_CASES: 'absoluteCases',
+    CASES_PER_HUNDRED: 'casesPerHundred',
+  },
+  TYPE_OF_TIME: {
+    ALL_TIME: 'allTime',
+    LAST_DAY: 'lastDay',
+  },
+  STAGE_OF_DISEASE: {
+    CONFIRMED: 'confirmed',
+    DEATHS: 'deaths',
+    RECOVERED: 'recovered',
+  },
+};
 
 export {
   CONFIRMED_INDEX,
@@ -22,4 +37,5 @@ export {
   TODAY_CONFIRMED_STAT_TITLE,
   TODAY_DEATH_STAT_TITLE,
   TODAY_RECOVERED_STAT_TITLE,
+  SWITCHERS_PARAMS,
 };

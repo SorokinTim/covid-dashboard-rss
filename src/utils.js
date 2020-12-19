@@ -1,6 +1,7 @@
 import {
   DECIMAL_RADIX,
   DECIMAL_PLACES,
+  SWITCHERS_PARAMS,
 } from './constants';
 
 function roundFigure(figure, decimalPlaces) {
@@ -13,54 +14,74 @@ function getFigurePerHundredThousandPopulation(totalFigure, population) {
   return roundFigure(figure, DECIMAL_PLACES);
 }
 
-function getRequiredParam(countryData, isAbsoluteCases, isAllTime, stageOfDisease) {
-  if (stageOfDisease === 'confirmed') {
+function getRequiredParam(countryData, switchersState) {
+  const {
+    cases,
+    todayCases,
+    deaths,
+    todayDeaths,
+    recovered,
+    todayRecovered,
+    population,
+  } = countryData;
+
+  const { ABSOLUTE_CASES } = SWITCHERS_PARAMS.PART_OF_POPULATION;
+  const { CASES_PER_HUNDRED } = SWITCHERS_PARAMS.PART_OF_POPULATION;
+  const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+  const { LAST_DAY } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+  const { CONFIRMED } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
+  const { DEATHS } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
+  const { RECOVERED } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
+
+  const { partOfPopulation, typeOfTime, stageOfDisease } = switchersState;
+
+  const isAbsoluteCases = partOfPopulation === ABSOLUTE_CASES;
+  const isCasesPerHundred = partOfPopulation === CASES_PER_HUNDRED;
+  const isAllTime = typeOfTime === ALL_TIME;
+  const isLastDay = typeOfTime === LAST_DAY;
+
+  if (stageOfDisease === CONFIRMED) {
     if (isAbsoluteCases && isAllTime) {
-      return countryData.cases;
+      return cases;
     }
-    if (isAbsoluteCases && !isAllTime) {
-      return countryData.todayCases;
+    if (isAbsoluteCases && isLastDay) {
+      return todayCases;
     }
-    if (!isAbsoluteCases && isAllTime) {
-      return getFigurePerHundredThousandPopulation(countryData.cases,
-        countryData.population);
+    if (isCasesPerHundred && isAllTime) {
+      return getFigurePerHundredThousandPopulation(cases, population);
     }
-    if (!isAbsoluteCases && !isAllTime) {
-      return getFigurePerHundredThousandPopulation(countryData.todayCases,
-        countryData.population);
+    if (isCasesPerHundred && isLastDay) {
+      return getFigurePerHundredThousandPopulation(todayCases, population);
     }
   }
 
-  if (stageOfDisease === 'deaths') {
+  if (stageOfDisease === DEATHS) {
     if (isAbsoluteCases && isAllTime) {
-      return countryData.deaths;
+      return deaths;
     }
-    if (isAbsoluteCases && !isAllTime) {
-      return countryData.todayDeaths;
+    if (isAbsoluteCases && isLastDay) {
+      return todayDeaths;
     }
-    if (!isAbsoluteCases && isAllTime) {
-      return getFigurePerHundredThousandPopulation(countryData.deaths,
-        countryData.population);
+    if (isCasesPerHundred && isAllTime) {
+      return getFigurePerHundredThousandPopulation(deaths, population);
     }
-    if (!isAbsoluteCases && !isAllTime) {
-      return getFigurePerHundredThousandPopulation(countryData.todayDeaths,
-        countryData.population);
+    if (isCasesPerHundred && isLastDay) {
+      return getFigurePerHundredThousandPopulation(todayDeaths, population);
     }
   }
 
-  if (stageOfDisease === 'recovered') {
+  if (stageOfDisease === RECOVERED) {
     if (isAbsoluteCases && isAllTime) {
-      return countryData.recovered;
+      return recovered;
     }
-    if (isAbsoluteCases && !isAllTime) {
-      return countryData.todayRecovered;
+    if (isAbsoluteCases && isLastDay) {
+      return todayRecovered;
     }
-    if (!isAbsoluteCases && isAllTime) {
-      return getFigurePerHundredThousandPopulation(countryData.recovered, countryData.population);
+    if (isCasesPerHundred && isAllTime) {
+      return getFigurePerHundredThousandPopulation(recovered, population);
     }
-    if (!isAbsoluteCases && !isAllTime) {
-      return getFigurePerHundredThousandPopulation(countryData.todayRecovered,
-        countryData.population);
+    if (isCasesPerHundred && isLastDay) {
+      return getFigurePerHundredThousandPopulation(todayRecovered, population);
     }
   }
 

@@ -18,9 +18,7 @@ function filterCountriesData(countriesData, filter) {
 
 export default function List({
   startData,
-  isAbsoluteCases,
-  isAllTime,
-  stageOfDisease,
+  switchersState,
   filter,
   onCountryItemSelected,
 }) {
@@ -28,10 +26,8 @@ export default function List({
 
   const sortedCountriesData = filteredCountriesData
     .sort((countryXData, countryYData) => {
-      const countryXDataParam = getRequiredParam(countryXData,
-        isAbsoluteCases, isAllTime, stageOfDisease);
-      const countryYDataParam = getRequiredParam(countryYData,
-        isAbsoluteCases, isAllTime, stageOfDisease);
+      const countryXDataParam = getRequiredParam(countryXData, switchersState);
+      const countryYDataParam = getRequiredParam(countryYData, switchersState);
 
       return countryYDataParam - countryXDataParam;
     });
@@ -48,7 +44,7 @@ export default function List({
           <img className={s.list__img} src={countryData.countryInfo.flag} alt="flag" />
           <span className={s.list__country}>{countryData.country}</span>
           <span className={s.list__value}>
-            {getRequiredParam(countryData, isAbsoluteCases, isAllTime, stageOfDisease)}
+            {getRequiredParam(countryData, switchersState)}
           </span>
         </button>
       </li>
@@ -74,9 +70,7 @@ List.propTypes = {
       }),
     }),
   ).isRequired,
-  isAbsoluteCases: PropTypes.bool.isRequired,
-  isAllTime: PropTypes.bool.isRequired,
-  stageOfDisease: PropTypes.string.isRequired,
+  switchersState: PropTypes.string.isRequired,
   filter: PropTypes.string.isRequired,
   onCountryItemSelected: PropTypes.func.isRequired,
 };
