@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Search from '../Search/Search';
@@ -48,7 +50,8 @@ export default function List({
 
   sortedCountriesData.forEach((countryData) => {
     const countryListItem = (
-      <li key={countryData.country}
+      <li
+        key={countryData.country}
         className={style.list__item}
         onClick={() => onCountryItemSelected(countryData.country)}
       >
