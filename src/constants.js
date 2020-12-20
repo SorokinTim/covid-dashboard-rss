@@ -1,0 +1,41 @@
+const CONFIRMED_INDEX = 0;
+const DEATHS_INDEX = 1;
+const RECOVERED_INDEX = 2;
+const DECIMAL_RADIX = 10;
+const DECIMAL_PLACES = 1;
+const CONFIRMED_STAT_TITLE = 'cases';
+const DEATH_STAT_TITLE = 'deaths';
+const RECOVERED_STAT_TITLE = 'recovered';
+const TODAY_CONFIRMED_STAT_TITLE = 'todayCases';
+const TODAY_DEATH_STAT_TITLE = 'todayDeaths';
+const TODAY_RECOVERED_STAT_TITLE = 'todayRecovered';
+const SWITCHERS_PARAMS = {
+  PART_OF_POPULATION: {
+    ABSOLUTE_CASES: 'absoluteCases',
+    CASES_PER_HUNDRED: 'casesPerHundred',
+  },
+  TYPE_OF_TIME: {
+    ALL_TIME: 'allTime',
+    LAST_DAY: 'lastDay',
+  },
+  STAGE_OF_DISEASE: {
+    CONFIRMED: 'confirmed',
+    DEATHS: 'deaths',
+    RECOVERED: 'recovered',
+  },
+};
+
+export {
+  CONFIRMED_INDEX,
+  DEATHS_INDEX,
+  RECOVERED_INDEX,
+  DECIMAL_RADIX,
+  DECIMAL_PLACES,
+  CONFIRMED_STAT_TITLE,
+  DEATH_STAT_TITLE,
+  RECOVERED_STAT_TITLE,
+  TODAY_CONFIRMED_STAT_TITLE,
+  TODAY_DEATH_STAT_TITLE,
+  TODAY_RECOVERED_STAT_TITLE,
+  SWITCHERS_PARAMS,
+};

@@ -1,38 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import s from './Switcher.module.css';
+import style from './Switcher.module.css';
+import { SWITCHERS_PARAMS } from '../../constants';
 
-export default function Switcher({ switchData }) {
-  const items = switchData.map((item) => (
-    <li key={item.id} className={s.switcher__item}>
-      <label htmlFor={item.id}>
-        <input
-          type="radio"
-          id={item.id}
-          name={item.name}
-          value={item.id}
-          defaultChecked={item.default}
-          className={s.switcher__radio}
-        />
-        {item.label}
-      </label>
-    </li>
-  ));
+export default function Switcher() {
+  const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
+  const { LAST_DAY } = SWITCHERS_PARAMS.TYPE_OF_TIME;
 
   return (
-    <ul className={s.switcher}>
-      {items}
-    </ul>
+    <div className={style.switcher}>
+      <input
+        type="radio"
+        name="choice"
+        value={ALL_TIME}
+        id={ALL_TIME}
+        className={style['choice-1']}
+        defaultChecked
+      />
+      <label htmlFor={ALL_TIME} className={style.switcher__item} to="1">
+        All Time
+      </label>
+
+      <input
+        type="radio"
+        name="choice"
+        value={LAST_DAY}
+        id={LAST_DAY}
+        className={style['choice-2']}
+      />
+      <label htmlFor={LAST_DAY} className={style.switcher__item} to="2">
+        Last Day
+      </label>
+    </div>
   );
 }
-
-Switcher.propTypes = {
-  switchData: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      label: PropTypes.string,
-      name: PropTypes.string,
-      default: PropTypes.bool,
-    }),
-  ).isRequired,
-};

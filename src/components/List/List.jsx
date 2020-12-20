@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './List.module.css';
 import Search from '../Search/Search';
+import Switcher from '../Switcher/Switcher';
 
 function splitNumberIntoSpaces(num) {
   return String(num).split('').reverse().join('')
@@ -54,9 +55,18 @@ export default function List({
 
   return (
     <div className={style.list}>
+      <div className={style.list__switcher}>
+        {/* TODO: Switcher */}
+      </div>
+      <div className={style.list__switcher}>
+        {/* TODO: Switcher */}
+      </div>
       <Search filter={filter} onSearchChange={onSearchChange} />
       <div className={style['list__items-list']}>
         {countriesListItems}
+      </div>
+      <div className={style.list__switcher}>
+        {/* TODO: Switcher */}
       </div>
     </div>
   );

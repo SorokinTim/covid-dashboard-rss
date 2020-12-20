@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Time from './components/Date/Date';
-// import Switcher from './components/Switcher/Switcher';
-// import switchers from './components/switchers';
-// import Search from './components/Search/Search';
-// import List from './components/List/List';
 import Cases from './components/Cases/Cases';
 import List from './components/List/List';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Time from './components/Time/Time';
 import Map from './components/Map/Map';
-import Broad from './components/Broad/Broad';
+import Table from './components/Table/Table';
+// import Switcher from './components/Switcher/Switcher';
+// import TimeSwitcher from './components/Switcher1/TimeSwitcher';
 import style from './App.module.css';
 
 export default function AppView({
@@ -37,7 +34,6 @@ export default function AppView({
           <Cases startData={startData} />
         </div>
         <div className={style.list}>
-          {/* <div className={style.item} /> */}
           <List
             startData={startData}
             filter={filter}
@@ -48,7 +44,7 @@ export default function AppView({
       </div>
       <div className={style.data}>
         <div className={style.broad}>
-          <Broad startData={startData} country={country} />
+          <Table startData={startData} country={country} />
         </div>
         <div className={style.chart}>
           <div className={style.item} />
