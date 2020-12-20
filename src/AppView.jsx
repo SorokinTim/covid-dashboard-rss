@@ -7,16 +7,16 @@ import Header from './components/Header/Header';
 import Time from './components/Time/Time';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
-// import Switcher from './components/Switcher/Switcher';
-// import TimeSwitcher from './components/Switcher1/TimeSwitcher';
 import style from './App.module.css';
 
 export default function AppView({
   startData,
   country,
   filter,
+  switchersState,
   onSearchChange,
   onCountryItemSelected,
+  onSwitcherChange,
 }) {
   return (
     <div className={style['grid-container']}>
@@ -39,12 +39,19 @@ export default function AppView({
             filter={filter}
             onCountryItemSelected={onCountryItemSelected}
             onSearchChange={onSearchChange}
+            switchersState={switchersState}
+            onSwitcherChange={onSwitcherChange}
           />
         </div>
       </div>
       <div className={style.data}>
         <div className={style.broad}>
-          <Table startData={startData} country={country} />
+          <Table
+            startData={startData}
+            country={country}
+            switchersState={switchersState}
+            onSwitcherChange={onSwitcherChange}
+          />
         </div>
         <div className={style.chart}>
           <div className={style.item} />
@@ -78,4 +85,10 @@ AppView.propTypes = {
   onCountryItemSelected: PropTypes.func.isRequired,
   onSearchChange: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
+  onSwitcherChange: PropTypes.func.isRequired,
 };

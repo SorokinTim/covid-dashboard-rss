@@ -19,7 +19,7 @@ export default function CasesSwitcher({ groupName, switchersState, onSwitcherCha
         className={style['choice-1']}
         onChange={(e) => onSwitcherChange(e.target.value)}
       />
-      <label htmlFor={ABSOLUTE_CASES} className={style.switcher__item} to="1">Absolute cases</label>
+      <label htmlFor={ABSOLUTE_CASES} className={style.switcher__item} to="1">Absolute</label>
 
       <input
         type="radio"
@@ -30,7 +30,7 @@ export default function CasesSwitcher({ groupName, switchersState, onSwitcherCha
         className={style['choice-2']}
         onChange={(e) => onSwitcherChange(e.target.value)}
       />
-      <label htmlFor={CASES_PER_HUNDRED} className={style.switcher__item} to="2">Cases per 100,000 population</label>
+      <label htmlFor={CASES_PER_HUNDRED} className={style.switcher__item} to="2">Per 100K</label>
     </div>
   );
 }
