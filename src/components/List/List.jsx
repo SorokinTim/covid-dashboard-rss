@@ -69,7 +69,6 @@ export default function List({
     countriesListItems.push(countryListItem);
   });
 
-  console.log('List switchersState', switchersState);
   return (
     <div className={style.list}>
       <div className={style.list__switcher}>

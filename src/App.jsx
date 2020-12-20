@@ -54,7 +54,6 @@ export default class App extends Component {
   }
 
   onSwitcherChange = (id) => {
-    console.log('App onSwitcherChange id:', id);
     const { ABSOLUTE_CASES } = SWITCHERS_PARAMS.PART_OF_POPULATION;
     const { CASES_PER_HUNDRED } = SWITCHERS_PARAMS.PART_OF_POPULATION;
     const { ALL_TIME } = SWITCHERS_PARAMS.TYPE_OF_TIME;
@@ -92,11 +91,8 @@ export default class App extends Component {
         });
         break;
       case LAST_DAY:
-        console.log('switch LAST_DAY');
         this.setState((state) => {
           const typeOfTime = LAST_DAY;
-          console.log('switch typeOfTime:', typeOfTime);
-          console.log('switch { ...state.switchersState, typeOfTime }:', { ...state.switchersState, typeOfTime });
           return {
             switchersState: { ...state.switchersState, typeOfTime },
           };
@@ -150,8 +146,6 @@ export default class App extends Component {
       isError,
       isLoading,
     } = this.state;
-
-    console.log('App render  switchersState:', switchersState);
 
     const error = isError ? 'error' : null;
     const loading = isLoading ? 'loading...' : null;

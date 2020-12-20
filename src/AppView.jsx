@@ -46,7 +46,12 @@ export default function AppView({
       </div>
       <div className={style.data}>
         <div className={style.broad}>
-          <Table startData={startData} country={country} />
+          <Table
+            startData={startData}
+            country={country}
+            switchersState={switchersState}
+            onSwitcherChange={onSwitcherChange}
+          />
         </div>
         <div className={style.chart}>
           <div className={style.item} />
