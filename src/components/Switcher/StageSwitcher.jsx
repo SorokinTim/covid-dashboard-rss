@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SWITCHERS_PARAMS } from '../../constants';
-import s from './Switcher.module.css';
+import style from './Switcher.module.css';
 
 export default function StageSwitcher({ groupName, switchersState, onSwitcherChange }) {
   const { stageOfDisease } = switchersState;
@@ -10,44 +10,40 @@ export default function StageSwitcher({ groupName, switchersState, onSwitcherCha
   const { RECOVERED } = SWITCHERS_PARAMS.STAGE_OF_DISEASE;
 
   return (
-    <ul className={s.switcher}>
-      <label htmlFor={CONFIRMED}>
-        <input
-          type="radio"
-          id={CONFIRMED}
-          name={groupName}
-          value={CONFIRMED}
-          checked={stageOfDisease === CONFIRMED}
-          className={s.switcher__radio}
-          onChange={(e) => onSwitcherChange(e.target.value)}
-        />
-        Confirmed
-      </label>
-      <label htmlFor={DEATHS}>
-        <input
-          type="radio"
-          id={DEATHS}
-          name={groupName}
-          value={DEATHS}
-          checked={stageOfDisease === DEATHS}
-          className={s.switcher__radio}
-          onChange={(e) => onSwitcherChange(e.target.value)}
-        />
-        Deaths
-      </label>
-      <label htmlFor={RECOVERED}>
-        <input
-          type="radio"
-          id={RECOVERED}
-          name={groupName}
-          value={RECOVERED}
-          checked={stageOfDisease === RECOVERED}
-          className={s.switcher__radio}
-          onChange={(e) => onSwitcherChange(e.target.value)}
-        />
-        Recovered
-      </label>
-    </ul>
+    <div className={style.switcher}>
+      <input
+        type="radio"
+        id={CONFIRMED}
+        name={groupName}
+        value={CONFIRMED}
+        checked={stageOfDisease === CONFIRMED}
+        className={style['choice-1']}
+        onChange={(e) => onSwitcherChange(e.target.value)}
+      />
+      <label htmlFor={CONFIRMED} className={style.switcher__item} to="1">Confirmed</label>
+
+      <input
+        type="radio"
+        id={DEATHS}
+        name={groupName}
+        value={DEATHS}
+        checked={stageOfDisease === DEATHS}
+        className={style['choice-2']}
+        onChange={(e) => onSwitcherChange(e.target.value)}
+      />
+      <label htmlFor={DEATHS} className={style.switcher__item} to="2">Deaths</label>
+
+      <input
+        type="radio"
+        id={RECOVERED}
+        name={groupName}
+        value={RECOVERED}
+        checked={stageOfDisease === RECOVERED}
+        className={style['choice-3']}
+        onChange={(e) => onSwitcherChange(e.target.value)}
+      />
+      <label htmlFor={RECOVERED} className={style.switcher__item} to="3">Recovered</label>
+    </div>
   );
 }
 

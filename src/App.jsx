@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import CovidService from './api/Covid-service';
 import AppView from './AppView';
 import { SWITCHERS_PARAMS } from './constants';
@@ -165,11 +165,11 @@ export default class App extends Component {
       ) : null;
 
     return (
-      <div className={s.container}>
+      <>
         {error}
         {loading}
         {app}
-      </div>
+      </>
     );
   }
 }

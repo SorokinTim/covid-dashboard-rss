@@ -1,31 +1,65 @@
-.table {
-  display: grid;
-  height: 100%;
+.board {
   width: 100%;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  font-family: var(--font-family);
-  color: var(--color-dark-gray);
-  background-color: var(--color-white);
-  font-size: var(--font-s);
-}
-
-.table__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
-}
-
-.table__head-cell,
-.table__cell {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--color-dark-gray);
-  padding: 0.5rem;
-  font-size: var(--font-l);
+  flex-direction: column;
+  background-color: #2F3438;
+  border-radius: 10px;
+  overflow: hidden;
+  padding-top: 15px;
 }
 
-/* TODO: проверить колонки на маленькой ширине */
+.board__switcher {
+  min-height: 45px;
+  width: 100%;
+  padding: 5px 30px;
+}
+
+.board__container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.board__items {
+  margin-left: 30px;
+}
+
+.board__item {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.board__icon-container {
+  background-color: var(--color-blue);
+  width: 72px;
+  height: 72px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board__icon {
+  color: var(--color-white);
+  font-size: 48px;
+}
+
+.board__info {
+  font-family: 'Rubik', sans-serif;
+  color: var(--color-white);
+  margin-left: 15px;
+}
+
+.board__title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.board__statistic {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1em;
+}

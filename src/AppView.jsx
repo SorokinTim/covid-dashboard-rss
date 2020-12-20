@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Time from './components/Date/Date';
-import TimeSwitcher from './components/Switcher/TimeSwitcher';
-import CasesSwitcher from './components/Switcher/CasesSwitcher';
+// import Switcher from './components/Switcher/Switcher';
+// import TimeSwitcher from './components/Switcher1/TimeSwitcher';
 // import StageSwitcher from './components/Switcher/StageSwitcher';
 import Search from './components/Search/Search';
+import Cases from './components/Cases/Cases';
 import List from './components/List/List';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Time from './components/Time/Time';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
-import s from './App.module.css';
+import style from './App.module.css';
 
 export default function AppView({
   startData,
@@ -20,75 +25,41 @@ export default function AppView({
   onSwitcherChange,
 }) {
   return (
-    <div className={s.container}>
-      <div className={s['date-container']}>
+    <div className={style['grid-container']}>
+      <div className={style.header}>
+        <Header />
+      </div>
+      <div className={style.date}>
         <Time startData={startData} />
       </div>
-      <div className={s['details-container']}>
-        <div className={s['details-container__switchers']}>
-          <CasesSwitcher
-            groupName="detailsCases"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
-          <TimeSwitcher
-            groupName="detailsTime"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
+      <div className={style.map}>
+        <Map />
+      </div>
+      <div className={style.details}>
+        <div className={style.cases}>
+          <Cases startData={startData} />
         </div>
-        <div className={s['details-container__search']}>
-          <Search onSearchChange={onSearchChange} filter={filter} />
-        </div>
-        <div className={s['details-container__countries-list']}>
+        <div className={style.list}>
           <List
             startData={startData}
             switchersState={switchersState}
             filter={filter}
             onCountryItemSelected={onCountryItemSelected}
+            onSearchChange={onSearchChange}
           />
         </div>
       </div>
-      <div className={s['map-container']}>
-        <div className={s['map-container__switchers']}>
-          <CasesSwitcher
-            groupName="mapCases"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
-          <TimeSwitcher
-            groupName="mapTime"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
+      <div className={style.data}>
+        <div className={style.broad}>
+          <Table startData={startData} country={country} />
         </div>
-        <div className={s['map-container__map']}>
-          <Map />
+        <div className={style.chart}>
+          <div className={style.item} />
         </div>
       </div>
-      <div className={s['statistic-container']}>
-        <div className={s['statistic-container__switchers']}>
-          <CasesSwitcher
-            groupName="statisticCases"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
-          <TimeSwitcher
-            groupName="statisticTime"
-            switchersState={switchersState}
-            onSwitcherChange={onSwitcherChange}
-          />
-        </div>
-        <div className={s['statistic-container__table']}>
-          <Table
-            startData={startData}
-            country={country}
-            switchersState={switchersState}
-          />
-        </div>
+      <div className={style.footer}>
+        <Footer />
       </div>
-      <div className={s['chart-container']} />
-      <div className={s['footer-container']} />
     </div>
   );
 }
