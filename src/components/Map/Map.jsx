@@ -1,6 +1,6 @@
 import React from 'react';
 import mapboxgl from '../../api/api-mapbox';
-import s from './Map.module.css';
+import style from './Map.module.css';
 
 export default class Map extends React.Component {
   constructor() {
@@ -15,13 +15,17 @@ export default class Map extends React.Component {
   initializeMap() {
     return new mapboxgl.Map({
       container: this.mapRef,
-      style: 'mapbox://styles/timsorokin/ckimzd75j0ebt17s1ru57hvr1',
+      style: 'mapbox://styles/mapbox/dark-v9',
       center: [29.632, 54.257],
-      zoom: 4,
+      zoom: 3.5,
     });
   }
 
   render() {
-    return <div ref={(el) => { this.mapRef = el; }} className={s.map} />;
+    return (
+      <div className={style.container}>
+        <div ref={(el) => { this.mapRef = el; }} className={style.map} />
+      </div>
+    );
   }
 }

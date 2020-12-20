@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import s from './Search.module.css';
+import style from './Search.module.css';
 
 export default class Search extends Component {
   constructor() {
@@ -34,18 +34,25 @@ export default class Search extends Component {
     });
 
     onSearchChange(filter);
-  }
+  };
 
   render() {
     const { filter } = this.state;
 
     return (
-      <input
-        className={s.search}
-        placeholder="Find a country"
-        value={filter}
-        onChange={this.onFilterChange}
-      />
+      <div className={style['list__input-container']}>
+        <input
+          className={style.list__input}
+          id="search"
+          placeholder="Insert country"
+          value={filter}
+          onChange={this.onFilterChange}
+        />
+        <label htmlFor="search">
+          <span className={`material-icons ${style['list__search-icon']}`}>search</span>
+          <span className={`material-icons ${style['list__keyboard-icon']}`}>keyboard</span>
+        </label>
+      </div>
     );
   }
 }

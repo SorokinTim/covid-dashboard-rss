@@ -1,22 +1,51 @@
+.choice-1, .choice-2, .choice-3 {
+  display: none;
+}
+
 .switcher {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  font-family: var(--font-family);
-  color: var(--color-dark-gray);
-  background-color: var(--color-white);
-  font-size: var(--font-s);
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #25292E;
+  border-radius: 10px;
+  font-family: 'Rubik', sans-serif;
+  color: #858687;
+  font-weight: 300;
+  font-size: 14px;
 }
 
 .switcher__item {
-  margin: 1px 0;
-  padding: 0 1rem;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .3s linear;
 }
 
-.switcher__radio {
-  margin: 3px 6px;
+.choice-1:checked ~ .switcher__item[to="1"]  {
+  color: #fff;
+  font-weight: 500;
+  background: #FF3E58;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: default;
+}
+
+.choice-2:checked ~ .switcher__item[to="2"]  {
+  color: #fff;
+  font-weight: 500;
+  background: #FF3E58;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: default;
+}
+
+.choice-3:checked ~ .switcher__item[to="3"]  {
+  color: #fff;
+  font-weight: 500;
+  background: #FF3E58;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: default;
 }

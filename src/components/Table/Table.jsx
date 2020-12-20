@@ -1,6 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './Table.module.css';
+import style from './Table.module.css';
+import Switcher from '../Switcher/Switcher';
+
+function splitNumberIntoSpaces(num) {
+  return String(num).split('').reverse().join('')
+    .match(/.{1,3}/g)
+    .map((el) => String(el).split('').reverse().join(''))
+    .reverse()
+    .join(' ');
+}
 
 function getTableData(countriesData, country) {
   if (!country) {
@@ -25,22 +34,47 @@ export default function Table({ startData, country }) {
   const { cases, deaths, recovered } = tableData;
 
   return (
-    <table className={s.table}>
-      <thead className={s.table__head}>
-        <tr className={s.table__row}>
-          <th className={s['table__head-cell']}>Confirmed</th>
-          <th className={s['table__head-cell']}>Deaths</th>
-          <th className={s['table__head-cell']}>Recovered</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className={s.table__row}>
-          <td className={s.table__cell}>{cases}</td>
-          <td className={s.table__cell}>{deaths}</td>
-          <td className={s.table__cell}>{recovered}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div className={style.board}>
+      <div className={style.board__switcher}>
+        {/* TODO: Switcher */}
+      </div>
+      <div className={style.board__switcher}>
+        {/* TODO: Switcher */}
+      </div>
+      <div className={style.board__container}>
+        <div className={style.board__items}>
+          <div className={style.board__item}>
+            <div className={style['board__icon-container']}>
+              <span className={`${style.board__icon} material-icons`}>new_releases</span>
+            </div>
+            <div className={style.board__info}>
+              <div className={style.board__title}>Confirmed:</div>
+              <div className={style.board__statistic}>{splitNumberIntoSpaces(cases)}</div>
+            </div>
+          </div>
+
+          <div className={style.board__item}>
+            <div className={style['board__icon-container']}>
+              <span className={`${style.board__icon} material-icons`}>person_remove</span>
+            </div>
+            <div className={style.board__info}>
+              <div className={style.board__title}>Deaths:</div>
+              <div className={style.board__statistic}>{splitNumberIntoSpaces(deaths)}</div>
+            </div>
+          </div>
+
+          <div className={style.board__item}>
+            <div className={style['board__icon-container']}>
+              <span className={`${style.board__icon} material-icons`}>favorite</span>
+            </div>
+            <div className={style.board__info}>
+              <div className={style.board__title}>Recovered:</div>
+              <div className={style.board__statistic}>{splitNumberIntoSpaces(recovered)}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   );
 }
