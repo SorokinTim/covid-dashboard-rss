@@ -6,7 +6,7 @@ import Search from '../Search/Search';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import StageSwitcher from '../Switcher/StageSwitcher';
-import { getRequiredParam } from '../../utils';
+import getRequiredParam from '../../utils/getRequiredParam';
 import style from './List.module.css';
 
 function splitNumberIntoSpaces(num) {
