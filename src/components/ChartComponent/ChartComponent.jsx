@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Chart from '../Chart/Chart';
 import style from './ChartComponent.module.css';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
@@ -36,3 +37,12 @@ export default function ChartComponent({ switchersState, onSwitcherChange }) {
     </div>
   );
 }
+
+ChartComponent.propTypes = {
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
+  onSwitcherChange: PropTypes.func.isRequired,
+};
