@@ -1,20 +1,7 @@
-import {
-  DECIMAL_RADIX,
-  DECIMAL_PLACES,
-  SWITCHERS_PARAMS,
-} from './constants';
+import { SWITCHERS_PARAMS } from '../constants';
+import getFigurePerHundredThousandPopulation from './getFigurePerHundredThousandPopulation';
 
-function roundFigure(figure, decimalPlaces) {
-  return Math.round(figure * decimalPlaces * DECIMAL_RADIX) / (decimalPlaces * DECIMAL_RADIX);
-}
-
-function getFigurePerHundredThousandPopulation(totalFigure, population) {
-  const figure = (totalFigure * 100000) / population;
-
-  return roundFigure(figure, DECIMAL_PLACES);
-}
-
-function getRequiredParam(countryData, switchersState) {
+export default function getRequiredParam(countryData, switchersState) {
   const {
     cases,
     todayCases,
@@ -87,8 +74,3 @@ function getRequiredParam(countryData, switchersState) {
 
   return undefined;
 }
-
-export {
-  getFigurePerHundredThousandPopulation,
-  getRequiredParam,
-};

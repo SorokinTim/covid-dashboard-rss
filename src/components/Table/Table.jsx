@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
-import { getFigurePerHundredThousandPopulation } from '../../utils';
+import getFigurePerHundredThousandPopulation from '../../utils/getFigurePerHundredThousandPopulation';
 import {
   CONFIRMED_INDEX,
   DEATHS_INDEX,

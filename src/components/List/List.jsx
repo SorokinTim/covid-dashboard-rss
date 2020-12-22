@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Search from '../Search/Search';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import StageSwitcher from '../Switcher/StageSwitcher';
-import { getRequiredParam } from '../../utils';
+import getRequiredParam from '../../utils/getRequiredParam';
 import style from './List.module.css';
 
 function splitNumberIntoSpaces(num) {
@@ -48,7 +50,8 @@ export default function List({
 
   sortedCountriesData.forEach((countryData) => {
     const countryListItem = (
-      <li key={countryData.country}
+      <li
+        key={countryData.country}
         className={style.list__item}
         onClick={() => onCountryItemSelected(countryData.country)}
       >
