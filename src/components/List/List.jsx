@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Search from '../Search/Search';
+import Keyboard from '../Keyboard/Keyboard';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import StageSwitcher from '../Switcher/StageSwitcher';
@@ -89,6 +90,9 @@ export default function List({
         />
       </div>
       <Search filter={filter} onSearchChange={onSearchChange} />
+      <div className={style.list__keyboard}>
+        <Keyboard />
+      </div>
       <div className={style['list__items-list']}>
         {countriesListItems}
       </div>

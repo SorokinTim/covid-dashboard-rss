@@ -6,9 +6,14 @@ import style from './Search.module.css';
 export default class Search extends Component {
   constructor() {
     super();
+    this.inputRef = React.createRef();
     this.state = {
       filter: '',
     };
+  }
+
+  componentDidMount() {
+    setInterval(this.updateFilterState, 100);
   }
 
   componentDidUpdate() {
@@ -24,6 +29,17 @@ export default class Search extends Component {
         filter: propsFilter,
       });
     }
+  }
+
+  updateFilterState = () => {
+    const filter = this.inputRef.value;
+    const { onSearchChange } = this.props;
+
+    this.setState({
+      filter,
+    });
+
+    onSearchChange(filter);
   }
 
   onFilterChange = (e) => {
@@ -48,10 +64,11 @@ export default class Search extends Component {
           placeholder="Insert country"
           value={filter}
           onChange={this.onFilterChange}
+          ref={(el) => { this.inputRef = el; }}
         />
         <label htmlFor="search">
           <span className={`material-icons ${style['list__search-icon']}`}>search</span>
-          <span className={`material-icons ${style['list__keyboard-icon']}`}>keyboard</span>
+          <span id="keyboardSwitcher" className={`material-icons ${style['list__keyboard-icon']}`}>keyboard</span>
         </label>
       </div>
     );

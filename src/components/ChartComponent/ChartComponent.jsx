@@ -1,38 +1,75 @@
-import React from 'react';
-import Chart from '../Chart/Chart';
-import style from './ChartComponent.module.css';
-import TimeSwitcher from '../Switcher/TimeSwitcher';
-import CasesSwitcher from '../Switcher/CasesSwitcher';
-import StageSwitcher from '../Switcher/StageSwitcher';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import CovidService from '../../api/Covid-service';
+import ChartComponentView from './ChartComponentView';
 
-export default function ChartComponent({ switchersState, onSwitcherChange }) {
-  return (
-    <div className={style.chart}>
-      <div className={style['chart__switcher-top']}>
-        <TimeSwitcher
-          groupName="chartTime"
+export default class ChartComponent extends Component {
+  covidService = new CovidService();
+
+  constructor() {
+    super();
+    this.state = {
+      chartData: null,
+      isLoading: true,
+      isError: false,
+    };
+  }
+
+  componentDidMount() {
+    this.getChartData();
+  }
+
+  onChartDataLoaded = (chartData) => {
+    this.setState({
+      chartData,
+      isLoading: false,
+    });
+  }
+
+  onError = () => {
+    this.setState({
+      isError: true,
+      isLoading: false,
+    });
+  }
+
+  getChartData() {
+    this.covidService
+      .getAllDaysGlobal()
+      .then(this.onChartDataLoaded)
+      .catch(this.onError);
+  }
+
+  render() {
+    const { switchersState, onSwitcherChange } = this.props;
+    const { chartData, isLoading, isError } = this.state;
+
+    const error = isError ? 'error' : null;
+    const loading = isLoading ? 'loading...' : null;
+    const app = !(isError || isLoading)
+      ? (
+        <ChartComponentView
           switchersState={switchersState}
           onSwitcherChange={onSwitcherChange}
+          chartData={chartData}
         />
-      </div>
-      <div className={style['chart__switcher-top']}>
-        <CasesSwitcher
-          groupName="chartCases"
-          switchersState={switchersState}
-          onSwitcherChange={onSwitcherChange}
-        />
-      </div>
-      <div className={style.chart__graph}>
-        {/* <canvas className={style['chart__graph-item']} ref={(el) => { chartRef = el; }} /> */}
-        <Chart />
-      </div>
-      <div className={style['chart__switcher-bottom']}>
-        <StageSwitcher
-          groupName="chartStage"
-          switchersState={switchersState}
-          onSwitcherChange={onSwitcherChange}
-        />
-      </div>
-    </div>
-  );
+      ) : null;
+
+    return (
+      <>
+        { error}
+        { loading}
+        { app}
+      </>
+    );
+  }
 }
+
+ChartComponent.propTypes = {
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
+  onSwitcherChange: PropTypes.func.isRequired,
+};
