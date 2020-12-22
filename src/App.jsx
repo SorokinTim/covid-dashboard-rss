@@ -138,6 +138,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log('App render()');
     const {
       startData,
       country,

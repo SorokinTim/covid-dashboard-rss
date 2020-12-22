@@ -14,4 +14,8 @@ export default class CovidService {
   getTotalsForAllCountries() {
     return CovidService.getResource(`${this.covidApiUrl}/countries`);
   }
+
+  getAllDaysGlobal() {
+    return CovidService.getResource(`${this.covidApiUrl}/historical/all?lastdays=all`);
+  }
 }

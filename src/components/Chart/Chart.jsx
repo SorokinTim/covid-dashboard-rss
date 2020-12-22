@@ -1,4 +1,6 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import ChartJS from 'chart.js';
 import style from './Chart.module.css';
 
@@ -13,50 +15,18 @@ export default class Chart extends React.Component {
   }
 
   initializeChart() {
+    const { chartData } = this.props;
+    const data = (Object.values(chartData.cases));
+    const labels = (Object.keys(chartData.cases));
     this.ctx = this.chartRef.getContext('2d');
     this.chart = new ChartJS(this.ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+        labels,
         datasets: [{
           label: 'Cases',
-          data: [12, 19, 3, 5, 2, 3, 1, 6, 7, 4, 7, 7, 8, 9, 12, 11],
-          backgroundColor: [
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-            '#59363E',
-          ],
-          borderColor: [
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-            '#FF3E58',
-          ],
+          data,
+          borderColor: '#FF3E58',
           borderWidth: 1,
         }],
       },
@@ -78,3 +48,11 @@ export default class Chart extends React.Component {
     );
   }
 }
+
+Chart.propTypes = {
+  chartData: PropTypes.shape({
+    cases: PropTypes.object,
+    deaths: PropTypes.object,
+    recovered: PropTypes.object,
+  }).isRequired,
+};
