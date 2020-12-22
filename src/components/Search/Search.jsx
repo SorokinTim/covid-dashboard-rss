@@ -13,7 +13,7 @@ export default class Search extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.updateFilter, 100);
+    setInterval(this.updateFilterState, 100);
   }
 
   componentDidUpdate() {
@@ -31,7 +31,7 @@ export default class Search extends Component {
     }
   }
 
-  updateFilter = () => {
+  updateFilterState = () => {
     const filter = this.inputRef.value;
     const { onSearchChange } = this.props;
 
