@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 80%;
+    min-width: 480px;
+    margin: 50px auto;
+}
+
+.textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    resize: none;
+}
+
+.switcher {
+    min-width: 70px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.keyboard {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: linear-gradient(#3b3b3b, #070707);
+    border-radius: 0.67%;
+    padding: 2% 1.33%;
+}
+
+.keyboard_hidden {
+    display: none;
+}
+
+.keyboard__key {
+    width: 5.86%;
+    height: 49px;
+    margin-right: 0.67%;
+    margin-bottom: 0.67%;
+    background-color: #070707;
+    color: #ebebeb;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    line-height: 45px;
+    border: 2px solid #808080;
+    border-radius: 3px;
+    box-shadow: 0 0 0 2px #000000;
+    outline: 0;
+    user-select: none;
+}
+
+.keyboard__key:last-child {
+    margin-right: 0;
+}
+
+.keyboard__key:hover {
+    background-color: #878686;
+    cursor: pointer;
+}
+
+.backspace {
+    width: 15.07%;
+    margin-right: 0;
+}
+
+.tab {
+    width: 7.47%;
+}
+
+.delete {
+    width: 6.93%;
+    margin-right: 0;
+}
+
+.capslock {
+    width: 11.47%;
+}
+
+.capslock_active {
+    background: linear-gradient(#878686, #505050);
+    transform: translate(1px, 1px);
+    transition: all 0.2s ease 0s;
+}
+
+.enter {
+    width: 16%;
+    margin-right: 0;
+}
+
+.left-shift {
+    width: 8.35%;
+}
+
+.right-shift {
+    width: 12.5%;
+    margin-right: 0;
+}
+
+.space {
+    width: 34.53%;
+}
+
+.arrow {
+    font-size: 10px;
+}
+
+.pressed {
+    background: linear-gradient(#878686, #505050);
+    transform: translate(1px, 1px);
+    transition: all 0.2s ease 0s;
+}
+
+.sound {
+    background-image: url("../../assets/icons/sound-on.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+
+.sound_off {
+    background-image: url("../../assets/icons/sound-off.svg");
+}
+
+.voice {
+    background-image: url("../../assets/icons/microphone.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+
+.voice_on {
+    background-image: url("../../assets/icons/microphone-on.svg");
+}
+
+@media (max-width: 1280px) {
+    .keyboard__key {
+        font-size: 16px;
+    }
+
+    .sound {
+        background-size: 70%;
+    }
+
+    .voice {
+        background-size: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .keyboard__key {
+        font-size: 14px;
+    }
+
+    .backspace {
+        font-size: 12px;
+    }
+
+    .ctrl {
+        font-size: 12px;
+    }
+}
