@@ -76,10 +76,3 @@ body {
   grid-area: date;
   padding: var(--gap-s);
 }
-
-
-.item {
-  background-color: tomato;
-  height: 100%;
-  width: 100%;
-}
