@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import Time from './components/Time/Time';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
+import ChartComponent from './components/ChartComponent/ChartComponent';
 import style from './App.module.css';
 
 export default function AppView({
@@ -54,7 +55,10 @@ export default function AppView({
           />
         </div>
         <div className={style.chart}>
-          <div className={style.item} />
+          <ChartComponent
+            switchersState={switchersState}
+            onSwitcherChange={onSwitcherChange}
+          />
         </div>
       </div>
       <div className={style.footer}>

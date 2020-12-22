@@ -16,6 +16,10 @@
   width: 100%;
 }
 
+.list__switcher_big {
+  min-height: 60px;
+}
+
 .list__items-list {
   width: 92.5%;
   height: 90%;

@@ -92,7 +92,7 @@ export default function List({
       <div className={style['list__items-list']}>
         {countriesListItems}
       </div>
-      <div className={style.list__switcher}>
+      <div className={`${style.list__switcher} ${style.list__switcher_big}`}>
         <StageSwitcher
           groupName="listStage"
           switchersState={switchersState}
