@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import getFigurePerHundredThousandPopulation from '../../utils/getFigurePerHundredThousandPopulation';
+import getTotalPopulation from '../../utils/getTotalPopulation';
+import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
 import {
   CONFIRMED_INDEX,
   DEATHS_INDEX,
@@ -16,19 +18,6 @@ import {
   SWITCHERS_PARAMS,
 } from '../../constants';
 import style from './Table.module.css';
-
-function splitNumberIntoSpaces(num) {
-  return String(num).split('').reverse().join('')
-    .match(/.{1,3}/g)
-    .map((el) => String(el).split('').reverse().join(''))
-    .reverse()
-    .join(' ');
-}
-
-function getTotalPopulation(countriesData) {
-  return countriesData
-    .reduce((population, currentCountryData) => population + currentCountryData.population, 0);
-}
 
 function getGlobalTableFigures(countriesData, [confirmedStat, deathsStat, recoveredStat]) {
   return countriesData.reduce((totalCountryData, currentCountryData) => ([

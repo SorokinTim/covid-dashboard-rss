@@ -13,7 +13,7 @@ export default class Search extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.updateFilterState, 100);
+    setInterval(this.updateFilterState, 1000);
   }
 
   componentDidUpdate() {
@@ -32,14 +32,17 @@ export default class Search extends Component {
   }
 
   updateFilterState = () => {
-    const filter = this.inputRef.value;
+    const refFilter = this.inputRef.value;
+    const { filter: stateFilter } = this.state;
     const { onSearchChange } = this.props;
 
-    this.setState({
-      filter,
-    });
+    if (refFilter !== stateFilter) {
+      this.setState({
+        filter: refFilter,
+      });
 
-    onSearchChange(filter);
+      onSearchChange(refFilter);
+    }
   }
 
   onFilterChange = (e) => {

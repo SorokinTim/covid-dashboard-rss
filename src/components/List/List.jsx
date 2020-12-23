@@ -8,15 +8,8 @@ import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import StageSwitcher from '../Switcher/StageSwitcher';
 import getRequiredParam from '../../utils/getRequiredParam';
+import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
 import style from './List.module.css';
-
-function splitNumberIntoSpaces(num) {
-  return String(num).split('').reverse().join('')
-    .match(/.{1,3}/g)
-    .map((el) => String(el).split('').reverse().join(''))
-    .reverse()
-    .join(' ');
-}
 
 function filterCountriesData(countriesData, filter) {
   if (filter === '') {

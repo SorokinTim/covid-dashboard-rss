@@ -56,6 +56,8 @@ export default function AppView({
         </div>
         <div className={style.chart}>
           <ChartComponent
+            startData={startData}
+            country={country}
             switchersState={switchersState}
             onSwitcherChange={onSwitcherChange}
           />

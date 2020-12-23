@@ -51,7 +51,7 @@
     color: #ebebeb;
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 45px;
     border: 2px solid #808080;
     border-radius: 3px;
@@ -72,15 +72,17 @@
 .backspace {
     width: 15.07%;
     margin-right: 0;
-}
+    font-size: 12px;
+  }
 
-.tab {
+  .tab {
     width: 7.47%;
-}
+  }
 
-.delete {
+  .delete {
     width: 6.93%;
     margin-right: 0;
+    font-size: 12px;
 }
 
 .capslock {
@@ -143,30 +145,6 @@
     background-image: url("../../assets/icons/microphone-on.svg");
 }
 
-@media (max-width: 1280px) {
-    .keyboard__key {
-        font-size: 16px;
-    }
-
-    .sound {
-        background-size: 70%;
-    }
-
-    .voice {
-        background-size: 70%;
-    }
-}
-
-@media (max-width: 768px) {
-    .keyboard__key {
-        font-size: 14px;
-    }
-
-    .backspace {
-        font-size: 12px;
-    }
-
-    .ctrl {
-        font-size: 12px;
-    }
+.ctrl {
+  font-size: 12px;
 }
