@@ -66,6 +66,7 @@ export default class ChartComponent extends Component {
 
     this.setState({
       isLoading: true,
+      isError: false,
     });
 
     if (country) {
@@ -79,6 +80,7 @@ export default class ChartComponent extends Component {
     this.setState({
       chartData,
       isLoading: false,
+      isError: false,
     });
   }
 
@@ -104,7 +106,7 @@ export default class ChartComponent extends Component {
       country,
     } = this.props;
     const { chartData, isLoading, isError } = this.state;
-    const error = isError ? 'error' : null;
+    const error = isError ? 'No Data' : null;
     const loading = isLoading ? 'loading...' : null;
     const app = !(isError || isLoading)
       ? (
