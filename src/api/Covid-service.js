@@ -15,7 +15,9 @@ export default class CovidService {
     return CovidService.getResource(`${this.covidApiUrl}/countries`);
   }
 
-  getAllDaysGlobal() {
-    return CovidService.getResource(`${this.covidApiUrl}/historical/all?lastdays=all`);
-  }
+  getAllDaysGlobal = () => CovidService
+    .getResource(`${this.covidApiUrl}/historical/all?lastdays=all`);
+
+  getAllDaysByCountry = (country) => CovidService
+    .getResource(`${this.covidApiUrl}/historical/${country}?lastdays=all`);
 }
