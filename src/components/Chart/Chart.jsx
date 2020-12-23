@@ -17,12 +17,65 @@ export default class Chart extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { switchersState: prevSwitchersState } = prevProps;
-    const { switchersState } = this.props;
+    const {
+      startData,
+      chartData,
+      switchersState,
+      country,
+    } = this.props;
 
     if (!(prevSwitchersState.partOfPopulation === switchersState.partOfPopulation
       && prevSwitchersState.typeOfTime === switchersState.typeOfTime
       && prevSwitchersState.stageOfDisease === switchersState.stageOfDisease)) {
-      this.initializeChart();
+      const chartOptions = getChartOptions(startData, chartData, switchersState, country);
+
+      this.chart.data = {
+        labels: chartOptions.labels,
+        datasets: [{
+          label: 'Cases',
+          data: chartOptions.data,
+          backgroundColor: chartOptions.type === 'bar' ? '#FF3E58' : 'rgba(0, 0, 0, 0.1)',
+          borderColor: chartOptions.type === 'line' ? '#FF3E58' : 'rgba(0, 0, 0, 0.1)',
+          borderWidth: chartOptions.type === 'bar' ? 0 : 1,
+        }],
+      };
+
+      this.chart.type = chartOptions.type;
+
+      this.chart.options = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+            },
+          }],
+        },
+      };
+
+      /* {
+        type: chartOptions.type,
+        data: {
+          labels: chartOptions.labels,
+          datasets: [{
+            label: 'Cases',
+            data: chartOptions.data,
+            backgroundColor: chartOptions.type === 'bar' ? '#FF3E58' : 'rgba(0, 0, 0, 0.1)',
+            borderColor: chartOptions.type === 'line' ? '#FF3E58' : 'rgba(0, 0, 0, 0.1)',
+            borderWidth: chartOptions.type === 'bar' ? 0 : 1,
+          }],
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              },
+            }],
+          },
+        },
+      }; */
+      console.log('componentDidUpdate this.chart:', this.chart);
+      this.chart.chart.update();
     }
   }
 
@@ -38,6 +91,7 @@ export default class Chart extends React.Component {
     const chartOptions = getChartOptions(startData, chartData, switchersState, country);
 
     this.ctx = this.chartRef.getContext('2d');
+    // this.ctx.clearRect(0, 0, this.chartRef.width, this.chartRef.height);
     this.chart = new ChartJS(this.ctx, {
       type: chartOptions.type,
       data: {
@@ -60,6 +114,8 @@ export default class Chart extends React.Component {
         },
       },
     });
+
+    console.log('this.chart', this.chart);
   }
 
   render() {
