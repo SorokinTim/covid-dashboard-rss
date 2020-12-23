@@ -23,7 +23,8 @@ export default function Footer() {
       <div className={styles.footer__license}>© 2020 The Rolling Scopes</div>
       <div className={styles.footer__author}>
         <i className="fab fa-github" />
-        <div className={styles['footer__github-link']}>@ashablyka</div>
+        <a href="https://github.com/SorokinTim" className={styles['footer__github-link']}>@SorokinTim</a>
+        <a href="https://github.com/ashablyka" className={styles['footer__github-link']}>@ashablyka</a>
       </div>
     </div>
   );
