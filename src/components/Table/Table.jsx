@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import getFigurePerHundredThousandPopulation from '../../utils/getFigurePerHundredThousandPopulation';
+import getTotalPopulation from '../../utils/getTotalPopulation';
 import {
   CONFIRMED_INDEX,
   DEATHS_INDEX,
@@ -23,11 +24,6 @@ function splitNumberIntoSpaces(num) {
     .map((el) => String(el).split('').reverse().join(''))
     .reverse()
     .join(' ');
-}
-
-function getTotalPopulation(countriesData) {
-  return countriesData
-    .reduce((population, currentCountryData) => population + currentCountryData.population, 0);
 }
 
 function getGlobalTableFigures(countriesData, [confirmedStat, deathsStat, recoveredStat]) {
