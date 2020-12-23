@@ -13,7 +13,7 @@ export default class Search extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.updateFilterState, 100);
+    setInterval(this.updateFilterState, 1000);
   }
 
   componentDidUpdate() {
