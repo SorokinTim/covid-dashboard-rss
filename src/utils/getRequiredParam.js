@@ -26,8 +26,11 @@ export default function getRequiredParam(countryData, switchersState) {
   const isCasesPerHundred = partOfPopulation === CASES_PER_HUNDRED;
   const isAllTime = typeOfTime === ALL_TIME;
   const isLastDay = typeOfTime === LAST_DAY;
+  const isConfirmed = stageOfDisease === CONFIRMED;
+  const isDeaths = stageOfDisease === DEATHS;
+  const isRecovered = stageOfDisease === RECOVERED;
 
-  if (stageOfDisease === CONFIRMED) {
+  if (isConfirmed) {
     if (isAbsoluteCases && isAllTime) {
       return cases;
     }
@@ -42,7 +45,7 @@ export default function getRequiredParam(countryData, switchersState) {
     }
   }
 
-  if (stageOfDisease === DEATHS) {
+  if (isDeaths) {
     if (isAbsoluteCases && isAllTime) {
       return deaths;
     }
@@ -57,7 +60,7 @@ export default function getRequiredParam(countryData, switchersState) {
     }
   }
 
-  if (stageOfDisease === RECOVERED) {
+  if (isRecovered) {
     if (isAbsoluteCases && isAllTime) {
       return recovered;
     }
