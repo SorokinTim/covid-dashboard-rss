@@ -20,9 +20,13 @@ export default function Time({ startData }) {
     .reduce((max, currentCountryData) => Math.max(max, currentCountryData.updated), 0);
   const lastUpdateDate = new Date(mostRecentUpdateTime);
 
+  const month = getMonthName(lastUpdateDate.getMonth());
+  const date = lastUpdateDate.getDate();
+  const time = `${padZero(lastUpdateDate.getHours())}:${padZero(lastUpdateDate.getMinutes())}`;
+
   return (
     <div className={style.header__date}>
-      <span className={style['header__date-number']} title="Last Update Time">
+      {/* <span className={style['header__date-number']} title="Last Update Time">
         {lastUpdateDate.getDate()}
       </span>
       <span className={style['header__date-month']} title="Last Update Time">
@@ -31,6 +35,9 @@ export default function Time({ startData }) {
       </span>
       <span className={style['header__date-time']} title="Last Update Time">
         {`${padZero(lastUpdateDate.getHours())}:${padZero(lastUpdateDate.getMinutes())}`}
+      </span> */}
+      <span>
+        {`Updated at ${month}, ${date} ${time}`}
       </span>
     </div>
   );
