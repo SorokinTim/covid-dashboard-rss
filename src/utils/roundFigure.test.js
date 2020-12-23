@@ -1,9 +1,9 @@
 import roundFigure from './roundFigure';
 
-test('adds 1 + 2 to equal 3', () => {
+test('round 1.21 to to first decimal place is equal 1.2', () => {
   expect(roundFigure(1.21, 1)).toBe(1.2);
 });
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(roundFigure(1.99, 1)).toBe(2);
+test('round 1.21 to to second decimal place is equal 1.2', () => {
+  expect(roundFigure(1.256, 2)).toBe(1.26);
 });
