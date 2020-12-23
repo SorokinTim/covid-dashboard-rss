@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
 import styles from './Cases.module.css';
 
 function getGlobalCases(countriesData, country) {
@@ -10,14 +11,6 @@ function getGlobalCases(countriesData, country) {
   }
 
   return null;
-}
-
-function splitNumberIntoSpaces(num) {
-  return String(num).split('').reverse().join('')
-    .match(/.{1,3}/g)
-    .map((el) => String(el).split('').reverse().join(''))
-    .reverse()
-    .join(' ');
 }
 
 export default function Cases({ startData, country }) {
