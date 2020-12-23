@@ -7,7 +7,13 @@ import CasesSwitcher from '../Switcher/CasesSwitcher';
 import StageSwitcher from '../Switcher/StageSwitcher';
 import style from './ChartComponent.module.css';
 
-export default function ChartComponentView({ switchersState, onSwitcherChange, chartData }) {
+export default function ChartComponentView({
+  switchersState,
+  onSwitcherChange,
+  startData,
+  chartData,
+  country,
+}) {
   return (
     <div className={style.chart}>
       <div className={style['chart__switcher-top']}>
@@ -26,7 +32,12 @@ export default function ChartComponentView({ switchersState, onSwitcherChange, c
       </div>
       <div className={style.chart__graph}>
         {/* <canvas className={style['chart__graph-item']} ref={(el) => { chartRef = el; }} /> */}
-        <Chart chartData={chartData} />
+        <Chart
+          startData={startData}
+          chartData={chartData}
+          country={country}
+          switchersState={switchersState}
+        />
       </div>
       <div className={style['chart__switcher-bottom']}>
         <StageSwitcher
@@ -39,7 +50,16 @@ export default function ChartComponentView({ switchersState, onSwitcherChange, c
   );
 }
 
+ChartComponentView.defaultProps = {
+  country: null,
+};
+
 ChartComponentView.propTypes = {
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      population: PropTypes.number,
+    }),
+  ).isRequired,
   switchersState: PropTypes.shape({
     partOfPopulation: PropTypes.string,
     typeOfTime: PropTypes.string,
@@ -51,4 +71,5 @@ ChartComponentView.propTypes = {
     recovered: PropTypes.object,
   }).isRequired,
   onSwitcherChange: PropTypes.func.isRequired,
+  country: PropTypes.string,
 };
