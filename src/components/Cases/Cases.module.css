@@ -9,6 +9,7 @@
   border-radius: 10px;
   color: #fff;
   font-family: 'Rubik', sans-serif;
+  padding: 0 15px;
 }
 
 .global-cases__title {
@@ -20,4 +21,31 @@
   font-weight: 500;
   font-size: 48px;
   line-height: 1em;
+}
+
+@media screen and (max-width: 1500px) {
+  .global-cases__count {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .global-cases__title {
+    font-size: 20px;
+  }
+
+  .global-cases__count {
+    font-size: 36px;
+    line-height: 1.2em;
+  }
+}
+
+@media screen and (max-width: 1200px), screen and (max-height: 950px) {
+  .global-cases__title {
+    font-size: 16px;
+  }
+
+  .global-cases__count {
+    font-size: 28px;
+  }
 }

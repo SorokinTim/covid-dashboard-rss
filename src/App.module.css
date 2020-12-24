@@ -9,7 +9,7 @@ body {
   grid-template-columns: 22% 56% 22%;
   grid-template-rows: 10% 82% 8%;
   grid-template-areas:
-    "header header date"
+    "header header country"
     "details map data"
     "footer footer footer";
   padding: var(--gap-m);
@@ -72,7 +72,22 @@ body {
   padding: var(--gap-s);
 }
 
-.date {
-  grid-area: date;
+.country {
+  grid-area: country;
   padding: var(--gap-s);
+  min-width: 250px;
+  height: 65px;
+  align-self: center;
+  justify-self: flex-start;
+}
+
+@media screen and (max-width: 1200px){
+  .grid-container {
+    grid-template-columns: 25% 50% 25%;
+  }
+
+  .country {
+    min-width: 100px;
+    width: 100%;
+  }
 }

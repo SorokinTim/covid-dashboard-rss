@@ -63,3 +63,93 @@
   font-weight: 600;
   line-height: 1em;
 }
+
+@media screen and (max-width: 1700px) {
+  .board__statistic {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .board__statistic {
+    font-size: 28px;
+  }
+
+  .board__icon-container {
+    width: 64px;
+    height: 64px;
+  }
+
+  .board__icon {
+    font-size: 42px;
+  }
+
+  .board__item {
+    margin: 15px 0;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .board__statistic {
+    font-size: 24px;
+  }
+
+  .board__icon-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .board__icon {
+    font-size: 40px;
+  }
+
+  .board__title {
+    font-size: 16px;
+  }
+
+  .board__item {
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .board__statistic {
+    font-size: 22px;
+  }
+
+  .board__switcher {
+    padding: 5px 15px;
+  }
+
+  .board__items {
+    margin-left: 15px;
+  }
+}
+
+@media screen and (max-width: 1200px), screen and (max-height: 950px) {
+  .board__statistic {
+    font-size: 20px;
+  }
+
+  .board__icon-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .board__icon {
+    font-size: 32px;
+  }
+
+  .board__title {
+    font-size: 14px;
+  }
+
+  .board__switcher {
+    min-height: 35px;
+    padding: 2px 10px;
+  }
+
+  .board__item {
+    margin: 10px 0;
+  }
+}

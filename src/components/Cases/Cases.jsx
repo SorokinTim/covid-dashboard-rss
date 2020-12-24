@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
 import styles from './Cases.module.css';
+import Time from '../Time/Time';
 
 function getGlobalCases(countriesData, country) {
   if (!country) {
@@ -20,6 +21,7 @@ export default function Cases({ startData, country }) {
     <div className={styles['global-cases']}>
       <div className={styles['global-cases__title']}>Global cases:</div>
       <div className={styles['global-cases__count']}>{splitNumberIntoSpaces(cases)}</div>
+      <Time startData={startData} />
     </div>
   );
 }

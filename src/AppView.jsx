@@ -4,7 +4,7 @@ import Cases from './components/Cases/Cases';
 import List from './components/List/List';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import Time from './components/Time/Time';
+import CountryTab from './components/CountryTab/CountryTab';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import ChartComponent from './components/ChartComponent/ChartComponent';
@@ -18,14 +18,23 @@ export default function AppView({
   onSearchChange,
   onCountryItemSelected,
   onSwitcherChange,
+  onCountryTabCancel,
 }) {
   return (
     <div className={style['grid-container']}>
       <div className={style.header}>
         <Header />
       </div>
-      <div className={style.date}>
-        <Time startData={startData} />
+      <div className={style.country}>
+        {country
+          ? (
+            <CountryTab
+              countryName={country}
+              startData={startData}
+              onCountryTabCancel={onCountryTabCancel}
+            />
+          )
+          : null}
       </div>
       <div className={style.map}>
         <Map />
@@ -97,4 +106,5 @@ AppView.propTypes = {
     stageOfDisease: PropTypes.string,
   }).isRequired,
   onSwitcherChange: PropTypes.func.isRequired,
+  onCountryTabCancel: PropTypes.func.isRequired,
 };

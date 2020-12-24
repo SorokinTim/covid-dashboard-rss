@@ -53,6 +53,12 @@ export default class App extends Component {
     });
   }
 
+  onCountryTabCancel = (value) => {
+    this.setState({
+      country: value,
+    });
+  }
+
   onSwitcherChange = (id) => {
     const { ABSOLUTE_CASES } = SWITCHERS_PARAMS.PART_OF_POPULATION;
     const { CASES_PER_HUNDRED } = SWITCHERS_PARAMS.PART_OF_POPULATION;
@@ -159,6 +165,7 @@ export default class App extends Component {
           onCountryItemSelected={this.onCountryItemSelected}
           onSearchChange={this.onSearchChange}
           onSwitcherChange={this.onSwitcherChange}
+          onCountryTabCancel={this.onCountryTabCancel}
         />
       ) : null;
 

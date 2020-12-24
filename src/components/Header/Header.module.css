@@ -35,3 +35,17 @@
 .header__hash {
   color: #FF3E58;
 }
+
+@media screen and (max-width: 1200px) {
+  .header__title {
+    font-size: 28px;
+  }
+
+  .header__logo {
+    font-size: 64px;
+  }
+
+  .header__subtitle {
+    font-size: 16px;
+  }
+}
