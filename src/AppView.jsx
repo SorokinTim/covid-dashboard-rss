@@ -37,7 +37,12 @@ export default function AppView({
           : null}
       </div>
       <div className={style.map}>
-        <Map />
+        <Map
+          startData={startData}
+          switchersState={switchersState}
+          onSwitcherChange={onSwitcherChange}
+          country={country}
+        />
       </div>
       <div className={style.details}>
         <div className={style.cases}>
