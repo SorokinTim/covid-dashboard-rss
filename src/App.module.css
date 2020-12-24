@@ -5,6 +5,7 @@ body {
 .grid-container {
   width: 100%;
   height: 100vh;
+  min-height: 768px;
   display: grid;
   grid-template-columns: 22% 56% 22%;
   grid-template-rows: 10% 82% 8%;
