@@ -25,6 +25,232 @@ const SWITCHERS_PARAMS = {
   },
 };
 
+const LEGEND_MARKS_SIZES = {
+  xl: 50,
+  l: 20,
+  m: 10,
+  s: 6,
+};
+
+const LEGEND = {
+  allAbsoluteConfirmed: {
+    xl: {
+      string: '>5,000,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>100,000 - 5,000,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>5,000 - 100,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 5,000',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  allAbsoluteDeaths: {
+    xl: {
+      string: '>100,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>5,000 - 100,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>500 - 5,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 500',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  allAbsoluteRecovered: {
+    xl: {
+      string: '>5,000,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>100,000 - 5,000,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>5,000 - 100,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 5,000',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  allPer100kConfirmed: {
+    xl: {
+      string: '>6,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>2,000 - 6,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>500 - 2,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 500',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  allPer100kDeaths: {
+    xl: {
+      string: '>100',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>30 - 100',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>5 - 30',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 5',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  allPer100kRecovered: {
+    xl: {
+      string: '>6,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>2,000 - 6,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>500 - 2,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 500',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  lastAbsoluteConfirmed: {
+    xl: {
+      string: '>15,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>1,000 - 15,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>50 - 1,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 50',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  lastAbsoluteDeaths: {
+    xl: {
+      string: '>500',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>50 - 500',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>5 - 50',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 5',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  lastAbsoluteRecovered: {
+    xl: {
+      string: '>15,000',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>1,000 - 15,000',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>50 - 1,000',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 50',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  lastPer100kConfirmed: {
+    xl: {
+      string: '>100',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>30 - 100',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>3 - 30',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 3',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  lastPer100kDeaths: {
+    xl: {
+      string: '>1.5',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>1 - 1.5',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>0.5 - 1',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '0.1 - 0.3',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+  lastPer100kRecovered: {
+    xl: {
+      string: '>100',
+      size: LEGEND_MARKS_SIZES.xl,
+    },
+    l: {
+      string: '>30 - 100',
+      size: LEGEND_MARKS_SIZES.l,
+    },
+    m: {
+      string: '>3 - 30',
+      size: LEGEND_MARKS_SIZES.m,
+    },
+    s: {
+      string: '1 - 3',
+      size: LEGEND_MARKS_SIZES.s,
+    },
+  },
+};
+
 export {
   CONFIRMED_INDEX,
   DEATHS_INDEX,
@@ -38,4 +264,6 @@ export {
   TODAY_DEATH_STAT_TITLE,
   TODAY_RECOVERED_STAT_TITLE,
   SWITCHERS_PARAMS,
+  LEGEND_MARKS_SIZES,
+  LEGEND,
 };
