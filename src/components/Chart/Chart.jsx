@@ -51,47 +51,20 @@ export default class Chart extends React.Component {
           }],
         },
       };
-
-      /* {
-        type: chartOptions.type,
-        data: {
-          labels: chartOptions.labels,
-          datasets: [{
-            label: 'Cases',
-            data: chartOptions.data,
-            backgroundColor: chartOptions.type === 'bar' ? '#FF3E58' : 'rgba(0, 0, 0, 0.1)',
-            borderColor: chartOptions.type === 'line' ? '#FF3E58' : 'rgba(0, 0, 0, 0.1)',
-            borderWidth: chartOptions.type === 'bar' ? 0 : 1,
-          }],
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-              },
-            }],
-          },
-        },
-      }; */
-      console.log('componentDidUpdate this.chart:', this.chart);
       this.chart.chart.update();
     }
   }
 
   initializeChart() {
-    // console.log('Chart initializeChart()');
     const {
       startData,
       chartData,
       switchersState,
       country,
     } = this.props;
-    // console.log('this.chartRef:', this.chartRef);
     const chartOptions = getChartOptions(startData, chartData, switchersState, country);
 
     this.ctx = this.chartRef.getContext('2d');
-    // this.ctx.clearRect(0, 0, this.chartRef.width, this.chartRef.height);
     this.chart = new ChartJS(this.ctx, {
       type: chartOptions.type,
       data: {
@@ -114,12 +87,9 @@ export default class Chart extends React.Component {
         },
       },
     });
-
-    console.log('this.chart', this.chart);
   }
 
   render() {
-    // console.log('Chart render()');
     return (
       <canvas className={`${style['chart__graph-item']} canvas-chart`} ref={(el) => { this.chartRef = el; }} />
     );

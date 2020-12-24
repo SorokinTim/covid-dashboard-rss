@@ -26,17 +26,7 @@ export default function Time({ startData }) {
 
   return (
     <div className={style.header__date}>
-      {/* <span className={style['header__date-number']} title="Last Update Time">
-        {lastUpdateDate.getDate()}
-      </span>
-      <span className={style['header__date-month']} title="Last Update Time">
-        {getMonthName(lastUpdateDate.getMonth())}
-        <span className={style['header__date-comma']}>,</span>
-      </span>
-      <span className={style['header__date-time']} title="Last Update Time">
-        {`${padZero(lastUpdateDate.getHours())}:${padZero(lastUpdateDate.getMinutes())}`}
-      </span> */}
-      <span>
+      <span title="Last update time">
         {`Updated at ${month}, ${date} ${time}`}
       </span>
     </div>

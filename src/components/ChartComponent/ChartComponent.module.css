@@ -1,6 +1,6 @@
 .chart {
   box-sizing: border-box;
-  padding: 10px 20px;
+  padding: 10px 30px;
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -17,6 +17,7 @@
 }
 
 .chart__graph {
+  position: relative;
   height: 100%;
   width: 100%;
   padding: 10px 0;
@@ -34,4 +35,21 @@
   min-height: 60px;
   width: 100%;
   padding-top: 10px;
+}
+
+@media screen and (max-width: 1300px) {
+  .chart {
+    padding: 10px 15px;
+  }
+}
+
+@media screen and (max-width: 1200px), screen and (max-height: 950px) {
+  .chart__switcher-bottom {
+    min-height: 50px;
+  }
+
+  .chart__switcher-top {
+    min-height: 35px;
+    padding: 2px 0;
+  }
 }
