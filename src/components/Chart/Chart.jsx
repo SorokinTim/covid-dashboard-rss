@@ -29,7 +29,8 @@ export default class Chart extends React.Component {
       && prevSwitchersState.stageOfDisease === switchersState.stageOfDisease)) {
       const chartOptions = getChartOptions(startData, chartData, switchersState, country);
 
-      this.chart.data = {
+      this.chart.config.type = chartOptions.type;
+      this.chart.config.data = {
         labels: chartOptions.labels,
         datasets: [{
           label: 'Cases',
@@ -39,19 +40,7 @@ export default class Chart extends React.Component {
           borderWidth: chartOptions.type === 'bar' ? 0 : 1,
         }],
       };
-
-      this.chart.type = chartOptions.type;
-
-      this.chart.options = {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true,
-            },
-          }],
-        },
-      };
-      this.chart.chart.update();
+      this.chart.update();
     }
   }
 
