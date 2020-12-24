@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import mapboxgl from '../../api/api-mapbox';
 import style from './Map.module.css';
 import getRequiredParam from '../../utils/getRequiredParam';
+import getMarkSize from '../../utils/getMarkSize';
 
 function findCountryCoords(startData, country) {
   if (!country) return undefined;
@@ -31,10 +32,8 @@ function getMapMarker(props) {
   const el = document.createElement('div');
   el.className = style.map__marker;
 
-  // TODO: change size
-  // const size = TODO: your variable value;
-  // el.style.width = `${size}px`;
-  // el.style.height = `${size}px`;
+  el.style.width = `${props.size}px`;
+  el.style.height = `${props.size}px`;
 
   new mapboxgl.Marker(el).setLngLat(props.coords)
     .setPopup(getMarkerLabel(props)).addTo(props.map);
@@ -62,16 +61,18 @@ export default class Map extends React.Component {
       center: coords !== undefined ? coords : [29.632, 54.257],
       zoom: 3.5,
     });
-    // const globalCases = fn();
+
     const { startData, switchersState } = this.props;
 
     startData.forEach((el) => {
+      const value = getRequiredParam(el, switchersState);
+
       getMapMarker({
         map: this.map,
         coords: [el.countryInfo.long, el.countryInfo.lat],
         title: el.country,
-        cases: getRequiredParam(el, switchersState),
-        //  size: country.cases / globalCases * 100
+        cases: value,
+        size: getMarkSize(value, switchersState),
       });
     });
 
