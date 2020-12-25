@@ -1,7 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import CovidService from './api/Covid-service';
 import AppView from './AppView';
 import { SWITCHERS_PARAMS } from './constants';
+import Spinner from './components/Spinner/Spinner';
+import style from './App.module.css';
 
 export default class App extends Component {
   covidService = new CovidService();
@@ -154,7 +156,7 @@ export default class App extends Component {
     } = this.state;
 
     const error = isError ? 'error' : null;
-    const loading = isLoading ? 'loading...' : null;
+    const loading = isLoading ? <Spinner /> : null;
     const app = !(isError || isLoading)
       ? (
         <AppView
@@ -169,12 +171,14 @@ export default class App extends Component {
         />
       ) : null;
 
+    console.log(app);
+
     return (
-      <>
+      <div className={style['start-screen']}>
         {error}
         {loading}
         {app}
-      </>
+      </div>
     );
   }
 }

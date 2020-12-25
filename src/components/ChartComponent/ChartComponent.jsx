@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CovidService from '../../api/Covid-service';
 import ChartComponentView from './ChartComponentView';
+import Spinner from '../Spinner/Spinner';
 
 export default class ChartComponent extends Component {
   covidService = new CovidService();
@@ -16,42 +17,8 @@ export default class ChartComponent extends Component {
   }
 
   componentDidMount() {
-    // const { country } = this.props;
-    // console.log('country', country);
     this.getChartData(this.covidService.getAllDaysGlobal);
   }
-
-  /* shouldComponentUpdate(nextProps) {
-    const { switchersState: prevSwitchersState } = nextProps;
-    const { switchersState } = this.props;
-    const { isLoading } = this.state;
-
-    if (isLoading) {
-      console.log('true(isLoading)');
-      return true;
-    }
-
-    if (prevSwitchersState.partOfPopulation === switchersState.partOfPopulation
-      && prevSwitchersState.typeOfTime === switchersState.typeOfTime
-      && prevSwitchersState.stageOfDisease === switchersState.stageOfDisease) {
-      console.log('false');
-      return false;
-    }
-
-    const canvas = document.querySelector('.canvas-chart');
-    if (canvas) {
-      console.log('canvas', canvas);
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.remove();
-      console.log('canvas.remove()');
-      console.log('true');
-
-      return true;
-    }
-
-    return true;
-  } */
 
   componentDidUpdate(prevProps) {
     this.onComponentUpdate(prevProps);
@@ -107,7 +74,7 @@ export default class ChartComponent extends Component {
     } = this.props;
     const { chartData, isLoading, isError } = this.state;
     const error = isError ? 'No Data' : null;
-    const loading = isLoading ? 'loading...' : null;
+    const loading = isLoading ? <Spinner /> : null;
     const app = !(isError || isLoading)
       ? (
         <ChartComponentView
@@ -121,9 +88,9 @@ export default class ChartComponent extends Component {
 
     return (
       <>
-        { error}
-        { loading}
-        { app}
+        {error}
+        {loading}
+        {app}
       </>
     );
   }
