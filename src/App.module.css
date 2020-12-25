@@ -22,8 +22,28 @@ body {
 }
 
 .map {
+  position: relative;
   grid-area: map;
   padding: var(--gap-s);
+}
+
+.map__bottom-switcher {
+  position: absolute;
+  height: 45px;
+  min-width: 210px;
+  width: 35%;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.map__label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 180px;
+  height: 150px;
 }
 
 .details {
@@ -90,5 +110,36 @@ body {
   .country {
     min-width: 100px;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 10% 100% 100% 10%;
+    grid-template-areas:
+      "header country"
+      "details map"
+      "data data"
+      "footer footer";
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 10% 100% 100% 100% 10%;
+    grid-template-areas:
+      "header country"
+      "map map"
+      "details details"
+      "data data"
+      "footer footer";
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 55% 45%;
   }
 }

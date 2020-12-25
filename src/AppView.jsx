@@ -5,6 +5,8 @@ import List from './components/List/List';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import CountryTab from './components/CountryTab/CountryTab';
+import StageSwitcher from './components/Switcher/StageSwitcher';
+import MapLabel from './components/MapLabel/MapLabel';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import ChartComponent from './components/ChartComponent/ChartComponent';
@@ -43,6 +45,16 @@ export default function AppView({
           onSwitcherChange={onSwitcherChange}
           country={country}
         />
+        <div className={style['map__bottom-switcher']}>
+          <StageSwitcher
+            groupName="mapStage"
+            switchersState={switchersState}
+            onSwitcherChange={onSwitcherChange}
+          />
+        </div>
+        <div className={style.map__label}>
+          <MapLabel switchersState={switchersState} />
+        </div>
       </div>
       <div className={style.details}>
         <div className={style.cases}>
