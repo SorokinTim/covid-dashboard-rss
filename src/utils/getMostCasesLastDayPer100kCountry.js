@@ -1,3 +1,6 @@
+import roundFigure from './roundFigure';
+import { DECIMAL_PLACES } from '../constants';
+
 export default function getMostCasesLastDayPer100kCountry(countriesData) {
   const resultCountryData = countriesData.reduce((maxCountryData, currentCountryData) => {
     if (maxCountryData.todayCases / maxCountryData.population
@@ -12,6 +15,7 @@ export default function getMostCasesLastDayPer100kCountry(countriesData) {
     title: 'Most Cases Last Day Per 100K',
     flag: resultCountryData.countryInfo.flag,
     country: resultCountryData.country,
-    value: (resultCountryData.todayCases * 100000) / resultCountryData.population,
+    value: roundFigure(((resultCountryData.todayCases * 100000)
+      / resultCountryData.population), DECIMAL_PLACES),
   };
 }

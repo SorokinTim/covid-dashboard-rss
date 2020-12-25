@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './CountryTop.module.css';
 
-export default function CountryTop(startData, getCountryData) {
+export default function CountryTop({ startData, getCountryData }) {
   const countryData = getCountryData(startData);
 
   const {
@@ -28,8 +28,20 @@ export default function CountryTop(startData, getCountryData) {
   );
 }
 
-/* CountryTop.propTypes = {
-  title: PropTypes.string.isRequired,
-}; */
+CountryTop.propTypes = {
+  startData: PropTypes.arrayOf(
+    PropTypes.shape({
+      updated: PropTypes.number,
+      country: PropTypes.string,
+      cases: PropTypes.number,
+      deaths: PropTypes.number,
+      recovered: PropTypes.number,
+      countryInfo: PropTypes.shape({
+        flag: PropTypes.string,
+      }),
+    }),
+  ).isRequired,
+  getCountryData: PropTypes.func.isRequired,
+};
 
 // <CountryTop startData={startData} getCountryData={getMostCasesCountry} />
