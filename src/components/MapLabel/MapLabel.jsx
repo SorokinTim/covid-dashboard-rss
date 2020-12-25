@@ -23,7 +23,7 @@ export default function MapLabel({ switchersState }) {
       };
 
       return (
-        <div className={style.label__item}>
+        <div key={el.size} className={style.label__item}>
           <div className={style.label__circle} style={widthStyle} />
           <div className={style.label__title}>{el.string}</div>
         </div>
