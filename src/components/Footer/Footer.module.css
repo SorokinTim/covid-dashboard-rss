@@ -39,3 +39,19 @@
   text-decoration: none;
   color: #fff;
 }
+
+@media screen and (max-width: 768px){
+  .footer__github-link {
+    font-size: 10px;
+  }
+
+  .footer__license {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer__license {
+    display: none;
+  }
+}

@@ -17,12 +17,12 @@ function getMarkerLabelHTML(props) {
   return (`
     <h3>${props.title}</h3>
     <br>
-    <p>Cases: ${props.cases}</p>
+    <p>Value: ${props.cases}</p>
   `);
 }
 
 function getMarkerLabel(props) {
-  const popup = new mapboxgl.Popup({ offset: 25, className: style.map__popup })
+  const popup = new mapboxgl.Popup({ offset: 25, className: style.map__popup, closeButton: false })
     .setHTML(getMarkerLabelHTML(props));
 
   return popup;
@@ -35,9 +35,14 @@ function getMapMarker(props) {
   el.style.width = `${props.size}px`;
   el.style.height = `${props.size}px`;
 
+  el.onmouseenter = () => el.click();
+  el.onmouseleave = () => el.click();
+
   new mapboxgl.Marker(el).setLngLat(props.coords)
-    .setPopup(getMarkerLabel(props)).addTo(props.map);
+    .setPopup(getMarkerLabel(props))
+    .addTo(props.map);
 }
+
 export default class Map extends React.Component {
   constructor() {
     super();
@@ -60,6 +65,10 @@ export default class Map extends React.Component {
       style: 'mapbox://styles/mapbox/dark-v9',
       center: coords !== undefined ? coords : [29.632, 54.257],
       zoom: 3.5,
+    });
+
+    this.map.on('mouseup', () => {
+      setTimeout(() => this.map.resize(), 0);
     });
 
     const { startData, switchersState } = this.props;
