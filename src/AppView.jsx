@@ -12,6 +12,10 @@ import Table from './components/Table/Table';
 import ChartComponent from './components/ChartComponent/ChartComponent';
 import style from './App.module.css';
 
+import CountryTop from './components/CountryTop/CountryTop';
+import getMostCasesCountry from './utils/getMostCasesCountry';
+import getMostCasesPer100kCountry from './utils/getMostCasesPer100kCountry';
+
 export default function AppView({
   startData,
   country,
@@ -27,6 +31,8 @@ export default function AppView({
       <div className={style.header}>
         <Header />
       </div>
+      <CountryTop startData={startData} getCountryData={getMostCasesCountry} />
+      <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
       <div className={style.country}>
         {country
           ? (
