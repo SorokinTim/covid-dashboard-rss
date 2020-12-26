@@ -67,6 +67,7 @@ export default class Map extends React.Component {
       zoom: 3.5,
     });
 
+    // eslint-disable-next-line react/destructuring-assignment,react/prop-types
     this.props.map.current = this.map;
 
     this.map.on('mouseup', () => {

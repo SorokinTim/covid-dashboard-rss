@@ -9,7 +9,6 @@ export default function MapLabel({ switchersState }) {
     const labels = getLegendData(switchersState);
     const labelsArr = [];
 
-
     Object.keys(labels).forEach((label) => {
       labelsArr.push(labels[label]);
     });
