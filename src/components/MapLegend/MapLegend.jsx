@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './MapLabel.module.css';
 import getLegendData from '../../utils/getLegendData';
+import style from './MapLegend.module.css';
 
-export default function MapLabel({ switchersState }) {
+export default function MapLegend({ switchersState }) {
   function getLabels() {
     const labels = getLegendData(switchersState);
     const labelsArr = [];
@@ -18,8 +18,8 @@ export default function MapLabel({ switchersState }) {
   function renderLabels(labels) {
     return labels.map((el) => {
       const widthStyle = {
-        width: `${Math.floor(el.size / 2)}px`,
-        height: `${Math.floor(el.size / 2)}px`,
+        width: `${Math.floor(el.size)}px`,
+        height: `${Math.floor(el.size)}px`,
       };
 
       return (
@@ -40,7 +40,7 @@ export default function MapLabel({ switchersState }) {
   );
 }
 
-MapLabel.propTypes = {
+MapLegend.propTypes = {
   switchersState: PropTypes.shape({
     partOfPopulation: PropTypes.string,
     typeOfTime: PropTypes.string,
