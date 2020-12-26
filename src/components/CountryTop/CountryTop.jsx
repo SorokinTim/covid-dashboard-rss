@@ -13,17 +13,18 @@ export default function CountryTop({ startData, getCountryData }) {
   } = countryData;
 
   return (
-    <div className={style['country-top']}>
-      <div className={style['country-top__title']}>{title}</div>
-      <div className={style['country-top__info']}>
-        <img
-          src={flag}
-          alt="flag"
-          className={style['country-top__flag']}
-        />
-        <div className={style['country-top__name']}>{country}</div>
+    <div className={style.country}>
+      <div className={style.country__info}>{`${title}:`}</div>
+      <div className={style.country__container}>
+        <div className={style.country__flag}>
+          <img
+            src={flag}
+            alt="flag"
+          />
+        </div>
+        <div className={style.country__title}>{country}</div>
+        <div className={style.country__cases}>{value}</div>
       </div>
-      <div className={style['country-top__value']}>{value}</div>
     </div>
   );
 }

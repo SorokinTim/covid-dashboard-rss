@@ -27,9 +27,20 @@ body {
   padding: var(--gap-s);
 }
 
+.map__top {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 180px;
+}
+
+.map__top > * {
+  margin-bottom: 5px;
+}
+
 .map__fullscreen {
   position: absolute;
-  z-index: 100;
+  z-index: 90;
   color: rgba(255, 62, 88, 0.2);
   cursor: pointer;
   top: 10px;
@@ -180,5 +191,11 @@ body {
 @media screen and (max-width: 768px) {
   .grid-container {
     grid-template-columns: 55% 45%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .map__top {
+    display: none;
   }
 }
