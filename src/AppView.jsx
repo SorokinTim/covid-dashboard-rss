@@ -12,6 +12,8 @@ import Table from './components/Table/Table';
 import ChartComponent from './components/ChartComponent/ChartComponent';
 import style from './App.module.css';
 
+import changeScreenState from './utils/changeScreenState';
+
 export default function AppView({
   startData,
   country,
@@ -22,6 +24,12 @@ export default function AppView({
   onSwitcherChange,
   onCountryTabCancel,
 }) {
+  const map = React.createRef();
+
+  let mapRef = React.createRef();
+  let listRef = React.createRef();
+  let boardRef = React.createRef();
+
   return (
     <div className={style['grid-container']}>
       <div className={style.header}>
@@ -38,12 +46,25 @@ export default function AppView({
           )
           : null}
       </div>
-      <div className={style.map}>
+      <div className={`${style.map}`} ref={(el) => mapRef = el}>
+        <span
+          className={`${style.map__fullscreen} material-icons`}
+          onClick={(e) => {
+            changeScreenState({
+              e,
+              map,
+              el: mapRef,
+            });
+          }}
+        >
+          fullscreen
+        </span>
         <Map
           startData={startData}
           switchersState={switchersState}
           onSwitcherChange={onSwitcherChange}
           country={country}
+          map={map}
         />
         <div className={style['map__bottom-switcher']}>
           <StageSwitcher
@@ -56,7 +77,18 @@ export default function AppView({
           <MapLabel switchersState={switchersState} />
         </div>
       </div>
-      <div className={style.details}>
+      <div className={style.details} ref={(el) => listRef = el}>
+        <span
+          className={`${style.map__fullscreen} material-icons`}
+          onClick={(e) => {
+            changeScreenState({
+              e,
+              el: listRef,
+            });
+          }}
+        >
+          fullscreen
+        </span>
         <div className={style.cases}>
           <Cases startData={startData} />
         </div>
@@ -71,8 +103,19 @@ export default function AppView({
           />
         </div>
       </div>
-      <div className={style.data}>
+      <div className={style.data} ref={(el) => boardRef = el}>
         <div className={style.broad}>
+          <span
+            className={`${style.map__fullscreen} material-icons`}
+            onClick={(e) => {
+              changeScreenState({
+                e,
+                el: boardRef,
+              });
+            }}
+          >
+            fullscreen
+          </span>
           <Table
             startData={startData}
             country={country}

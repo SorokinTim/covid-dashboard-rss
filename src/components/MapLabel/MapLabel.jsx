@@ -2,11 +2,13 @@ import React from 'react';
 import style from './MapLabel.module.css';
 import getLegendData from '../../utils/getLegendData';
 
+// eslint-disable-next-line react/prop-types
 export default function MapLabel({ switchersState }) {
   function getLabels() {
     const label = getLegendData(switchersState);
     const labelArr = [];
 
+    // eslint-disable-next-line guard-for-in,no-restricted-syntax
     for (const size in label) {
       labelArr.push(label[size]);
     }

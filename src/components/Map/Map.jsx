@@ -67,9 +67,13 @@ export default class Map extends React.Component {
       zoom: 3.5,
     });
 
+    this.props.map.current = this.map;
+
     this.map.on('mouseup', () => {
       setTimeout(() => this.map.resize(), 0);
     });
+
+    window.map = this.map;
 
     const { startData, switchersState } = this.props;
 
@@ -91,7 +95,10 @@ export default class Map extends React.Component {
   render() {
     return (
       <div className={style.container}>
-        <div ref={(el) => { this.mapRef = el; }} className={style.map} />
+        <div
+          ref={(el) => { this.mapRef = el; }}
+          className={style.map}
+        />
       </div>
     );
   }

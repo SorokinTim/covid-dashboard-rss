@@ -71,8 +71,8 @@ export default class Search extends Component {
           ref={(el) => { this.inputRef = el; }}
         />
         <label htmlFor="search">
-          <span className={`material-icons ${style['list__search-icon']}`}>search</span>
-          <span id="keyboardSwitcher" className={`material-icons ${style['list__keyboard-icon']}`}>keyboard</span>
+          <span className={`material-icons notranslate ${style['list__search-icon']}`}>search</span>
+          <span id="keyboardSwitcher" className={`material-icons notranslate ${style['list__keyboard-icon']}`}>keyboard</span>
         </label>
       </div>
     );

@@ -142,7 +142,7 @@ export default function Table({
         <div className={style.board__items}>
           <div className={style.board__item}>
             <div className={style['board__icon-container']}>
-              <span className={`${style.board__icon} material-icons`}>new_releases</span>
+              <span className={`${style.board__icon} material-icons notranslate`}>new_releases</span>
             </div>
             <div className={style.board__info}>
               <div className={style.board__title}>Confirmed:</div>
@@ -152,7 +152,7 @@ export default function Table({
 
           <div className={style.board__item}>
             <div className={style['board__icon-container']}>
-              <span className={`${style.board__icon} material-icons`}>person_remove</span>
+              <span className={`${style.board__icon} material-icons notranslate`}>person_remove</span>
             </div>
             <div className={style.board__info}>
               <div className={style.board__title}>Deaths:</div>
@@ -162,7 +162,7 @@ export default function Table({
 
           <div className={style.board__item}>
             <div className={style['board__icon-container']}>
-              <span className={`${style.board__icon} material-icons`}>favorite</span>
+              <span className={`${style.board__icon} material-icons notranslate`}>favorite</span>
             </div>
             <div className={style.board__info}>
               <div className={style.board__title}>Recovered:</div>
