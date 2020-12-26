@@ -16,42 +16,8 @@ export default class ChartComponent extends Component {
   }
 
   componentDidMount() {
-    // const { country } = this.props;
-    // console.log('country', country);
     this.getChartData(this.covidService.getAllDaysGlobal);
   }
-
-  /* shouldComponentUpdate(nextProps) {
-    const { switchersState: prevSwitchersState } = nextProps;
-    const { switchersState } = this.props;
-    const { isLoading } = this.state;
-
-    if (isLoading) {
-      console.log('true(isLoading)');
-      return true;
-    }
-
-    if (prevSwitchersState.partOfPopulation === switchersState.partOfPopulation
-      && prevSwitchersState.typeOfTime === switchersState.typeOfTime
-      && prevSwitchersState.stageOfDisease === switchersState.stageOfDisease) {
-      console.log('false');
-      return false;
-    }
-
-    const canvas = document.querySelector('.canvas-chart');
-    if (canvas) {
-      console.log('canvas', canvas);
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      canvas.remove();
-      console.log('canvas.remove()');
-      console.log('true');
-
-      return true;
-    }
-
-    return true;
-  } */
 
   componentDidUpdate(prevProps) {
     this.onComponentUpdate(prevProps);

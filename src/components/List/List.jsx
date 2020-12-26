@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Search from '../Search/Search';
@@ -8,7 +6,7 @@ import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import StageSwitcher from '../Switcher/StageSwitcher';
 import getRequiredParam from '../../utils/getRequiredParam';
-import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
+import splitNumberWithCommas from '../../utils/splitNumberWithCommas';
 import style from './List.module.css';
 
 function filterCountriesData(countriesData, filter) {
@@ -58,7 +56,7 @@ export default function List({
         </div>
         <div className={style.list__country}>{countryData.country}</div>
         <div className={style.list__confirmed}>
-          {splitNumberIntoSpaces(getRequiredParam(countryData, switchersState))}
+          {splitNumberWithCommas(getRequiredParam(countryData, switchersState))}
         </div>
       </li>
     );

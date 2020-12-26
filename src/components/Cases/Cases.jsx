@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
+import splitNumberWithCommas from '../../utils/splitNumberWithCommas';
 import styles from './Cases.module.css';
 import Time from '../Time/Time';
 
@@ -19,8 +19,8 @@ export default function Cases({ startData, country }) {
 
   return (
     <div className={styles['global-cases']}>
-      <div className={styles['global-cases__title']}>Global cases:</div>
-      <div className={styles['global-cases__count']}>{splitNumberIntoSpaces(cases)}</div>
+      <div className={styles['global-cases__title']}>Global cases</div>
+      <div className={styles['global-cases__count']}>{splitNumberWithCommas(cases)}</div>
       <Time startData={startData} />
     </div>
   );

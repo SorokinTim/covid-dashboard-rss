@@ -26,10 +26,10 @@ const SWITCHERS_PARAMS = {
 };
 
 const LEGEND_MARKS_SIZES = {
-  xl: 50,
-  l: 20,
-  m: 10,
-  s: 6,
+  xl: 25,
+  l: 10,
+  m: 5,
+  s: 3,
 };
 
 const LEGEND = {

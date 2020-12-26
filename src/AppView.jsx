@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import CountryTab from './components/CountryTab/CountryTab';
 import StageSwitcher from './components/Switcher/StageSwitcher';
-import MapLabel from './components/MapLabel/MapLabel';
+import MapLegend from './components/MapLegend/MapLegend';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import ChartComponent from './components/ChartComponent/ChartComponent';
@@ -49,7 +49,7 @@ export default function AppView({
           )
           : null}
       </div>
-      <div className={`${style.map}`} ref={(el) => mapRef = el}>
+      <div className={`${style.map}`} ref={(el) => { mapRef = el; }}>
         <span
           className={`${style.map__fullscreen} material-icons`}
           onClick={(e) => {
@@ -77,14 +77,14 @@ export default function AppView({
           />
         </div>
         <div className={style.map__label}>
-          <MapLabel switchersState={switchersState} />
+          <MapLegend switchersState={switchersState} />
         </div>
         <div className={style.map__top}>
           <CountryTop startData={startData} getCountryData={getMostCasesCountry} />
           <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
         </div>
       </div>
-      <div className={style.details} ref={(el) => listRef = el}>
+      <div className={style.details} ref={(el) => { listRef = el; }}>
         <span
           className={`${style.map__fullscreen} material-icons`}
           onClick={(e) => {
@@ -110,7 +110,7 @@ export default function AppView({
           />
         </div>
       </div>
-      <div className={style.data} ref={(el) => boardRef = el}>
+      <div className={style.data} ref={(el) => { boardRef = el; }}>
         <div className={style.broad}>
           <span
             className={`${style.map__fullscreen} material-icons`}
