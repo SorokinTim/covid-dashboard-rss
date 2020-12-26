@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import CovidService from './api/Covid-service';
 import AppView from './AppView';
 import { SWITCHERS_PARAMS } from './constants';

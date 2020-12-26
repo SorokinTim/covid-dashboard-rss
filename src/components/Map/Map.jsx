@@ -67,8 +67,9 @@ export default class Map extends React.Component {
       zoom: 3.5,
     });
 
-    // eslint-disable-next-line react/destructuring-assignment,react/prop-types
-    this.props.map.current = this.map;
+    const { map } = this.props;
+
+    map.current = this.map;
 
     this.map.on('mouseup', () => {
       setTimeout(() => this.map.resize(), 0);
@@ -128,4 +129,6 @@ Map.propTypes = {
     typeOfTime: PropTypes.string,
     stageOfDisease: PropTypes.string,
   }).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  map: PropTypes.object.isRequired,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import splitNumberWithCommas from '../../utils/splitNumberWithCommas';
 import style from './CountryTop.module.css';
 
 export default function CountryTop({ startData, getCountryData }) {
@@ -14,7 +15,7 @@ export default function CountryTop({ startData, getCountryData }) {
 
   return (
     <div className={style.country}>
-      <div className={style.country__info}>{`${title}:`}</div>
+      <div className={style.country__info}>{`${title}`}</div>
       <div className={style.country__container}>
         <div className={style.country__flag}>
           <img
@@ -23,7 +24,7 @@ export default function CountryTop({ startData, getCountryData }) {
           />
         </div>
         <div className={style.country__title}>{country}</div>
-        <div className={style.country__cases}>{value}</div>
+        <div className={style.country__cases}>{splitNumberWithCommas(value)}</div>
       </div>
     </div>
   );
@@ -44,5 +45,3 @@ CountryTop.propTypes = {
   ).isRequired,
   getCountryData: PropTypes.func.isRequired,
 };
-
-// <CountryTop startData={startData} getCountryData={getMostCasesCountry} />

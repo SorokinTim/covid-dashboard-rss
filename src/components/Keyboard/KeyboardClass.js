@@ -248,13 +248,11 @@ export default class Keyboard {
   hideKeyboard() {
     this.isSwitcherOn = false;
     this.keyboardElement.classList.add('keyboard_hidden');
-    // this.switcherElement.textContent = 'Show';
   }
 
   showKeyboard() {
     this.isSwitcherOn = true;
     this.keyboardElement.classList.remove('keyboard_hidden');
-    // this.switcherElement.textContent = 'Hide';
   }
 
   fillButtonsNames() {

@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import CountryTab from './components/CountryTab/CountryTab';
 import StageSwitcher from './components/Switcher/StageSwitcher';
-import MapLabel from './components/MapLabel/MapLabel';
+import MapLegend from './components/MapLegend/MapLegend';
 import Map from './components/Map/Map';
 import Table from './components/Table/Table';
 import ChartComponent from './components/ChartComponent/ChartComponent';
@@ -51,12 +51,9 @@ export default function AppView({
           )
           : null}
       </div>
-      {/* eslint-disable-next-line no-return-assign */}
-      <div className={`${style.map}`} ref={(el) => mapRef = el}>
-        {/* eslint-disable-next-line max-len */}
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+      <div className={`${style.map}`} ref={(el) => { mapRef = el; }}>
         <span
-          className={`${style.map__fullscreen} material-icons`}
+          className={`${style.map__fullscreen} material-icons notranslate`}
           onClick={(e) => {
             changeScreenState({
               e,
@@ -82,7 +79,7 @@ export default function AppView({
           />
         </div>
         <div className={style.map__label}>
-          <MapLabel switchersState={switchersState} />
+          <MapLegend switchersState={switchersState} />
         </div>
         <div className={style.map__top}>
           <CountryTop startData={startData} getCountryData={getMostCasesCountry} />
@@ -91,12 +88,11 @@ export default function AppView({
       </div>
       {/* eslint-disable-next-line no-return-assign */}
       <div className={style.details}>
-        {/* eslint-disable-next-line no-return-assign */}
-        <div className={style.cases} ref={(el) => casesRef = el}>
+        <div className={style.cases} ref={(el) => { casesRef = el; }}>
           {/* eslint-disable-next-line max-len */}
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
           <span
-            className={`${style.map__fullscreen} material-icons`}
+            className={`${style.map__fullscreen} material-icons notranslate`}
             onClick={(e) => {
               changeScreenState({
                 e,
@@ -136,7 +132,7 @@ export default function AppView({
       {/* eslint-disable-next-line no-return-assign */}
       <div className={style.data}>
         {/* eslint-disable-next-line no-return-assign */}
-        <div className={style.broad} ref={(el) => boardRef = el}>
+        <div className={style.broad} ref={(el) => { boardRef = el; }}>
           {/* eslint-disable-next-line max-len */}
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
           <span

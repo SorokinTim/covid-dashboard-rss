@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './MapLabel.module.css';
 import getLegendData from '../../utils/getLegendData';
+import style from './MapLegend.module.css';
 
-// eslint-disable-next-line react/prop-types
-export default function MapLabel({ switchersState }) {
+export default function MapLegend({ switchersState }) {
   function getLabels() {
     const labels = getLegendData(switchersState);
     const labelsArr = [];
@@ -19,8 +18,8 @@ export default function MapLabel({ switchersState }) {
   function renderLabels(labels) {
     return labels.map((el) => {
       const widthStyle = {
-        width: `${Math.floor(el.size / 2)}px`,
-        height: `${Math.floor(el.size / 2)}px`,
+        width: `${Math.floor(el.size)}px`,
+        height: `${Math.floor(el.size)}px`,
       };
 
       return (
@@ -32,22 +31,16 @@ export default function MapLabel({ switchersState }) {
     });
   }
 
-  // console.log(getLabels());
-
   return (
     <div className={style.label}>
       <div className={style.label__items}>
-        {/* <div className={style.label__item}> */}
-        {/*  <div className={style.label__circle} /> */}
-        {/*  <div className={style.label__title}>> 500,000,000</div> */}
-        {/* </div> */}
         {renderLabels(getLabels())}
       </div>
     </div>
   );
 }
 
-MapLabel.propTypes = {
+MapLegend.propTypes = {
   switchersState: PropTypes.shape({
     partOfPopulation: PropTypes.string,
     typeOfTime: PropTypes.string,

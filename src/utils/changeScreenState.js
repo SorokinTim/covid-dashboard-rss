@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import style from '../App.module.css';
 
 export default function changeScreenState(props) {

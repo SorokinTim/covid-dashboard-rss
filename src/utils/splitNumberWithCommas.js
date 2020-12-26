@@ -1,4 +1,4 @@
-export default function splitNumberIntoSpaces(num) {
+export default function splitNumberWithCommas(num) {
   const [integer, decimal] = String(num).split('.');
   let resultString = String(integer).split('').reverse().join('')
     .match(/.{1,3}/g)

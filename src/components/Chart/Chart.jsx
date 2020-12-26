@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChartJS from 'chart.js';
@@ -96,8 +95,11 @@ Chart.propTypes = {
     }),
   ).isRequired,
   chartData: PropTypes.shape({
+    // eslint-disable-next-line react/forbid-prop-types
     cases: PropTypes.object,
+    // eslint-disable-next-line react/forbid-prop-types
     deaths: PropTypes.object,
+    // eslint-disable-next-line react/forbid-prop-types
     recovered: PropTypes.object,
   }).isRequired,
   switchersState: PropTypes.shape({
