@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import mapboxgl from '../../api/api-mapbox';
@@ -67,7 +68,11 @@ export default class Map extends React.Component {
       zoom: 3.5,
     });
 
-    this.props.map.current = this.map;
+    const { map } = this.props;
+
+    map.current = this.map;
+
+    // this.props.map.current = this.map;
 
     this.map.on('mouseup', () => {
       setTimeout(() => this.map.resize(), 0);

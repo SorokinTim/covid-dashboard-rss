@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Cases from './components/Cases/Cases';
@@ -49,7 +51,7 @@ export default function AppView({
           )
           : null}
       </div>
-      <div className={`${style.map}`} ref={(el) => mapRef = el}>
+      <div className={`${style.map}`} ref={(el) => { mapRef = el; }}>
         <span
           className={`${style.map__fullscreen} material-icons`}
           onClick={(e) => {
@@ -84,7 +86,7 @@ export default function AppView({
           <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
         </div>
       </div>
-      <div className={style.details} ref={(el) => listRef = el}>
+      <div className={style.details} ref={(el) => { listRef = el; }}>
         <span
           className={`${style.map__fullscreen} material-icons`}
           onClick={(e) => {
@@ -110,7 +112,7 @@ export default function AppView({
           />
         </div>
       </div>
-      <div className={style.data} ref={(el) => boardRef = el}>
+      <div className={style.data} ref={(el) => { boardRef = el; }}>
         <div className={style.broad}>
           <span
             className={`${style.map__fullscreen} material-icons`}
