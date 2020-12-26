@@ -4,7 +4,7 @@ import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
 import getFigurePerHundredThousandPopulation from '../../utils/getFigurePerHundredThousandPopulation';
 import getTotalPopulation from '../../utils/getTotalPopulation';
-import splitNumberIntoSpaces from '../../utils/splitNumberIntoSpaces';
+import splitNumberWithCommas from '../../utils/splitNumberWithCommas';
 import {
   CONFIRMED_INDEX,
   DEATHS_INDEX,
@@ -146,7 +146,7 @@ export default function Table({
             </div>
             <div className={style.board__info}>
               <div className={style.board__title}>Confirmed</div>
-              <div className={style.board__statistic}>{splitNumberIntoSpaces(cases)}</div>
+              <div className={style.board__statistic}>{splitNumberWithCommas(cases)}</div>
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export default function Table({
             </div>
             <div className={style.board__info}>
               <div className={style.board__title}>Deaths</div>
-              <div className={style.board__statistic}>{splitNumberIntoSpaces(deaths)}</div>
+              <div className={style.board__statistic}>{splitNumberWithCommas(deaths)}</div>
             </div>
           </div>
 
@@ -166,7 +166,7 @@ export default function Table({
             </div>
             <div className={style.board__info}>
               <div className={style.board__title}>Recovered</div>
-              <div className={style.board__statistic}>{splitNumberIntoSpaces(recovered)}</div>
+              <div className={style.board__statistic}>{splitNumberWithCommas(recovered)}</div>
             </div>
           </div>
         </div>
