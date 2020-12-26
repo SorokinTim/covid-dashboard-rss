@@ -1,19 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './MapLabel.module.css';
 import getLegendData from '../../utils/getLegendData';
 
 // eslint-disable-next-line react/prop-types
 export default function MapLabel({ switchersState }) {
   function getLabels() {
-    const label = getLegendData(switchersState);
-    const labelArr = [];
+    const labels = getLegendData(switchersState);
+    const labelsArr = [];
 
-    // eslint-disable-next-line guard-for-in,no-restricted-syntax
-    for (const size in label) {
-      labelArr.push(label[size]);
-    }
 
-    return labelArr;
+    Object.keys(labels).forEach((label) => {
+      labelsArr.push(labels[label]);
+    });
+
+    return labelsArr;
   }
 
   function renderLabels(labels) {
@@ -24,7 +25,7 @@ export default function MapLabel({ switchersState }) {
       };
 
       return (
-        <div className={style.label__item}>
+        <div key={el.size} className={style.label__item}>
           <div className={style.label__circle} style={widthStyle} />
           <div className={style.label__title}>{el.string}</div>
         </div>
@@ -46,3 +47,11 @@ export default function MapLabel({ switchersState }) {
     </div>
   );
 }
+
+MapLabel.propTypes = {
+  switchersState: PropTypes.shape({
+    partOfPopulation: PropTypes.string,
+    typeOfTime: PropTypes.string,
+    stageOfDisease: PropTypes.string,
+  }).isRequired,
+};
