@@ -38,8 +38,6 @@ export default function AppView({
       <div className={style.header}>
         <Header />
       </div>
-      <CountryTop startData={startData} getCountryData={getMostCasesCountry} />
-      <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
       <div className={style.country}>
         {country
           ? (
@@ -80,6 +78,10 @@ export default function AppView({
         </div>
         <div className={style.map__label}>
           <MapLabel switchersState={switchersState} />
+        </div>
+        <div className={style.map__top}>
+          <CountryTop startData={startData} getCountryData={getMostCasesCountry} />
+          <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
         </div>
       </div>
       <div className={style.details} ref={(el) => listRef = el}>
