@@ -19,7 +19,7 @@ export default function Cases({ startData, country }) {
 
   return (
     <div className={styles['global-cases']}>
-      <div className={styles['global-cases__title']}>Global cases:</div>
+      <div className={styles['global-cases__title']}>Global cases</div>
       <div className={styles['global-cases__count']}>{splitNumberIntoSpaces(cases)}</div>
       <Time startData={startData} />
     </div>

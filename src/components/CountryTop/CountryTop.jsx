@@ -14,7 +14,7 @@ export default function CountryTop({ startData, getCountryData }) {
 
   return (
     <div className={style.country}>
-      <div className={style.country__info}>{`${title}:`}</div>
+      <div className={style.country__info}>{`${title}`}</div>
       <div className={style.country__container}>
         <div className={style.country__flag}>
           <img

@@ -145,7 +145,7 @@ export default function Table({
               <span className={`${style.board__icon} material-icons notranslate`}>new_releases</span>
             </div>
             <div className={style.board__info}>
-              <div className={style.board__title}>Confirmed:</div>
+              <div className={style.board__title}>Confirmed</div>
               <div className={style.board__statistic}>{splitNumberIntoSpaces(cases)}</div>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function Table({
               <span className={`${style.board__icon} material-icons notranslate`}>person_remove</span>
             </div>
             <div className={style.board__info}>
-              <div className={style.board__title}>Deaths:</div>
+              <div className={style.board__title}>Deaths</div>
               <div className={style.board__statistic}>{splitNumberIntoSpaces(deaths)}</div>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function Table({
               <span className={`${style.board__icon} material-icons notranslate`}>favorite</span>
             </div>
             <div className={style.board__info}>
-              <div className={style.board__title}>Recovered:</div>
+              <div className={style.board__title}>Recovered</div>
               <div className={style.board__statistic}>{splitNumberIntoSpaces(recovered)}</div>
             </div>
           </div>
