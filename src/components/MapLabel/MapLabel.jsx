@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import style from './MapLabel.module.css';
 import getLegendData from '../../utils/getLegendData';
 
+// eslint-disable-next-line react/prop-types
 export default function MapLabel({ switchersState }) {
   function getLabels() {
     const labels = getLegendData(switchersState);
     const labelsArr = [];
+
 
     Object.keys(labels).forEach((label) => {
       labelsArr.push(labels[label]);

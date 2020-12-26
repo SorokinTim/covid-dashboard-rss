@@ -20,7 +20,7 @@ export default function Footer() {
           </g>
         </svg>
       </a>
-      <div className={styles.footer__license}>© 2020 The Rolling Scopes</div>
+      <div className={`${styles.footer__license} notranslate`}>© 2020 The Rolling Scopes</div>
       <div className={styles.footer__author}>
         <i className="fab fa-github" />
         <a href="https://github.com/SorokinTim" className={styles['footer__github-link']}>@SorokinTim</a>
