@@ -44,5 +44,3 @@ CountryTop.propTypes = {
   ).isRequired,
   getCountryData: PropTypes.func.isRequired,
 };
-
-// <CountryTop startData={startData} getCountryData={getMostCasesCountry} />

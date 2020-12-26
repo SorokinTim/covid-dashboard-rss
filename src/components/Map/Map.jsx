@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import mapboxgl from '../../api/api-mapbox';
@@ -72,8 +71,6 @@ export default class Map extends React.Component {
 
     map.current = this.map;
 
-    // this.props.map.current = this.map;
-
     this.map.on('mouseup', () => {
       setTimeout(() => this.map.resize(), 0);
     });
@@ -132,4 +129,6 @@ Map.propTypes = {
     typeOfTime: PropTypes.string,
     stageOfDisease: PropTypes.string,
   }).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  map: PropTypes.object.isRequired,
 };

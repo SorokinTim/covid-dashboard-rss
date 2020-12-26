@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import style from './MapLabel.module.css';
 import getLegendData from '../../utils/getLegendData';
 
-// eslint-disable-next-line react/prop-types
 export default function MapLabel({ switchersState }) {
   function getLabels() {
     const labels = getLegendData(switchersState);
@@ -32,15 +31,9 @@ export default function MapLabel({ switchersState }) {
     });
   }
 
-  // console.log(getLabels());
-
   return (
     <div className={style.label}>
       <div className={style.label__items}>
-        {/* <div className={style.label__item}> */}
-        {/*  <div className={style.label__circle} /> */}
-        {/*  <div className={style.label__title}>> 500,000,000</div> */}
-        {/* </div> */}
         {renderLabels(getLabels())}
       </div>
     </div>

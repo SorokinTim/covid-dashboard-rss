@@ -64,7 +64,7 @@ export default class Search extends Component {
         <input
           className={style.list__input}
           id="search"
-          placeholder="Find a country"
+          placeholder="Search country"
           autoComplete="off"
           value={filter}
           onChange={this.onFilterChange}
