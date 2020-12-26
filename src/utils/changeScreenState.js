@@ -4,6 +4,7 @@ import style from '../App.module.css';
 export default function changeScreenState(props) {
   if (props.e.target.innerText === 'fullscreen_exit') {
     document.body.style.overflow = 'auto';
+    // eslint-disable-next-line no-param-reassign
     props.e.target.innerText = 'fullscreen';
     props.el.classList.remove(style.item_fullscreen);
     window.scrollTo(0, 0);
@@ -11,6 +12,7 @@ export default function changeScreenState(props) {
     if (props.map) props.map.current.resize();
   } else {
     document.body.style.overflow = 'hidden';
+    // eslint-disable-next-line no-param-reassign
     props.e.target.innerText = 'fullscreen_exit';
     props.el.classList.add(style.item_fullscreen);
     window.scrollTo(0, 0);

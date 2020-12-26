@@ -73,7 +73,6 @@ body {
 }
 
 .details {
-  position: relative;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 18% 82%;
@@ -85,17 +84,18 @@ body {
 }
 
 .cases {
+  position: relative;
   grid-area: cases;
   padding-bottom: var(--gap-s);
 }
 
 .list {
+  position: relative;
   grid-area: list;
   padding-top: var(--gap-s);
 }
 
 .data {
-  position: relative;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: repeat(2, 50%);
@@ -107,11 +107,13 @@ body {
 }
 
 .broad {
+  position: relative;
   grid-area: broad;
   padding-bottom: var(--gap-s);
 }
 
 .chart {
+  position: relative;
   grid-area: chart;
   padding-top: var(--gap-s);
 }

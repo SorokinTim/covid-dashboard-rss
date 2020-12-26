@@ -31,7 +31,9 @@ export default function AppView({
 
   let mapRef = React.createRef();
   let listRef = React.createRef();
+  let casesRef = React.createRef();
   let boardRef = React.createRef();
+  let chartRef = React.createRef();
 
   return (
     <div className={style['grid-container']}>
@@ -51,7 +53,7 @@ export default function AppView({
       </div>
       <div className={`${style.map}`} ref={(el) => { mapRef = el; }}>
         <span
-          className={`${style.map__fullscreen} material-icons`}
+          className={`${style.map__fullscreen} material-icons notranslate`}
           onClick={(e) => {
             changeScreenState({
               e,
@@ -84,22 +86,39 @@ export default function AppView({
           <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
         </div>
       </div>
-      <div className={style.details} ref={(el) => { listRef = el; }}>
-        <span
-          className={`${style.map__fullscreen} material-icons`}
-          onClick={(e) => {
-            changeScreenState({
-              e,
-              el: listRef,
-            });
-          }}
-        >
-          fullscreen
-        </span>
-        <div className={style.cases}>
+      {/* eslint-disable-next-line no-return-assign */}
+      <div className={style.details}>
+        <div className={style.cases} ref={(el) => { casesRef = el; }}>
+          {/* eslint-disable-next-line max-len */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+          <span
+            className={`${style.map__fullscreen} material-icons notranslate`}
+            onClick={(e) => {
+              changeScreenState({
+                e,
+                el: casesRef,
+              });
+            }}
+          >
+            fullscreen
+          </span>
           <Cases startData={startData} />
         </div>
-        <div className={style.list}>
+        {/* eslint-disable-next-line no-return-assign */}
+        <div className={style.list} ref={(el) => listRef = el}>
+          {/* eslint-disable-next-line max-len */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+          <span
+            className={`${style.map__fullscreen} material-icons`}
+            onClick={(e) => {
+              changeScreenState({
+                e,
+                el: listRef,
+              });
+            }}
+          >
+            fullscreen
+          </span>
           <List
             startData={startData}
             filter={filter}
@@ -110,8 +129,12 @@ export default function AppView({
           />
         </div>
       </div>
-      <div className={style.data} ref={(el) => { boardRef = el; }}>
-        <div className={style.broad}>
+      {/* eslint-disable-next-line no-return-assign */}
+      <div className={style.data}>
+        {/* eslint-disable-next-line no-return-assign */}
+        <div className={style.broad} ref={(el) => { boardRef = el; }}>
+          {/* eslint-disable-next-line max-len */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
           <span
             className={`${style.map__fullscreen} material-icons`}
             onClick={(e) => {
@@ -130,7 +153,21 @@ export default function AppView({
             onSwitcherChange={onSwitcherChange}
           />
         </div>
-        <div className={style.chart}>
+        {/* eslint-disable-next-line no-return-assign */}
+        <div className={style.chart} ref={(el) => chartRef = el}>
+          {/* eslint-disable-next-line max-len */}
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+          <span
+            className={`${style.map__fullscreen} material-icons`}
+            onClick={(e) => {
+              changeScreenState({
+                e,
+                el: chartRef,
+              });
+            }}
+          >
+            fullscreen
+          </span>
           <ChartComponent
             startData={startData}
             country={country}
