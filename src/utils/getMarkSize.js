@@ -1,4 +1,4 @@
-import { SWITCHERS_PARAMS, LEGEND_MARKS_SIZES } from '../constants';
+import { SWITCHERS_PARAMS, LEGEND_MARKS_SIZES, LEGEND } from '../constants';
 
 export default function getMarkSize(value, switchersState) {
   const { ABSOLUTE_CASES } = SWITCHERS_PARAMS.PART_OF_POPULATION;
@@ -21,54 +21,54 @@ export default function getMarkSize(value, switchersState) {
 
   if (isConfirmed || isRecovered) {
     if (isAbsoluteCases && isAllTime) {
-      if (value > 5000000) return LEGEND_MARKS_SIZES.xl;
-      if (value > 100000) return LEGEND_MARKS_SIZES.l;
-      if (value > 5000) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.allAbsoluteConfirmed.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.allAbsoluteConfirmed.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.allAbsoluteConfirmed.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
     if (isAbsoluteCases && isLastDay) {
-      if (value > 15000) return LEGEND_MARKS_SIZES.xl;
-      if (value > 1000) return LEGEND_MARKS_SIZES.l;
-      if (value > 50) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.lastAbsoluteConfirmed.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.lastAbsoluteConfirmed.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.lastAbsoluteConfirmed.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
     if (isCasesPerHundred && isAllTime) {
-      if (value > 6000) return LEGEND_MARKS_SIZES.xl;
-      if (value > 2000) return LEGEND_MARKS_SIZES.l;
-      if (value > 500) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.allPer100kConfirmed.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.allPer100kConfirmed.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.allPer100kConfirmed.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
     if (isCasesPerHundred && isLastDay) {
-      if (value > 100) return LEGEND_MARKS_SIZES.xl;
-      if (value > 30) return LEGEND_MARKS_SIZES.l;
-      if (value > 3) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.lastPer100kConfirmed.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.lastPer100kConfirmed.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.lastPer100kConfirmed.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
   }
 
   if (isDeaths) {
     if (isAbsoluteCases && isAllTime) {
-      if (value > 100000) return LEGEND_MARKS_SIZES.xl;
-      if (value > 5000) return LEGEND_MARKS_SIZES.l;
-      if (value > 500) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.allAbsoluteDeaths.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.allAbsoluteDeaths.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.allAbsoluteDeaths.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
     if (isAbsoluteCases && isLastDay) {
-      if (value > 500) return LEGEND_MARKS_SIZES.xl;
-      if (value > 50) return LEGEND_MARKS_SIZES.l;
-      if (value > 5) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.lastAbsoluteDeaths.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.lastAbsoluteDeaths.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.lastAbsoluteDeaths.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
     if (isCasesPerHundred && isAllTime) {
-      if (value > 100) return LEGEND_MARKS_SIZES.xl;
-      if (value > 30) return LEGEND_MARKS_SIZES.l;
-      if (value > 5) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.allPer100kDeaths.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.allPer100kDeaths.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.allPer100kDeaths.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
     if (isCasesPerHundred && isLastDay) {
-      if (value > 1.5) return LEGEND_MARKS_SIZES.xl;
-      if (value > 1) return LEGEND_MARKS_SIZES.l;
-      if (value > 0.5) return LEGEND_MARKS_SIZES.m;
+      if (value > LEGEND.lastPer100kDeaths.xl.minValue) return LEGEND_MARKS_SIZES.xl;
+      if (value > LEGEND.lastPer100kDeaths.l.minValue) return LEGEND_MARKS_SIZES.l;
+      if (value > LEGEND.lastPer100kDeaths.m.minValue) return LEGEND_MARKS_SIZES.m;
       return LEGEND_MARKS_SIZES.s;
     }
   }

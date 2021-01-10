@@ -31,7 +31,6 @@ export default function ChartComponentView({
         />
       </div>
       <div className={style.chart__graph}>
-        {/* <canvas className={style['chart__graph-item']} ref={(el) => { chartRef = el; }} /> */}
         <Chart
           startData={startData}
           chartData={chartData}

@@ -87,9 +87,9 @@ export default class ChartComponent extends Component {
 
     return (
       <>
-        { error}
-        { loading}
-        { app}
+        {error}
+        {loading}
+        {app}
       </>
     );
   }

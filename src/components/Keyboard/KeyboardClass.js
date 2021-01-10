@@ -360,6 +360,7 @@ export default class Keyboard {
     if (event.code === 'Escape') {
       if (this.isSwitcherOn) {
         this.hideKeyboard();
+
         return;
       }
     }

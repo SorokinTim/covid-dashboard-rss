@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TimeSwitcher from '../Switcher/TimeSwitcher';
 import CasesSwitcher from '../Switcher/CasesSwitcher';
-import getFigurePerHundredThousandPopulation from '../../utils/getFigurePerHundredThousandPopulation';
+import getFigurePerPartOfPopulation from '../../utils/getFigurePerPartOfPopulation';
 import getTotalPopulation from '../../utils/getTotalPopulation';
 import splitNumberWithCommas from '../../utils/splitNumberWithCommas';
 import {
@@ -56,13 +56,13 @@ function getTableData(countriesData, selectedCountry, switchersState) {
     if (isCasesPerHundred && isAllTime) {
       return getGlobalTableFigures(countriesData,
         [CONFIRMED_STAT_TITLE, DEATH_STAT_TITLE, RECOVERED_STAT_TITLE])
-        .map((figure) => getFigurePerHundredThousandPopulation(figure, totalPopulation));
+        .map((figure) => getFigurePerPartOfPopulation(figure, totalPopulation));
     }
 
     if (isCasesPerHundred && isLastDay) {
       return getGlobalTableFigures(countriesData,
         [TODAY_CONFIRMED_STAT_TITLE, TODAY_DEATH_STAT_TITLE, TODAY_RECOVERED_STAT_TITLE])
-        .map((figure) => getFigurePerHundredThousandPopulation(figure, totalPopulation));
+        .map((figure) => getFigurePerPartOfPopulation(figure, totalPopulation));
     }
   }
 
@@ -97,17 +97,17 @@ function getTableData(countriesData, selectedCountry, switchersState) {
 
   if (isCasesPerHundred && isAllTime) {
     return [
-      getFigurePerHundredThousandPopulation(cases, population),
-      getFigurePerHundredThousandPopulation(deaths, population),
-      getFigurePerHundredThousandPopulation(recovered, population),
+      getFigurePerPartOfPopulation(cases, population),
+      getFigurePerPartOfPopulation(deaths, population),
+      getFigurePerPartOfPopulation(recovered, population),
     ];
   }
 
   if (isCasesPerHundred && isLastDay) {
     return [
-      getFigurePerHundredThousandPopulation(todayCases, population),
-      getFigurePerHundredThousandPopulation(todayDeaths, population),
-      getFigurePerHundredThousandPopulation(todayRecovered, population),
+      getFigurePerPartOfPopulation(todayCases, population),
+      getFigurePerPartOfPopulation(todayDeaths, population),
+      getFigurePerPartOfPopulation(todayRecovered, population),
     ];
   }
 

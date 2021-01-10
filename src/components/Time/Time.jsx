@@ -11,8 +11,10 @@ function getMonthName(month) {
   return monthNames[month];
 }
 
+const MINIMAL_TWO_DIGIT_NUMBER = 10;
+
 function padZero(timeUnit) {
-  return timeUnit < 10 ? `0${timeUnit}` : timeUnit;
+  return timeUnit < MINIMAL_TWO_DIGIT_NUMBER ? `0${timeUnit}` : timeUnit;
 }
 
 export default function Time({ startData }) {
