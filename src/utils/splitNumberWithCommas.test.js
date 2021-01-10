@@ -8,6 +8,6 @@ test('434 is splitted to 434', () => {
   expect(splitNumberWithCommas(434)).toBe('434');
 });
 
-test('43444.25 is splitted to 434', () => {
+test('43444.25 is splitted to 43,444.25', () => {
   expect(splitNumberWithCommas(43444.25)).toBe('43,444.25');
 });
