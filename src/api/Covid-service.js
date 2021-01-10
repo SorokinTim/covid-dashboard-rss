@@ -1,5 +1,5 @@
 export default class CovidService {
-  covidApiUrl = 'https://disease.sh/v3/covid-19';
+  COVID_API_URL = 'https://disease.sh/v3/covid-19';
 
   static async getResource(url) {
     const response = await fetch(url);
@@ -12,12 +12,12 @@ export default class CovidService {
   }
 
   getTotalsForAllCountries() {
-    return CovidService.getResource(`${this.covidApiUrl}/countries`);
+    return CovidService.getResource(`${this.COVID_API_URL}/countries`);
   }
 
   getAllDaysGlobal = () => CovidService
     .getResource(`${this.covidApiUrl}/historical/all?lastdays=all`);
 
   getAllDaysByCountry = (country) => CovidService
-    .getResource(`${this.covidApiUrl}/historical/${country}?lastdays=all`);
+    .getResource(`${this.COVID_API_URL}/historical/${country}?lastdays=all`);
 }
