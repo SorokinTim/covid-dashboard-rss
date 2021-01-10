@@ -1,5 +1,5 @@
 import { SWITCHERS_PARAMS } from '../constants';
-import getFigurePerHundredThousandPopulation from './getFigurePerHundredThousandPopulation';
+import getFigurePerPartOfPopulation from './getFigurePerPartOfPopulation';
 
 export default function getRequiredParam(countryData, switchersState) {
   const {
@@ -38,10 +38,10 @@ export default function getRequiredParam(countryData, switchersState) {
       return todayCases;
     }
     if (isCasesPerHundred && isAllTime) {
-      return getFigurePerHundredThousandPopulation(cases, population);
+      return getFigurePerPartOfPopulation(cases, population);
     }
     if (isCasesPerHundred && isLastDay) {
-      return getFigurePerHundredThousandPopulation(todayCases, population);
+      return getFigurePerPartOfPopulation(todayCases, population);
     }
   }
 
@@ -53,10 +53,10 @@ export default function getRequiredParam(countryData, switchersState) {
       return todayDeaths;
     }
     if (isCasesPerHundred && isAllTime) {
-      return getFigurePerHundredThousandPopulation(deaths, population);
+      return getFigurePerPartOfPopulation(deaths, population);
     }
     if (isCasesPerHundred && isLastDay) {
-      return getFigurePerHundredThousandPopulation(todayDeaths, population);
+      return getFigurePerPartOfPopulation(todayDeaths, population);
     }
   }
 
@@ -68,10 +68,10 @@ export default function getRequiredParam(countryData, switchersState) {
       return todayRecovered;
     }
     if (isCasesPerHundred && isAllTime) {
-      return getFigurePerHundredThousandPopulation(recovered, population);
+      return getFigurePerPartOfPopulation(recovered, population);
     }
     if (isCasesPerHundred && isLastDay) {
-      return getFigurePerHundredThousandPopulation(todayRecovered, population);
+      return getFigurePerPartOfPopulation(todayRecovered, population);
     }
   }
 

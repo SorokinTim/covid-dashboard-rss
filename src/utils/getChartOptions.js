@@ -1,5 +1,5 @@
 import getTotalPopulation from './getTotalPopulation';
-import getFigurePerHundredThousandPopulation from './getFigurePerHundredThousandPopulation';
+import getFigurePerPartOfPopulation from './getFigurePerPartOfPopulation';
 import { SWITCHERS_PARAMS } from '../constants';
 
 export default function getChartOptions(countriesData, startChartData,
@@ -48,7 +48,7 @@ export default function getChartOptions(countriesData, startChartData,
 
     if (isCasesPerHundred && isAllTime) {
       result.data = Object.values((chartData.cases))
-        .map((value) => getFigurePerHundredThousandPopulation(value, totalPopulation));
+        .map((value) => getFigurePerPartOfPopulation(value, totalPopulation));
       result.labels = (Object.keys(chartData.cases));
       result.type = 'line';
     }
@@ -61,7 +61,7 @@ export default function getChartOptions(countriesData, startChartData,
 
         return el - arr[i - 1];
       })
-        .map((value) => getFigurePerHundredThousandPopulation(value, totalPopulation));
+        .map((value) => getFigurePerPartOfPopulation(value, totalPopulation));
       result.labels = (Object.keys(chartData.cases));
       result.type = 'bar';
     }
@@ -88,7 +88,7 @@ export default function getChartOptions(countriesData, startChartData,
 
     if (isCasesPerHundred && isAllTime) {
       result.data = Object.values((chartData.deaths))
-        .map((value) => getFigurePerHundredThousandPopulation(value, totalPopulation));
+        .map((value) => getFigurePerPartOfPopulation(value, totalPopulation));
       result.labels = (Object.keys(chartData.deaths));
       result.type = 'line';
     }
@@ -101,7 +101,7 @@ export default function getChartOptions(countriesData, startChartData,
 
         return el - arr[i - 1];
       })
-        .map((value) => getFigurePerHundredThousandPopulation(value, totalPopulation));
+        .map((value) => getFigurePerPartOfPopulation(value, totalPopulation));
       result.labels = (Object.keys(chartData.deaths));
       result.type = 'bar';
     }
@@ -128,7 +128,7 @@ export default function getChartOptions(countriesData, startChartData,
 
     if (isCasesPerHundred && isAllTime) {
       result.data = Object.values((chartData.recovered))
-        .map((value) => getFigurePerHundredThousandPopulation(value, totalPopulation));
+        .map((value) => getFigurePerPartOfPopulation(value, totalPopulation));
       result.labels = (Object.keys(chartData.recovered));
       result.type = 'line';
     }
@@ -141,7 +141,7 @@ export default function getChartOptions(countriesData, startChartData,
 
         return el - arr[i - 1];
       })
-        .map((value) => getFigurePerHundredThousandPopulation(value, totalPopulation));
+        .map((value) => getFigurePerPartOfPopulation(value, totalPopulation));
       result.labels = (Object.keys(chartData.recovered));
       result.type = 'bar';
     }
