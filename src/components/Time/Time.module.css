@@ -1,0 +1,16 @@
+.header__date {
+  font-size: 14px;
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 300;
+  cursor: help;
+}
+
+@media screen and (max-width: 1200px) {
+  .header__date {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+}

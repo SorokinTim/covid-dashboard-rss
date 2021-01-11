@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import './reset.css';
-
-const title = 'Covid Dashboard Init';
+import './variables.css';
 
 ReactDOM.render(
-  <div>{title}</div>,
+  React.createElement(App),
   document.getElementById('root'),
 );
 

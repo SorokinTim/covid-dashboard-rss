@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: ['@babel/polyfill', path.resolve(__dirname, './src/index.js')],
   module: {
     rules: [
       {
@@ -33,6 +34,17 @@ module.exports = {
         ],
         exclude: /\.module\.css$/,
       },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -42,7 +54,15 @@ module.exports = {
     path: path.resolve(__dirname, './public'),
     filename: 'bundle.js',
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: path.resolve(__dirname, 'src/assets/audio'),
+        to: path.resolve(__dirname, 'public/assets/audio'),
+      },
+    ],
+  }),
+  new webpack.HotModuleReplacementPlugin()],
   devServer: {
     contentBase: path.resolve(__dirname, './public'),
     open: true,

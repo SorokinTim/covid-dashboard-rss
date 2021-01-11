@@ -1,0 +1,18 @@
+:root {
+  --color-red: #FF3E58;
+  --color-dark-red: #59363E;
+  --color-blue: #01A4F6;
+  --color-dark-blue: #264A5E;
+  --color-dark-gray: #2F3438;
+  --color-light-gray: #727578;
+  --color-dark: #25292E;
+  --color-white: #fff;
+
+  --font-family: 'Rubik', sans-serif;
+
+  --gap-s: 5px;
+  --gap-m: 10px;
+
+  --border-radius-s: 5px;
+  --border-radius-m: 10px;
+}
