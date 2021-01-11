@@ -17,7 +17,7 @@
 }
 
 .map * {
-  outline: none !important;
+  outline: none;
 }
 
 .map__marker {

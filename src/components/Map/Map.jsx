@@ -129,6 +129,5 @@ Map.propTypes = {
     typeOfTime: PropTypes.string,
     stageOfDisease: PropTypes.string,
   }).isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   map: PropTypes.object.isRequired,
 };
