@@ -86,7 +86,6 @@ export default function AppView({
           <CountryTop startData={startData} getCountryData={getMostCasesPer100kCountry} />
         </div>
       </div>
-      {/* eslint-disable-next-line no-return-assign */}
       <div className={style.details}>
         <div className={style.cases} ref={(el) => { casesRef = el; }}>
           {/* eslint-disable-next-line max-len */}
@@ -104,8 +103,7 @@ export default function AppView({
           </span>
           <Cases startData={startData} />
         </div>
-        {/* eslint-disable-next-line no-return-assign */}
-        <div className={style.list} ref={(el) => listRef = el}>
+        <div className={style.list} ref={(el) => { listRef = el; }}>
           {/* eslint-disable-next-line max-len */}
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
           <span
@@ -129,9 +127,7 @@ export default function AppView({
           />
         </div>
       </div>
-      {/* eslint-disable-next-line no-return-assign */}
       <div className={style.data}>
-        {/* eslint-disable-next-line no-return-assign */}
         <div className={style.broad} ref={(el) => { boardRef = el; }}>
           {/* eslint-disable-next-line max-len */}
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
@@ -153,8 +149,7 @@ export default function AppView({
             onSwitcherChange={onSwitcherChange}
           />
         </div>
-        {/* eslint-disable-next-line no-return-assign */}
-        <div className={style.chart} ref={(el) => chartRef = el}>
+        <div className={style.chart} ref={(el) => { chartRef = el; }}>
           {/* eslint-disable-next-line max-len */}
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
           <span
