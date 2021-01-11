@@ -10,12 +10,8 @@
 
   --font-family: 'Rubik', sans-serif;
 
-  /* TODO: delete this */
-  --shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-
   --gap-s: 5px;
   --gap-m: 10px;
-
 
   --border-radius-s: 5px;
   --border-radius-m: 10px;
