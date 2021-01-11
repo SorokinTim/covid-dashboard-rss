@@ -95,11 +95,8 @@ Chart.propTypes = {
     }),
   ).isRequired,
   chartData: PropTypes.shape({
-    // eslint-disable-next-line react/forbid-prop-types
     cases: PropTypes.object,
-    // eslint-disable-next-line react/forbid-prop-types
     deaths: PropTypes.object,
-    // eslint-disable-next-line react/forbid-prop-types
     recovered: PropTypes.object,
   }).isRequired,
   switchersState: PropTypes.shape({
