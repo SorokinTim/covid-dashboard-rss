@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 const buttons = [
   {
     code: 'Backquote', en: '`', ru: 'ё', shift: { en: '`', ru: 'ё' }, printable: true,
@@ -263,27 +261,29 @@ export default class Keyboard {
     }
 
     this.keysElements.forEach((key, index) => {
-      key.textContent = buttons[index][this.lang];
+      const keyElement = key;
+
+      keyElement.textContent = buttons[index][this.lang];
 
       if (!this.isCapsLock && this.isShift) {
         if (buttons[index].shift) {
-          key.textContent = buttons[index].shift[this.lang].toUpperCase();
+          keyElement.textContent = buttons[index].shift[this.lang].toUpperCase();
         } else if (buttons[index].printable) {
-          key.textContent = buttons[index][this.lang].toUpperCase();
+          keyElement.textContent = buttons[index][this.lang].toUpperCase();
         }
       }
 
       if (this.isCapsLock && !this.isShift) {
         if (buttons[index].printable) {
-          key.textContent = buttons[index][this.lang].toUpperCase();
+          keyElement.textContent = buttons[index][this.lang].toUpperCase();
         }
       }
 
       if (this.isCapsLock && this.isShift) {
         if (buttons[index].shift) {
-          key.textContent = buttons[index].shift[this.lang].toLowerCase();
+          keyElement.textContent = buttons[index].shift[this.lang].toLowerCase();
         } else if (buttons[index].printable) {
-          key.textContent = buttons[index][this.lang].toLowerCase();
+          keyElement.textContent = buttons[index][this.lang].toLowerCase();
         }
       }
     });
